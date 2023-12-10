@@ -1,0 +1,22 @@
+---
+title: "getUnAssignedCodeCount"
+description: "Counts the coupon codes of a coupon block that are still available in Optimizely Campaign."
+---
+
+**Type**: long
+
+**Parameters**
+
+| Name      | Type   | Value                     |
+| --------- | ------ | ------------------------- |
+| sessionId | String | ID of the current session |
+| blockId   | long   | ID of the coupon block    |
+
+**Return values**
+
+The number of available (unassigned) coupon codes in this block
+
+**Code structure**
+
+`long getUnAssignedCodeCount(String sessionId, long blockId)
+`

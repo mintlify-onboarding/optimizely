@@ -1,0 +1,25 @@
+---
+title: "isBlacklisted"
+description: "Queries whether an email address is blocked in Optimizely Campaign."
+---
+
+This method considers both exact matches (e.g., "[\[email protected\]](/cdn-cgi/l/email-protection#4a202522240a2f322b273a262f64292527)") as well as wildcards (e.g., "\*@example.com"). See also [areBlacklisted](/optimizely-campaign/docs/areblacklisted).
+
+**Type**: boolean
+
+**Parameters**
+
+| Name         | Type   | Value                       |
+| ------------ | ------ | --------------------------- |
+| sessionId    | String | ID of the session           |
+| emailAddress | String | Email address to be queried |
+
+**Return values**
+
+* true: Email address is contained in the blocklist
+* false: Email address is not contained in the blocklist
+
+**Code structure**
+
+`boolean isBlacklisted(String sessionId, String emailAddress)
+`

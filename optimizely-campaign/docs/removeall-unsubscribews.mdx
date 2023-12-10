@@ -1,0 +1,21 @@
+---
+title: "removeAll"
+description: "Removes multiple recipients from the internal unsubscribe list in Optimizely Campaign."
+---
+
+If a recipient is contained in one of the recipient lists, he/she will receive mailings again.
+
+**Type**: void
+
+**Parameters**
+
+| Name         | Type        | Value                 |
+| ------------ | ----------- | --------------------- |
+| sessionId    | String      | ID of the session     |
+| recipientIds | String\[ \] | IDs of the recipients |
+
+**Return values**
+
+* **Code structure**  
+`void removeAll(String sessionId, String[] recipientIds)  
+`

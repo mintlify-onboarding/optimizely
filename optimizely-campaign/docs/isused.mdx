@@ -1,0 +1,24 @@
+---
+title: "isUsed"
+description: "Queries whether a recipient has used (redeemed) a coupon code in Optimizely Campaign."
+---
+
+**Type**: boolean
+
+**Parameters**
+
+| Name      | Type   | Value                         |
+| --------- | ------ | ----------------------------- |
+| sessionId | String | ID of the current session     |
+| blockId   | long   | ID of the coupon block        |
+| code      | String | The coupon code to be queried |
+
+**Return values**
+
+* true: Coupon code has been converted
+* false: Coupon code has not been converted
+
+**Code structure**
+
+`boolean isUsed(String sessionId, long blockId, String code)
+`

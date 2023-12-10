@@ -1,0 +1,27 @@
+---
+title: "isMaxRecipientsRandomOrder"
+description: "Queries whether the recipients should be selected on a random basis in Optimizely Campaign."
+---
+
+This method depends on the [setMaxRecipients](/optimizely-campaign/docs/setmaxrecipients) method. See also [getMaxRecipients](/optimizely-campaign/docs/getmaxrecipients), [setMaxRecipients](/optimizely-campaign/docs/setmaxrecipients), and [setMaxRecipientsPercentage](/optimizely-campaign/docs/setmaxrecipientspercentage).
+
+**Type**: boolean
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+* true: Recipients are selected on a random basis. The return value is trueif:  
+   * the option **Maximum number of recipients** is activated and a corresponding value is set and  
+   * the option **Random order** is activated.
+* false: Recipients are not selected on a random basis.
+
+**Code structure**
+
+`boolean isMaxRecipientsRandomOrder(String sessionId, long mailingId)
+`

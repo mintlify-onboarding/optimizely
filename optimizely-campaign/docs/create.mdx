@@ -1,0 +1,23 @@
+---
+title: "create"
+description: "Creates a new coupon block in Optimizely Campaign."
+---
+
+**Type**: long
+
+**Parameters**
+
+| Name         | Type   | Value                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------------ | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId    | String | ID of the current session                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| couponSource | String | Type of the coupon block:\- **static** – Contains static coupon codes. These must be added manually (see [add](/optimizely-campaign/docs/add-couponcode) or [addAll](/optimizely-campaign/docs/addall-couponcodewebservice)).\- **generated** – Coupon codes are automatically generated when sending the mailing and are unique.\- **ean13barcode** – Bar code blocks convert a 13-digit code number into a machine-readable bar code and insert it as a graphic into a mailing. |
+| Name         | String | Name of the coupon block                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+
+**Return values**
+
+The ID of the newly created coupon block
+
+**Code structure**
+
+`long create(String sessionId, String couponSource, String name)
+`

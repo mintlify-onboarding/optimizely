@@ -1,0 +1,19 @@
+---
+title: "cancelConditionModification"
+description: "Ends a transaction for modifications of a target group without updating the target group in Optimizely Campaign."
+---
+
+**Type**: void
+
+**Parameters**
+
+| Name           | Type   | Value                                                                                                    |
+| -------------- | ------ | -------------------------------------------------------------------------------------------------------- |
+| sessionId      | String | ID of the session                                                                                        |
+| modificationId | String | Identifier created by [beginConditionModification](/optimizely-campaign/docs/beginconditionmodification) |
+
+**Return values**
+
+* **Code structure**  
+`void cancelConditionModification(String sessionId, String modificationId)  
+`

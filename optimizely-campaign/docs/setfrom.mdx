@@ -1,0 +1,21 @@
+---
+title: "setFrom"
+description: "Defines the sender identification of a mailing in Optimizely Campaign."
+---
+
+**Type**: void
+
+**Parameters**
+
+| Name              | Type   | Value                                                                                                     |
+| ----------------- | ------ | --------------------------------------------------------------------------------------------------------- |
+| sessionId         | String | ID of the session                                                                                         |
+| mailingId         | long   | ID of the mailing                                                                                         |
+| senderEmailPrefix | String | The value is prefixed to the sending domain configured for this clientExamples: info, newsletter or john. |
+| senderName        | String | Name of the senderExamples: My Company, John Doe, Newsletter.                                             |
+
+**Return values**
+
+* **Code structure**  
+`void setFrom(String sessionId, long mailingId, String senderEmailPrefix, String senderName)  
+`

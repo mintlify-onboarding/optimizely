@@ -1,0 +1,20 @@
+---
+title: "add"
+description: "Adds an entry to the blocklist in Optimizely Campaign."
+---
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value                                                                                    |
+| --------- | ------ | ---------------------------------------------------------------------------------------- |
+| sessionId | String | ID of the session                                                                        |
+| entry     | String | Entry (for example, an email address) to be blocked (can contain wildcards like ? or \*) |
+| reason    | String | Reason for this blocklist entry (optional)                                               |
+
+**Return values**
+
+* **Code structure**  
+`void add(String sessionId, String entry, String reason)  
+`

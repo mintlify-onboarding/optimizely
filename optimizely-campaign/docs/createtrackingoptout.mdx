@@ -1,0 +1,26 @@
+---
+title: "createTrackingOptOut"
+description: "Deactivates the usage of action-based data (opens and clicks) for a recipient in Optimizely Campaign."
+---
+
+> 📘
+> 
+> Notes
+> 
+> * Opens and clicks are still saved anonymously and included in global reports. The open and clicks in a mailing of such a recipient would therefore be counted. However, if you create a target group containing all recipients of this mailing who opened or clicked it, the recipient is not taken into account.
+> * All personal action-based data are anonymised from the time of activation. Action-based data in the recipient history is not retrospectively anonymized.
+
+**Type**: void
+
+**Parameters**
+
+| Name        | Type   | Value                                                                             |
+| ----------- | ------ | --------------------------------------------------------------------------------- |
+| sessionId   | String | ID of the session                                                                 |
+| recipientId | String | ID of the recipient for which the usage of action-based data shall be deactivated |
+
+**Return values**
+
+* **Code structure**  
+`void createTrackingOptOut(String sessionId, String recipientId)  
+`

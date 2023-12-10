@@ -1,0 +1,26 @@
+---
+title: "containsMultiple"
+description: "Queries whether a recipient exists in multiple recipient lists in Optimizely Campaign."
+---
+
+**Type**: Boolean\[ \]
+
+**Parameters**
+
+| Name             | Type      | Value                      |
+| ---------------- | --------- | -------------------------- |
+| sessionId        | String    | ID of the session          |
+| recipientListIds | long\[ \] | IDs of the recipient lists |
+| recipientId      | String    | ID of the recipient        |
+
+**Return values**
+
+For each recipient list:
+
+* true: Recipient already exists
+* false: Recipient does not exist or an entry exists but the opt-in process has not been finished yet (i.e., the double opt-in link has not been clicked)
+
+**Code structure**
+
+`boolean[] containsMultiple(String sessionId, long[] recipientListIds, String recipientId)
+`

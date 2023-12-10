@@ -1,0 +1,141 @@
+---
+title: "Native APIs"
+description: "Native APIs contain web service functions to make the handling of Optimizely Campaign web services even easier."
+---
+
+### Java
+
+The native Java API is based on Axis (tested with version 1.2) and is accessed via a **factory class**.
+
+The following libraries must be embedded:
+
+* optivo-broadmail-api\*.jar (this library can be found in [this ZIP file](https://world.optimizely.com/globalassets/downloads/episerver-campaign/replaced-181018-episerver-campaign-soap-api.zip))
+* axis\*
+* axis-jaxrpc\*
+* org.apache.commons
+* commons-discovery\*
+* commons-logging\*
+* javax.mail\*
+* wsdl4j\*
+
+**Example**
+
+C#
+
+`import broadmail.api.soapll.*;
+    import broadmail.api.soapll.factory.*;
+    try 
+      {
+        // Obtain a factory
+        WebserviceFactory factory = WebserviceFactory.newInstance();
+        // From that factory all webservice interfaces are available
+        // As an example we will perform a login and a blacklist check
+        SessionWebservice sessionWebservice = factory.newSessionWebservice();
+        String session = sessionWebservice.login(1234, "user", "pass");
+        BlacklistWebservice blacklistWebservice = factory.newBlacklistWebservice();
+        boolean isBlacklisted = blacklistWebservice.isBlacklisted(session, "[[email protected]](/cdn-cgi/l/email-protection)");
+        sessionWebservice.logout(session);
+      } 
+    catch (WebserviceException exception)
+      {
+        //An error occured
+        exception.print.StackTrace();
+      }
+`
+
+### PHP
+
+The webservice API can be queried directly and easily using the native PHP SOAP interface (from PHP 5.0.1 and newer). Whenever the API expects binary data (java.langByte\[\]), these must be submitted as a string. The string must represent the binary data. To read the binary data of a file, you may use the operation file\_get\_contents(). The following example shows the login and adding of an email address to a recipient list:
+
+You can find the below mentioned **mandatorId** (i.e., the client ID) by performing the following steps:
+
+1. Open the Optimizely Campaign start menu and, under **Administration**, click **API Overview**.  
+The **API Overview** window opens.
+2. Switch to the **SOAP API** tab.  
+Beneath the **Client ID** heading, you can find the client ID of the client you are currently working in.
+
+Sample script for the native SOAP interface (from PHP 5.0.1):
+
+PHP
+
+`$client = new SoapClient('http://api.campaign.episerver.net/soap11/RpcSession?wsdl');
+    $webservice = new SoapClient('http://api.campaign.episerver.net/soap11/RpcRecipient?wsdl');
+     
+    $session = $client->login($mandatorId, $username, $password);
+    $operation = $webservice->add2($session, $recipientListId, $optinProcessId, $recipientId, $emailAddress, $attributeNames, $attributeValues);
+    $session = $client->logout($session);
+     
+    echo '<pre>';
+    var_dump($operation);
+    echo '</pre>';
+    ?>
+`
+
+#### Libraries for older PHP versions
+
+If you are using an older PHP version (prior to version 5.0.1), we provide a library and samples in the archive file of this documentation to embed in your PHP. For PHP version 5.0.1 and newer, this library is deprecated, since it comes with a native SOAP client.
+
+The following example shows the login and query of the blocklist status of an email address:
+
+Sample script for NuSOAP Interface for older PHP Versions:
+
+PHP
+
+`// Include the library
+    require_once('broadmail_rpc.php');
+     
+    // Create a new factory and login.
+    // 1234 is the mandatorId, "user" and "pass" are credentials
+    $factory = new BroadmailRpcFactory(1234, 'user', 'pass');
+     
+    // This is how error handling works. You should check the result of the getError() method
+    // after each(!) call to a webservice method
+    if ($factory->getError())
+      {
+        die('Error during login. Details: '.$factory->getError());
+      }
+     
+    // Now create a BlacklistWebservice instance ans a call method.
+    $blacklistWs = $factory->newBlacklistWebservice();
+     
+    $isBlacklisted = $blacklistWs->isBlacklisted('[[email protected]](/cdn-cgi/l/email-protection)');
+    if  ($blacklistWs->getError())
+      {
+        die ('Error while checking blacklist status. Details: '.$factory->getError())
+      }
+     
+    // Don't forget to log out.
+    $factory->logout();
+     
+    // Print out the result.
+    if ($isBlacklisted)
+      {
+        echo 'The emailadress "[[email protected]](/cdn-cgi/l/email-protection)" is blacklisted!');
+      }
+`
+
+### .NET
+
+If you want to use the SOAP-API with a .NET framework, all methods that require to submit a multidimensional array or return such arrays must be replaced by replacement methods. The reason for this is that .NET does not support processing of multidimensional arrays.
+
+**Example**:
+
+To query several recipients in the **RecipientWebservice**, the default method **getAll** would return a multidimensional array with the following pattern:
+
+PHP
+
+`[ 
+      [email1, firstName1, lastName1] 
+      [email2, firstName2, lastName2] 
+      [email3, firstName3, lastName3] 
+    ]
+`
+
+This array cannot be processed by the .NET framework. Use the replacement method **getAllFlat** instead. The returned array in this method has been flattened to the following pattern:
+
+PHP
+
+`[email1, firstName1, lastName1, email2, firstName2, lastName2, email3, firstName3, lastName3]
+`
+
+To process this array, the fields must be indexed to allocate the respective fields to one recipient.

@@ -1,0 +1,22 @@
+---
+title: "getDescription"
+description: "Queries the internal description of a target group in Optimizely Campaign. Temporary target groups are excluded."
+---
+
+**Type**: String
+
+**Parameters**
+
+| Name      | Type   | Value                  |
+| --------- | ------ | ---------------------- |
+| sessionId | String | ID of the session      |
+| filterId  | long   | ID of the target group |
+
+**Return values**
+
+Internal description of the filter
+
+**Code structure**
+
+`String getDescription(String sessionId, long filterId)
+`

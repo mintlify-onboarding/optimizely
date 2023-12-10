@@ -1,0 +1,22 @@
+---
+title: "beginConditionModification"
+description: "Begins a transaction for modifications of a target group in Optimizely Campaign."
+---
+
+**Type**: String
+
+**Parameters**
+
+| Name      | Type   | Value                  |
+| --------- | ------ | ---------------------- |
+| sessionId | String | ID of the session      |
+| filterId  | long   | ID of the target group |
+
+**Return values**
+
+**modificationId** that is used by all condition altering methods
+
+**Code structure**
+
+`String beginConditionModification(String sessionId, long filterId)
+`

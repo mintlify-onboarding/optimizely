@@ -1,0 +1,42 @@
+---
+title: "Test dispatch"
+description: "Describes how to set up a website and create a campaign in Smart Campaigns to send Web Push test messages."
+---
+
+### Prerequisites
+
+* A website (web app) to implement push notifications.
+
+> 📘
+> 
+> Note
+> 
+> Use a different website than your main one for testing. You can create a test website using [Firebase Hosting](https://firebase.google.com/docs/hosting/ "Firebase website").
+> 
+> * A user account for [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/ "Firebase website"), a free cross-platform solution for sending push messages.
+> * Optimizely Campaign test recipient list of type "Push" that customer support sets up for you.
+
+### Set up the website
+
+1. Create a web app [project in Firebase](/optimizely-campaign/docs/web-push) and provide Optimizely with the required information for the [push assignment](/optimizely-campaign/docs/web-push).
+2. Integrate your website with the Firebase JavaScript SDK. See [Integrating the Firebase SDK](/optimizely-campaign/docs/web-push).  
+> 📘  
+>  
+> Note  
+>  
+> If you use Firebase Hosting, see [Firebase Cloud Messaging Quickstart](https://github.com/firebase/quickstart-js/tree/master/messaging "GitHub website") for an integration guide.
+1. Save the user registration token generated during the [opt-in process](/optimizely-campaign/docs/web-push).
+2. Add a new recipient with the user registration token to the test recipient list in Optimizely Campaign. See [Opt-in](/optimizely-campaign/docs/web-push).
+
+### Send a Web Push test message via Smart Campaigns
+
+**Prerequisites:** Push notifications are enabled in your web browser.  
+**Context:** To test the Web Push message, create a campaign in [Smart Campaigns](https://support.optimizely.com/hc/en-us/articles/4413205648269-Introduction-to-Smart-Campaigns).
+
+1. Log in to Optimizely Campaign and select the client for which Web Push has been configured.
+2. Open the start menu and select **Campaigns** \> **Smart Campaigns**.
+3. Create a new campaign using the **Recipient** node and the **Web Push** node. See [Creating and editing a campaign](https://support.optimizely.com/hc/en-us/articles/4413205648269-Introduction-to-Smart-Campaigns) in the Optimizely User Guide.
+4. Configure the Web Push message. See [Configuring the message](https://support.optimizely.com/hc/en-us/articles/4413205648269-Introduction-to-Smart-Campaigns) in the Optimizely User Guide.
+5. Click **Push test message** and send the Web Push test message**.** See [Smart Campaigns nodes](https://support.optimizely.com/hc/en-us/articles/4413200602509%22) in the Optimizely User Guide.
+
+The Web Push message is displayed in the web browser when opening.

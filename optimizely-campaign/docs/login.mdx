@@ -1,0 +1,27 @@
+---
+title: "login"
+description: "Starts the login for a session in the localization version in Episerver Campaign."
+---
+
+### Validity of a session
+
+The **sessionId** – and therefore the session – becomes invalid after 20 minutes. You must use the _login_ method to obtain a new **sessionId**.
+
+**Type**: String
+
+**Parameters**
+
+| Name       | Type   | Value                                                             |
+| ---------- | ------ | ----------------------------------------------------------------- |
+| mandatorId | long   | ID of the client you want login to                                |
+| username   | String | Name of the user – must have the INTERFACE\_WEBSERVICE permission |
+| password   | String | Password of the user                                              |
+
+**Return values**
+
+A **sessionId** that is required by all web service methods
+
+**Code structure**
+
+`String login(long mandatorId, String username, String password)
+`

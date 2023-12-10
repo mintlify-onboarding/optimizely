@@ -1,0 +1,56 @@
+---
+title: "addAll3"
+description: "Adds multiple recipients to an existing recipient list in Optimizely Campaign."
+---
+
+Be aware of the different behavior of this method according to the recipient status:
+
+* If there is already a recipient with the same ID and the same type of opt-in process that has not completed the opt-in process, the recipient is removed and re-added. If one of the opt-in processes is a double opt-in process and the other is not, the double opt-in process has a higher priority (see [Prioritization of parallel opt-in processes](https://support.optimizely.com/hc/en-us/articles/4413192291981#prioritization)).
+
+Be aware of the different behavior of this method according to the target recipient list:
+
+* If a recipient is unsubscribed and the target recipient list an opt-in list, the recipient will be re-activated with this method and the unsubscribe status will be reset.
+* If a recipient is unsubscribed and the target recipient list a regular list, the unsubscribe status will not be changed and the recipient will not receive any further emails.
+
+This method can be replaced by the .NET replacement method [addAll3Flat](https://world.optimizely.com/documentation/developer-guides/campaign/SOAP-API/recipientwebservice/addall3flat/).
+
+**Type**: int\[ \]
+
+**Parameters**
+
+| Name            | Type              | Value                                                                                                                                                                                                           |
+| --------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId       | String            | ID of the session                                                                                                                                                                                               |
+| recipientListId | long              | ID of the recipient list                                                                                                                                                                                        |
+| optinProcessId  | long              | ID of the opt-in processThe recipient will be processed with the given opt-in process identified by this ID. If no opt-in process shall be used and the recipient be activated immediately, set the value to 0. |
+| recipientIds    | String\[ \]       | IDs of the recipients                                                                                                                                                                                           |
+| emailAddresses  | String\[ \]       | Email addresses of the recipients                                                                                                                                                                               |
+| attributeNames  | String\[ \]       | Defines a map of attributes in association with **attributeValues**                                                                                                                                             |
+| attributeValues | String\[ \] \[ \] | Defines a map of attributes in association with **attributeNames**                                                                                                                                              |
+
+Example structure for **attributeNames** and **attributeValues**
+
+Text
+
+`$attributeNames = array('Salutation','Firstname','Lastname');
+    $arrayRecipient1 = array("Mr","John","Doe");$arrayRecipient2 = array("Mrs","Jane","Doe");$arrayRecipient3 = array("Mr","Peter","Jackson");
+    $attributeValues = array($arrayRecipient1 ,$arrayRecipient2 ,$arrayRecipient3 );
+`
+
+**Return values**
+
+For each recipient:
+
+* 0: Recipient was added
+* 1: Recipient validation failed, e.g., due to invalid email address syntax
+* 2: Recipient is unsubscribed (applies only if the target recipient list is a regular list and no opt-in list)
+* 3: Recipient is blocked
+* 4: Recipient is bounce overflowed (i.e., produced too many bounces in the past)
+* 5: Recipient is already in the list
+* 6: Recipient has been filtered
+* 7: A general error occurred
+
+**Code structure**
+
+`Int[] addAll3(String sessionId, long recipientListId, long optinProcessId, String[] recipientIds, String[] emailAddresses, String[] attributeNames, String[][] attributeValues)
+`

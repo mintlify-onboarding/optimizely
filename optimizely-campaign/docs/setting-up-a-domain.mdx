@@ -1,0 +1,67 @@
+---
+title: "Setting up your domain"
+description: "Describes how to configure the DNS delegation so that you can send emails via Optimizely Campaign by using the sender domain of your hosted website or online shop. If you use another email server configured for your domain, answers to emails sent via Optimizely Campaign will lead to this email server and not to Optimizely Campaign."
+---
+
+### Delegate DNS
+
+The DNS delegation is divided into the configuration of the sender domain and the configuration of an additional subdomain. The subdomain is used by Optimizely Campaign for the technical part of the email delivery and the creation of tracking links.
+
+When the DNS delegation is configured, Optimizely Campaign sends emails with a from address like [\[email protected\]\_.](/cdn-cgi/l/email-protection#550a382c262530363c34393a3333302715302d34382539307b363a380a7b) If a recipient clicks a link in an email _(e.g. [https://www.example.com/special-offers](https://www.example.com/special-offers)_), Optimizely Campaign converts the link to a tracking link based on the technical subdomain _(\_e.g._ [https://newsletter.example.com/trackingcode](https://newsletter.example.com/trackingcode)\_). The recipient is forwarded to our tracking servers to register action data and then forwarded to the original landing page.
+
+**Forward this information to the party responsible for your domain.**
+
+> 📘
+> 
+> Note
+> 
+> If you need to set a TTL, use the value "900 seconds". This ensures that in case of any mistakes, changes will propagate in about 15 minutes. Note also the different subdomains needed in the steps below.
+
+#### Configure
+
+To use a preferred domain, several DNS records must be created. The following configuration steps use the domain _example.com_.
+
+> 📘
+> 
+> Note
+> 
+> The domain _t.example.com_ is the technical subdomain of _example.com_.
+
+1. Create a new A-RR entry to lead tracking links to the Optimizely tracking server  
+   * Domain: t.example.com  
+   * Value: 193.169.180.193
+2. Create a new MX-RR entry to lead technical responses (e.g. bounce messages) to the Optimizely email server.  
+   * Domain: t.example.com  
+   * Priority: 0  
+   * Value: mail.srv2.de.
+3. Create a new TXT-RR entry to authorizes all IP addresses used by the Optimizely email servers for your domain.  
+   * Domain: t.example.com  
+   * Value: v=spf1 include:spf.srv2.de -all
+4. Create a new CNAME-RR entry to authorize the subdomain and ensure compatibility.  
+   * Domain: mailing.\_domainkey.t.example.com  
+   * Value: dkim.srv2.de.
+5. Create a new CNAME-RR entry to authorizes the Optimizely servers to use your domain for sending emails via Optimizely Campaign.  
+   * Domain: mailing.\_domainkey.example.com  
+   * Value: dkim.srv2.de.
+6. Create a new TXT-RR entry to set a DMARC record to protect your domain from email spoofing.  
+   * Domain: \_dmarc.example.com  
+   * Value: v=DMARC1; p=reject; rua=mailto:[\[email protected\]](/cdn-cgi/l/email-protection);
+7. Optional: If you have domain management self-service enabled in your client, you will need to add a CNAME record for verification. (Replace VERIFICATION\_CODE with the string displayed in Campaign UI, see Adding a domain in the User Guide)  
+   * Domain: VERIFICATION\_CODE.t.example.com  
+   * Value: t.example.com.
+
+For information on how to set up DMARC, see the [Optimizely User Guide](https://support.optimizely.com/hc/en-us/articles/4413192134669-DMARC-implementation).
+
+#### Summary
+
+The _example.com_ entries can be summarized as below.
+
+| Domain                            | TTL |    | Entry | Value                                                                              |
+| --------------------------------- | --- | -- | ----- | ---------------------------------------------------------------------------------- |
+| t.example.com                     | 900 | IN | A     | 193.169.180.193                                                                    |
+| t.example.com                     | 900 | IN | MX    | 0 mail.srv2.de.                                                                    |
+| t.example.com                     | 900 | IN | TXT   | v=spf1 include:spf.srv2.de -all                                                    |
+| mailing.\_domainkey.t.example.com | 900 | IN | CNAME | dkim.srv2.de.                                                                      |
+| mailing.\_domainkey.example.com   | 900 | IN | CNAME | dkim.srv2.de.                                                                      |
+| \_dmarc.example.com               | 900 | IN | TXT   | v=DMARC1; p=reject; rua=mailto:[\[email protected\]](/cdn-cgi/l/email-protection); |
+| VERIFICATION\_CODE.t.example.com  | 900 | IN | CNAME | t.example.com.                                                                     |

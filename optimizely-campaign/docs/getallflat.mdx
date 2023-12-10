@@ -1,0 +1,25 @@
+---
+title: "getAllFlat"
+description: "Queries all recipients contained in a specific recipient list in Optimizely Campaign."
+---
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name            | Type        | Value                                                      |
+| --------------- | ----------- | ---------------------------------------------------------- |
+| sessionId       | String      | ID of the session                                          |
+| recipientListId | long        | ID of the recipient list                                   |
+| attributeNames  | String\[ \] | Names of the fields, whose recipient data shall be queried |
+
+**Return values**
+
+All recipients contained in the recipient list
+
+Every value of the returned array is assigned to a value of the committed array parameter **attributeNames** for a recipient.
+
+**Code structure**
+
+`String[] getAllFlat(String sessionId, long recipientListId, String[] attributeNames)
+`

@@ -1,0 +1,29 @@
+---
+title: "ClosedLoopWebservice"
+description: "Provides methods for the closed loop process in Optimizely Campaign."
+---
+
+To use this web service, you must have the closed loop interface and should be familiar with the closed loop process.
+
+> 📘
+> 
+> Note
+> 
+> ClosedLoopWebservice is not compatible with .NET.
+
+| Method                           | Description                                                                                             |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| getClicks                        | Queries recipients that clicked a link in a mailing and the time they clicked the link.                 |
+| getCurrentTime                   | Queries the current server time.                                                                        |
+| getLinks                         | Queries the tracking links of sent mailings.                                                            |
+| getMailingIdByWaveId             | Queries the ID of the sent mailing by means of the **waveId**.                                          |
+| getMailings                      | Queries sent mailings and the appropriate start and end time.                                           |
+| getMailingUnsubscribes           | Queries recipients that unsubscribed and the time they unsubscribed with a reference to a mailing.      |
+| getOpens                         | Queries recipients that opened a mailing and the time they opened the mailing.                          |
+| getOutbounces                    | Queries recipients that exceeded the bounce limit (i.e. created too many hard or soft bounces).         |
+| getRecipients                    | Queries recipients and the mailings they received.                                                      |
+| getResponses                     | Queries recipients that replied to a mailing.                                                           |
+| getUnsubscribes                  | Queries recipients that unsubscribed and the time they unsubscribed without any reference to a mailing. |
+| importFinishedAndScheduleMailing | Schedules the dispatch of the mailing for imported recipients.                                          |
+| importRecipients                 | Imports recipients for a closed loop dispatch.                                                          |
+| prepareNewWave                   | Starts the closed loop process for a mailing.                                                           |

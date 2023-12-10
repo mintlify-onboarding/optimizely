@@ -1,0 +1,25 @@
+---
+title: "deleteTrackingOptOut"
+description: "Reactivates the usage of action-based data (opens and clicks) for a recipient in Optimizely Campaign."
+---
+
+> 📘
+> 
+> Note
+> 
+> Opens and clicks in the recipient history from the time of activation to the reactivation are not restored and allocated to the recipient.
+
+**Type**: void
+
+**Parameters**
+
+| Name        | Type   | Value                                                                           |
+| ----------- | ------ | ------------------------------------------------------------------------------- |
+| sessionId   | String | ID of the session                                                               |
+| recipientId | String | ID of the recipient for which the usage of action-based data shall be activated |
+
+**Return values**
+
+* **Code structure**  
+`void deleteTrackingOptOut(String sessionId, String recipientId)  
+`

@@ -1,0 +1,25 @@
+---
+title: "isInUse"
+description: "Queries whether a target group is used anywhere in Optimizely Campaign."
+---
+
+Temporary target groups are excluded.
+
+**Type**: Boolean
+
+**Parameters**
+
+| Name      | Type   | Value                  |
+| --------- | ------ | ---------------------- |
+| sessionId | String | ID of the session      |
+| filterId  | long   | ID of the target group |
+
+**Return values**
+
+* true: Target group is used
+* false: Target group is not used
+
+**Code structure**
+
+`boolean isInUse(String sessionId, long filterId)
+`

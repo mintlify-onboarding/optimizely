@@ -1,0 +1,22 @@
+---
+title: "markAsUsed"
+description: "Invalidates a coupon code in Optimizely Campaign."
+---
+
+Use this method after the recipient has converted the coupon code after a purchase.
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value                         |
+| --------- | ------ | ----------------------------- |
+| sessionId | String | ID of the current session     |
+| blockId   | long   | ID of the coupon block        |
+| code      | String | Coupon code to be invalidated |
+
+**Return values**
+
+* **Code structure**  
+`void markAsUsed(String sessionId, long blockId, String code)  
+`

@@ -1,0 +1,26 @@
+---
+title: "removeAll"
+description: "Deletes multiple coupon codes in Optimizely Campaign."
+---
+
+A maximum of 1,000 codes can be deleted at one time.
+
+**Type**: boolean\[ \]
+
+**Parameters**
+
+| Name      | Type        | Value                      |
+| --------- | ----------- | -------------------------- |
+| sessionId | String      | ID of the current session  |
+| blockId   | long        | ID of the coupon block     |
+| codes     | String\[ \] | Coupon codes to be deleted |
+
+**Return values**: For each submitted code:
+
+* true: Coupon code has been successfully deleted
+* false: Coupon code could not be deleted
+
+**Code structure**
+
+`boolean[] removeAll(String sessionId, long blockId, String[] codes)
+`

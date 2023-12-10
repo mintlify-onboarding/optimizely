@@ -1,0 +1,22 @@
+---
+title: "removeAllByRecipientList"
+description: "Removes multiple recipients from a recipient list-based unsubscribe list in Optimizely Campaign."
+---
+
+If the client is configured for a client-wide unsubscribe list, this method does exactly the same as the [removeAll](/optimizely-campaign/docs/removeall-unsubscribews) method.
+
+**Type**: void
+
+**Parameters**
+
+| Name            | Type        | Value                    |
+| --------------- | ----------- | ------------------------ |
+| sessionId       | String      | ID of the session        |
+| recipientListId | long        | ID of the recipient list |
+| recipientIds    | String\[ \] | IDs of the recipients    |
+
+**Return values**
+
+* **Code structure**  
+`void removeAllByRecipientList(String sessionId, long RecipientListId, String[] recipientIds)  
+`

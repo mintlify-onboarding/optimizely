@@ -1,0 +1,39 @@
+---
+title: "uploadpersonalizedattachments"
+description: "Uploads one or more attachments in Optimizely Campaign."
+---
+
+These attachments can be used when sending transactional mails. For more information regarding the Personalized Attachments feature, see [Personalized Attachments - Examples](/optimizely-campaign/docs/personalized-attachmentsexamples).
+
+This operation is available in the form service.
+
+> 🚧
+> 
+> Tips
+> 
+> * The Personalized Attachment feature must first be activated by [customer support](/cdn-cgi/l/email-protection#0b787e7b7b64797f4b647b7f626662716e677225686466).
+> * Personalized Attachments can only be used for event mailings.
+> * Do not upload more than 500 kB at once.
+> * With each call of this operation, up to five files can be uploaded.
+> * An attachment is valid for 24 hours by default; i.e., after this time, the attachment can no longer be used for sending.
+
+**Parameters**
+
+| Name   | Mandatory | Default value | Description                                                                                                                                     |
+| ------ | --------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| bmFile | yes       | –             | Defines the attachment to be uploadedThis parameter may occur multiple times. I.e., multiple attachments (up to five) can be uploaded per call. |
+
+**Return values**
+
+| Value                                                             | Description                                                                                                                                                                                                                                                                                                                                                                                 |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ok:                                                               | The attachment has been successfully uploaded and can be used later using this returned **token** with the operation [sendtransactionmail](/optimizely-campaign/docs/sendtransactionmail). A token is valid for 24 hours by default; i.e., after this time, the token becomes invalid and you must invoke the operation again.                                                              |
+| syntax\_error: No files uploaded.                                 | The value of the parameter **bmfile** is invalid. Check the spelling.                                                                                                                                                                                                                                                                                                                       |
+| syntax\_error: Invalid file-parameter name '' - must be 'bmFile'. | Instead of the parameter name **bmFile** an incorrect parameter name was used. Always use the parameter name **bmfile** to upload attachments.                                                                                                                                                                                                                                              |
+| vetoed: Personalized attachments are not enabled.                 | The Personalized Attachments feature has not yet been activated. To activate the feature, contact [customer support](https://webhelp.episerver.com/latest/en/campaign/support/customer-support.htm "Customer support").                                                                                                                                                                     |
+| file\_upload\_failed: Ask Campaign support for ticket #           | A general error occurred while uploading the attachment. Contact customer support and quote this ticket ID.                                                                                                                                                                                                                                                                                 |
+| wrong\_tag                                                        | Authorization failed.Error codes:\- 501=wrong authentication tag\- 502=wrong request IP\- 503=wrong request method\- 504=wrong protocol\- 505=wrong recipient list\- 506=wrong action\- 507=action not foundIf a verification of the authentication tag does not solve the problem, contact [customer support](/cdn-cgi/l/email-protection#91e2e4e1e1fee3e5d1fee1e5f8fcf8ebf4fde8bff2fefc). |
+
+**Example**
+
+See [Personalized Attachments - Examples](/optimizely-campaign/docs/personalized-attachmentsexamples) for examples for Personalized Attachments.

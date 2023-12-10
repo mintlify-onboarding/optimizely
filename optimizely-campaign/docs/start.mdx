@@ -1,0 +1,27 @@
+---
+title: "start"
+description: "Starts a mailing in Optimizely Campaign."
+---
+
+Differences between the mailing types:
+
+* regular: The mailing is sent to all defined recipients and then stopped. The mailing status changes to DONE.
+* event: The mailing is not sent to all defined recipients. The mailing status changes to SENDING. From now on, mails can be sent via [sendMail](/optimizely-campaign/docs/sendmail) or [sendMails](/optimizely-campaign/docs/sendmails).
+
+**Warning:** Do not start a mailing of the type template.
+
+**Type**: void
+
+**Parameters**
+
+| Name         | Type   | Value                                                          |
+| ------------ | ------ | -------------------------------------------------------------- |
+| sessionId    | String | ID of the session                                              |
+| mailingId    | long   | ID of the mailing                                              |
+| scheduleDate | Date   | (Optional) If set, the mailing will be sent on the given date. |
+
+**Return values**
+
+* **Code structure**  
+`void start(String sessionId, long mailingId, Date scheduleDate)  
+`

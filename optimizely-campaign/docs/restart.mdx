@@ -1,0 +1,29 @@
+---
+title: "restart"
+description: "Resends a mailing (status: NEW, SENDING or DONE) in Optimizely Campaign."
+---
+
+If the mailing has not been started, it will be started. The mailing must be of the type regular or event.
+
+> 📘
+> 
+> Notes
+> 
+> * It is better to copy a mailing and start the new one.
+> * This method is designed to work with event-based mailings.
+> * Canceled mailings cannot be restarted.
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+* **Code structure**  
+`void restart(String sessionId, long mailingId)  
+`

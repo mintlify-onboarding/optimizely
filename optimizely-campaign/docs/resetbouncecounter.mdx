@@ -1,0 +1,23 @@
+---
+title: "resetBounceCounter"
+description: "Resets the thresholds for hard and soft bounces to 0 in Optimizely Campaign."
+---
+
+After invoking this method, the recipient will receive mailings again.
+
+By default, the media type EMAIL is used. Use the SessionWebservice [setMediaType](/optimizely-campaign/docs/setmediatype) method to select another media type such as SMS.
+
+**Type**: void
+
+**Parameters**
+
+| Name        | Type   | Value               |
+| ----------- | ------ | ------------------- |
+| sessionId   | String | ID of the session   |
+| recipientId | String | ID of the recipient |
+
+**Return values**
+
+* **Code structure**  
+`void resetBounceCounter(String sessionId, String recipientId)  
+`

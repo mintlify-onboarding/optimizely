@@ -1,0 +1,28 @@
+---
+title: "getMailingId"
+description: "Queries the mailing ID (parameter mailingId) in Optimizely Campaign."
+---
+
+> 📘
+> 
+> Note
+> 
+> The mailing must have been sent. Only then is a mail ID created.
+
+**Type**: long
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailId    | String | Mail ID           |
+
+**Return values**
+
+Mailing ID
+
+**Code structure**
+
+`long getMailingId(String sessionId, String mailId)
+`

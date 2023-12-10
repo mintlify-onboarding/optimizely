@@ -1,0 +1,22 @@
+---
+title: "setMaxMailsPerHour"
+description: "Defines the maximum sending rate (emails per hour) for a mailing in Optimizely Campaign."
+---
+
+The mailing must be of the type regular.
+
+**Type**: void
+
+**Parameters**
+
+| Name            | Type   | Value                                                                                                                |
+| --------------- | ------ | -------------------------------------------------------------------------------------------------------------------- |
+| sessionId       | String | ID of the session                                                                                                    |
+| mailingId       | long   | ID of the mailing                                                                                                    |
+| maxMailsPerHour | int    | Maximum sending rate (mails per hour) for the mailing—must be greater than 1000The value -1 means **No throttling**. |
+
+**Return values**
+
+* **Code structure**  
+`void setMaxMailsPerHour(String sessionId, long mailingId, int maxMailsPerHour)  
+`

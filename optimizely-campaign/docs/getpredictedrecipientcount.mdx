@@ -1,0 +1,24 @@
+---
+title: "getPredictedRecipientCount"
+description: "Counts the recipients that will receive a mailing once it is started in Optimizely Campaign."
+---
+
+The mailing must be of type regular.
+
+**Type**: int
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+Number of recipients that will receive the mailing once it is started
+
+**Code structure**
+
+`int getPredictedRecipientCount(String sessionId, long mailingId)
+`

@@ -1,0 +1,23 @@
+---
+title: "setMaxRecipientsPercentage"
+description: "Activates or deactivates the options Maximum number of recipients and Random order and sets absolute percentaged values for them (a float from 0 to 1) in Optimizely Campaign."
+---
+
+The actual number of recipients is calculated when the mailing is started. The mailing must be of the type regular. See also [setMaxRecipients](/optimizely-campaign/docs/setmaxrecipients) and [getMaxRecipients](/optimizely-campaign/docs/getmaxrecipients).
+
+**Type**: void
+
+**Parameters**
+
+| Name          | Type    | Value                                                                                                                        |
+| ------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| sessionId     | String  | ID of the session                                                                                                            |
+| mailingId     | long    | ID of the mailing                                                                                                            |
+| maxRecipients | Float   | Maximum number of recipients (float between 0 and 1)                                                                         |
+| randomOrder   | Boolean | \- true – Recipients are selected on a random basis.\- false – Recipients are selected by their ID starting with the lowest. |
+
+**Return values**
+
+* **Code structure**  
+`void setMaxRecipientsPercentage(String sessionId, long mailingId, float maxRecipientsPercentage, boolean randomOrder)  
+`

@@ -1,0 +1,24 @@
+---
+title: "getMandatorId"
+description: "Queries the client ID in Optimizely Campaign."
+---
+
+Throws an exception if the current logged in user has no permission for the client to which the mail ID belongs.
+
+**Type**: long
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailId    | String | Mail ID           |
+
+**Return values**
+
+Client ID
+
+**Code structure**
+
+`long getMandatorId(String sessionId, String mailId)
+`

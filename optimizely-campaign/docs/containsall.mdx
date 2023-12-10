@@ -1,0 +1,29 @@
+---
+title: "containsAll"
+description: "Queries whether multiple entries are contained in the blocklist."
+---
+
+See also: [contains](/optimizely-campaign/docs/contains-blacklist).
+
+This method queries only exact matches. If, for example, "\*@example.com" is contained in the blocklist and you query [\[email protected\]](/cdn-cgi/l/email-protection#157f7a7d7b55706d74786579703b767a78) using this method, false is returned. If you query @example.com, true is returned. To a query both exact matches as well as wildcards, use the [areBlacklisted](/optimizely-campaign/docs/areblacklisted) method.
+
+**Type**: boolean\[ \]
+
+**Parameters**
+
+| Name      | Type        | Value                 |
+| --------- | ----------- | --------------------- |
+| sessionId | String      | ID of the session     |
+| entries   | String\[ \] | Entries to be queried |
+
+**Return values**
+
+For each entry:
+
+* true: Entry is contained in the blocklist
+* false: Entry is not contained in the blocklist
+
+**Code structure**
+
+`boolean[] containsAll(String sessionId, String[] entries)
+`

@@ -1,0 +1,23 @@
+---
+title: "addByMailId"
+description: "Unsubscribes a recipient that belongs to a specific mail-ID in Optimizely Campaign."
+---
+
+The recipient is not removed from the recipient list (but will not receive any further mailings) until the [remove](/optimizely-campaign/docs/remove-unsubscribews) method is invoked or the recipient re-subscribes using a normal opt-in process.
+
+In addition to the [add2](/optimizely-campaign/docs/add2) method, the mailing the recipient received before she/he unsubscribed will be preserved. See also [MailIdWebservice](/optimizely-campaign/docs/mailidwebservice).
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailId    | String | ID of the email   |
+
+**Return values**
+
+* **Code structure**  
+`void addByMailId(String sessionId, String mailId)  
+`

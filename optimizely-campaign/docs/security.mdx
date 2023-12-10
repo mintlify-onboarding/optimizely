@@ -1,0 +1,61 @@
+---
+title: "HTTP API security"
+description: "Describes security considerations for the HTTP integration API for Optimizely Campaign."
+---
+
+### TLS encryption
+
+Optimizely Campaign supports Transport Layer Security (TLS) version 1.2 and higher to encrypt data transmission via API requests.
+
+### SSL encryption
+
+We recommend encrypting all data transmitted. Customer support can give more information on configuring an SSL encryption. You can access the API server using [https://api.campaign.episerver.net](https://api.campaign.episerver.net "https://api.campaign.episerver.net").
+
+Upon request, we can configure your client to accept SSL requests only.
+
+### Authorization code
+
+The URL for each request contains an authorization code which identifies either the client and the recipient list or the recipient and the sent email. If this code is incorrect, the operation is not executed.
+
+If used in an email, the authorization code is created automatically. If you use a form on your website, the URL contains the code.  
+To get this code, perform these steps.
+
+1. Log in to Optimizely Campaign.
+2. Open the start menu and, under **Administration**, click **API overview**.  
+The **API overview** window opens.
+3. Switch to the **Recipient lists** tab and select the relevant recipient list.
+4. Click **Manage authorization code**.  
+The **Manage authorization codes** window opens and displays all authorization codes of this recipient list.
+5. Copy the authorization code from the **Authorization code** list.  
+If no authorization code is available for the selected recipient list, click **Create authorization code**.
+
+> ❗️
+> 
+> Warning
+> 
+> The authorization codes of the form service must be treated as sensitively as a combination of user name and password. _Never_ pass the authorization code to third parties and _never_ use HTTP API calls of the form service directly on your websites or in mailings. HTTP API calls of the form service must always be executed by the server without exposing the used source code to others. To use HTTP operations in mailings, use the mail service of the HTTP API (see [Mail service](/optimizely-campaign/docs/services-and-operations).
+
+If you want to deactivate an existing authorization code, perform the following steps:
+
+1. Log in to Optimizely Campaign.
+2. Open the start menu and, under **Administration**, click **API overview**.  
+The **API overview** window opens.
+3. Switch to the **Recipient lists** tab.
+4. In the **Recipient list** list, click the recipient list that contains the authorization code.
+5. Click **Manage authorization codes**.  
+The **Manage authorization codes** window opens and displays all authorization codes of this recipient list.
+6. In the **Authorization code** list, click the authorization code you want to deactivate and then click **Deactivate authorization code**.
+
+> 📘
+> 
+> Tip
+> 
+> Additionally, we recommend using the IP restriction feature of Optimizely Campaign for HTTP API calls of the form service in your client. To use this feature, contact [customer support](/cdn-cgi/l/email-protection#0d7e787d7d627f794d627d7964606477686174236e6260).
+
+### IP security
+
+We recommend using an IP access restriction for the HTTP API form service. To set up the IP access restriction, send the IP addresses of your web server to [customer support](/cdn-cgi/l/email-protection#5c2f292c2c332e281c332c2835313526393025723f3331). Access from IP addresses other than the defined ones is denied.
+
+### Request types
+
+Usually, the HTTP API accepts HTTP GET and POST requests. If you are sure that you use only one type of transmission, we can configure your client to accept only the desired operation.

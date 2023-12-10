@@ -1,0 +1,23 @@
+---
+title: "getAllAdvancedFlat"
+description: "Queries all blocklist entries in Optimizely Campaign. The selection can be limited."
+---
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name      | Type   | Value                                              |
+| --------- | ------ | -------------------------------------------------- |
+| sessionId | String | ID of the session                                  |
+| pageStart | int    | Number of the first blocklist entry to be returned |
+| pageSize  | int    | Total number of blocklist entries to be returned   |
+
+**Return values**
+
+All blocklist entries
+
+**Code structure**
+
+`String[] getAllAdvancedFlat(String sessionId, int pageStart, int pageSize)
+`

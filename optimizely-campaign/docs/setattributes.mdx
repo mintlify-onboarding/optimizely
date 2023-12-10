@@ -1,0 +1,28 @@
+---
+title: "setAttributes"
+description: "Defines new values for specific attributes of a recipient in Episerver Campaign."
+---
+
+> 📘
+> 
+> Note
+> 
+> Transactional recipient lists (that is, recipient lists that can only be used for API calls) cannot be updated using this method.
+
+**Type**: void
+
+**Parameters**
+
+| Name            | Type        | Value                                                                                                                                                                                                                                                                          |
+| --------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| sessionId       | String      | ID of the session                                                                                                                                                                                                                                                              |
+| recipientListId | long        | ID of the recipient list                                                                                                                                                                                                                                                       |
+| recipientId     | String      | ID of the recipient                                                                                                                                                                                                                                                            |
+| attributeNames  | String\[ \] | Field names of the fields (e.g., firstname, lastname etc.) that are to be updated                                                                                                                                                                                              |
+| attributeValues | String\[ \] | New values for the attributes/fields defined with **attributeNames**Each entry must be formatted according to the [formatting rules](https://world.optimizely.com/documentation/developer-guides/campaign/SOAP-API/introduction-to-the-soap-api/soap-1-1-compatibility/#Type). |
+
+**Return values**
+
+* **Code structure**  
+`void setAttributes(String sessionId, long recipientListId, String recipientId, String[] attributeNames, String[] attributeValues)  
+`

@@ -1,0 +1,21 @@
+---
+title: "resume"
+description: "Resumes a paused mailing in Optimizely Campaign."
+---
+
+The mailing must be of the type regular. All other mailings (event, confirmation, template) cannot be resumed.
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+* **Code structure**  
+`void resume(String sessionId, long mailingId)  
+`

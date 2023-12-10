@@ -1,0 +1,26 @@
+---
+title: "getRecipientFilterIds"
+description: "Queries the target group IDs of a mailing in Optimizely Campaign."
+---
+
+See also [RecipientFilterWebservice](/optimizely-campaign/docs/recipientfilterwebservice).
+
+**Type**: long\[ \]
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+Target group IDs of the mailing
+
+Returns an empty array if no target group is available.
+
+**Code structure**
+
+`long[] getRecipientFilterIds(String sessionId, long mailingId)
+`

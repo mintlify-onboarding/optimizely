@@ -1,0 +1,40 @@
+---
+title: "sendMail"
+description: "Sends a mailing to a recipient in Optimizely Campaign."
+---
+
+This method is only applicable to mailings of the type **event**.
+
+> 📘
+> 
+> Note
+> 
+> If a target group is defined for the mailing, the mailing will be sent only if the recipient meets the target group criteria.
+
+The actual email is sent asynchronously. That means that you should not delete the recipients immediately after invoking this method.
+
+**Type**: int
+
+**Parameters**
+
+| Name            | Type   | Value                                                                                                                                                             |
+| --------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId       | String | ID of the session                                                                                                                                                 |
+| mailingId       | long   | ID of the mailing                                                                                                                                                 |
+| recipientListId | long   | ID of the recipient listThis recipient list must be assigned to the given mailing. See also [getRecipientListIds](/optimizely-campaign/docs/getrecipientlistids). |
+| recipientId     | String | ID of the recipient                                                                                                                                               |
+
+**Return values**
+
+* 0: the mail has been spooled
+* 1: the recipient is blocked
+* 2: the recipient is unsubscribed
+* 3: the recipient was not found
+* 4: the recipient list is invalid
+* 5: the recipient is blocked by the mailing's target group
+* 6: the recipient has caused too many bounces
+
+**Code structure**
+
+`int sendMail(String sessionId, long mailingId, long recipientListId, String recipientId)
+`

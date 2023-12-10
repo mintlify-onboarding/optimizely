@@ -1,0 +1,22 @@
+---
+title: "getReason"
+description: "Queries the reason for a blocklist entry in Optimizely Campaign."
+---
+
+**Type**: String
+
+**Parameters**
+
+| Name      | Type   | Value                                                                                                    |
+| --------- | ------ | -------------------------------------------------------------------------------------------------------- |
+| sessionId | String | ID of the session                                                                                        |
+| entry     | String | Entry (for example, an email address) whose reason is to be queried (can contain wildcards like ? or \*) |
+
+**Return values**
+
+Reason for a blocklist entry
+
+**Code structure**
+
+`String getReason(String sessionId, String entry)
+`

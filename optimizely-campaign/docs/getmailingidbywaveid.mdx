@@ -1,0 +1,26 @@
+---
+title: "getMailingIdByWaveId"
+description: "Queries the ID of the sent mailing by means of the waveId in Optimizely Campaign."
+---
+
+The **waveId** uniquely identifies the mailing sent with this closed loop process.
+
+**Type**: long
+
+**Parameters**
+
+| Name      | Type   | Value                                                                     |
+| --------- | ------ | ------------------------------------------------------------------------- |
+| sessionId | String | ID of the session                                                         |
+| waveId    | long   | ID returned by [prepareNewWave](/optimizely-campaign/docs/preparenewwave) |
+
+**Return values**
+
+ID of the sent mailing
+
+Returns 0 if no mailing has yet been sent for the specified **waveId**.
+
+**Code structure**
+
+`long getMailingIdByWaveId(String sessionId, long waveId)
+`

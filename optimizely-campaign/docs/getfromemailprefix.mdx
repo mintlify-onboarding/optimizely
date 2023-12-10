@@ -1,0 +1,24 @@
+---
+title: "getFromEmailPrefix"
+description: "Queries the email prefix of the sender of a mailing in Optimizely Campaign."
+---
+
+This is the part of the email address before the @ sign.
+
+**Type**: String
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+Email prefix of the sender of the mailing
+
+**Code structure**
+
+`String getFromEmailPrefix(string sessionId, long mailingId)
+`

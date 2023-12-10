@@ -1,0 +1,23 @@
+---
+title: "remove"
+description: "Deletes a coupon block in Optimizely Campaign. Assigned coupon codes contained within are not deleted."
+---
+
+**Type**: Boolean
+
+**Parameters**
+
+| Name      | Type   | Value                     |
+| --------- | ------ | ------------------------- |
+| sessionId | String | ID of the current session |
+| blockId   | long   | ID of the coupon block    |
+
+**Return values**
+
+* true: Coupon block has been deleted successfully
+* false: Coupon block has not been deleted
+
+**Code structure**
+
+`boolean remove(String sessionId, long blockId)
+`

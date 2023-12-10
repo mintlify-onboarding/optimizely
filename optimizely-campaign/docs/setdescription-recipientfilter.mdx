@@ -1,0 +1,26 @@
+---
+title: "setDescription"
+description: "Defines the internal description of a target group."
+---
+
+> 📘
+> 
+> Note
+> 
+> You cannot set the description of a temporary target group. To check whether the target group is temporary, use the [isTemporary](/optimizely-campaign/docs/istemporary) operation.
+
+**Type**: void
+
+**Parameters**
+
+| Name        | Type   | Value                                    |
+| ----------- | ------ | ---------------------------------------- |
+| sessionId   | String | ID of the session                        |
+| filterId    | long   | ID of the target group                   |
+| Description | String | Internal description of the target group |
+
+**Return values**
+
+* **Code structure**  
+`void setDescription(String sessionId, long filterId, String description)  
+`

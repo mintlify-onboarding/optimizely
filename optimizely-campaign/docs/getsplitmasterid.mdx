@@ -1,0 +1,24 @@
+---
+title: "getSplitMasterId"
+description: "Queries the ID of the master mailing, which is associated with a specific split mailing in Optimizely Campaign."
+---
+
+**Type**: long
+
+**Parameters**
+
+| Name      | Type   | Value                   |
+| --------- | ------ | ----------------------- |
+| sessionId | String | ID of the session       |
+| mailingId | long   | ID of the split mailing |
+
+**Return values**
+
+ID of the master mailing that is associated with the split mailing.
+
+If no master mailing is found (i.e., the specified mailing is no split mailing), 0 is returned.
+
+**Code structure**
+
+`long getSplitMasterId(String sessionId, long mailingId)
+`

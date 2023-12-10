@@ -1,0 +1,23 @@
+---
+title: "isDefaultRecipientFilterEnabled"
+description: "Queries whether the default target group is used for a mailing in Optimizely Campaign."
+---
+
+**Type**: boolean
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+* true: Default target group is used for the mailing
+* false: Default target group is not used for the mailing
+
+**Code structure**
+
+`boolean isDefaultRecipientFilterEnabled(String sessionId, long mailingId)
+`

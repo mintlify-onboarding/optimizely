@@ -1,0 +1,32 @@
+---
+title: "ResponseWebservice"
+description: "Query email responses on a mailing or recipient basis or reset the bounce counter in Optimizely Campaign."
+---
+
+| Method                          | Description                                                                                                        |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| getAllRecipientResponseCounts2  | Counts the responses of a specific type for multiple recipients.                                                   |
+| getBounceCounter                | Counts the hard or soft bounces for a recipient.                                                                   |
+| getBounceCounterThreshold       | Queries the maximum number of responses a recipient can produce before the recipient receives no further mailings. |
+| getMailingResponseCount         | Counts the responses of a specific type for a mailing.                                                             |
+| getRecipientResponseCount2      | Counts the responses of a specific type for a recipient.                                                           |
+| isBounceCounterThresholdExeeded | Queries whether a recipient has exceeded the hard or soft bounce threshold.                                        |
+| resetBounceCounter              | Resets the thresholds for hard and soft bounces to 0.                                                              |
+
+### Deprecated methods
+
+| Method                        | Description                                                                                     |
+| ----------------------------- | ----------------------------------------------------------------------------------------------- |
+| getAllRecipientResponseCounts | Use [getAllRecipientResponseCounts2](/optimizely-campaign/docs/getallrecipientresponsecounts2). |
+| getRecipientResponseCount     | Use [getRecipientResponseCount2](/optimizely-campaign/docs/getrecipientresponsecount2).         |
+
+### Response categories
+
+Use one of the following values whenever a category is required:
+
+* hardbounce
+* softbounce
+* autoresponder
+* unknown
+
+In addition to these response types, you can use any recipient-defined response type too.

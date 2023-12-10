@@ -1,0 +1,24 @@
+---
+title: "getSendingStartedDate"
+description: "Queries the date at which a mailing was started in Optimizely Campaign."
+---
+
+If the mailing was not started yet, an exception is thrown.
+
+**Type**: Date
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+Time at which the mailing was started
+
+**Code structure**
+
+`Date getSendingStartedDate(String sessionId, long mailingId)
+`

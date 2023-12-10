@@ -1,0 +1,65 @@
+---
+title: "sendtransactionmail"
+description: "Creates a new recipient and sends an event mailing to this recipient in Optimizely Campaign."
+---
+
+Additional parameters for personalization can be transmitted. You can also send SMS if your client is configured accordingly. In certain cases, this operation can be used to send event mailings several times to already existing recipients.
+
+> 📘
+> 
+> Notes on using this operation
+> 
+> * You can use this operation to send mailings to existing recipients.
+> * Each call of this operation creates a new recipient dataset.
+> * Unsubscribes and bounces are always associated with the ID field (which may be, for example, the email address) of the recipient list used.
+> * Use this operation only for confirmation mails, notifications, status mails, or new subscriptions in case recipients forgot their password.
+> * Some of these transactional mails must be free of promotional content.
+> * This operation is available in the form service.
+> * You need a transaction recipient list (recipient list with the property "Transaction API") and its authorization code. See API overview. To set up a transaction recipient list, contact [customer support](/cdn-cgi/l/email-protection#6615131616091412260916120f0b0f1c030a1f4805090b).
+
+> ❗️
+> 
+> Warning
+> 
+> Never use this HTTP API request directly on a web page. HTTP API requests of the form service must always be executed by the server without exposing the used source code to others. Otherwise there is a potential risk that other web user read these data and send emails from your client and at your expense.
+
+**Parameters**
+
+| Name                           | Mandatory | Default value | Description                                                                                                                                                                                                                                                                                                                                                            |
+| ------------------------------ | --------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bmRecipientId                  | yes       | –             | If the mailing is of the type email, the parameter must contain the email address of the recipient. If an SMS is sent, the parameter must contain the telephone number of the recipient.                                                                                                                                                                               |
+| bmMailingId                    | yes       | –             | The ID of the mailing (type: event) to be sent. The mailing must be associated with the same recipient list used by the authorization code.                                                                                                                                                                                                                            |
+| bmPersonalizedAttachmentsToken | no        | –             | To send an attachment, set the value of this parameter to the return value of the operation [uploadpersonalizedattachments](/optimizely-campaign/docs/uploadpersonalizedattachments) (i.e., the token). The personalized attachment feature must first be activated by [customer support](/cdn-cgi/l/email-protection#a6d5d3d6d6c9d4d2e6c9d6d2cfcbcfdcc3cadf88c5c9cb). |
+| bmSanitize                     | no        | –             | Set the value of this parameter to true to convert potentially dangerous characters in the supplied recipient data into their respective HTML equivalents .                                                                                                                                                                                                            |
+| ...                            | no        | –             | Any parameter that corresponds to a parameter of the recipient list.                                                                                                                                                                                                                                                                                                   |
+
+**Return values**
+
+| Value                                                                                | Description                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| enqueued:                                                                            | The sending process has been started. Invoke the operation [getsendstatus](/optimizely-campaign/docs/getsendstatus) to get sending status details.                                                                                                                                                                                                                                          |
+| not\_found                                                                           | The transmitted mailing with the given **bmMailingId** could not be found.                                                                                                                                                                                                                                                                                                                  |
+| wrong\_tag                                                                           | Authorization failed.Error codes:\- 501=wrong authentication tag\- 502=wrong request IP\- 503=wrong request method\- 504=wrong protocol\- 505=wrong recipient list\- 506=wrong action\- 507=action not foundIf a verification of the authentication tag does not solve the problem, contact [customer support](/cdn-cgi/l/email-protection#04777174746b7670446b74706d696d7e61687d2a676b69). |
+| missing\_id                                                                          | No **bmMailingId** and/or no **bmRecipientId** was/were transmitted.                                                                                                                                                                                                                                                                                                                        |
+| syntax\_error                                                                        | The transmitted **bmRecipientId** or another parameter is invalid.                                                                                                                                                                                                                                                                                                                          |
+| syntax\_error: Invalid bmPersonalizedAttachmentsToken.                               | The token is expired, was not created for this client, or has been tampered with.                                                                                                                                                                                                                                                                                                           |
+| wrong\_mailing\_type                                                                 | The mailing is not of the type event.                                                                                                                                                                                                                                                                                                                                                       |
+| wrong\_mailing\_type: Personalized attachments can only be used with EMAIL-mailings. | Personalized attachments can only be used for mailings of the media type email.                                                                                                                                                                                                                                                                                                             |
+| wrong\_mailing\_status                                                               | Personalized attachments can only be used for mailings of the media type email.                                                                                                                                                                                                                                                                                                             |
+| wrong\_mailing\_status                                                               | The mailing with the given **bmMailingId** was stopped, is finished or the property of the used recipient list is **not** Transaction API.                                                                                                                                                                                                                                                  |
+| system\_error                                                                        | A general error occurred.                                                                                                                                                                                                                                                                                                                                                                   |
+
+**Example 1**
+
+`.../form/.../sendtransactionmail?bmRecipientId=john.smith%40example.com&bmMailingId=12345 
+`
+
+The mailing with the ID _12345_ is sent to the recipient with the ID [\[email protected\]\_](/cdn-cgi/l/email-protection#5c0336333432722f313528341c39243d312c3039723f333103).
+
+**Example 2**
+
+`.../form/.../sendtransactionmail?bmRecipientId=john.smith%40example.com&
+bmMailingId=12345&bmPersonalizedAttachmentsToken=1a2b3c456 
+`
+
+The mailing with the ID _12345_ is sent to the recipient with the ID [\[email protected\]\_](/cdn-cgi/l/email-protection#7a2510151214540917130e123a1f021b170a161f5419151725) along with a personalized attachment (using the token _1a2b3c456_). For more examples for using the personalized attachments, see [Personalized Attachments - Examples](/optimizely-campaign/docs/personalized-attachmentsexamples).

@@ -1,0 +1,25 @@
+---
+title: "removeFolder"
+description: "Deletes an existing folder in Optimizely Campaign."
+---
+
+The folder to be deleted must be empty.
+
+**Type**: boolean
+
+**Parameters**
+
+| Name      | Type   | Value                          |
+| --------- | ------ | ------------------------------ |
+| sessionId | String | ID of the current session      |
+| folderId  | long   | ID of the folder to be deleted |
+
+**Return values**
+
+* true: The folder was successfully deleted.
+* false: The folder could not be deleted (e.g., because it is not empty).
+
+**Code structure**
+
+`boolean removeFolder(String sessionId, long folderId)
+`

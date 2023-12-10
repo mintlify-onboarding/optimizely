@@ -1,0 +1,24 @@
+---
+title: "setDefaultRecipientFilterEnabled"
+description: "Activates or deactivates the default target group in Optimizely Campaign."
+---
+
+The default target group can be configured for a client and is used for every mailing unless it is disabled.
+
+**Type**: void
+
+**Parameters**
+
+| Name                                        | Type    | Value                                    |
+| ------------------------------------------- | ------- | ---------------------------------------- |
+| sessionId                                   | String  | ID of the session                        |
+| mailingId                                   | long    | ID of the mailing                        |
+| enabled                                     | boolean | true: Activates the default target group |
+| false: Deactivates the default target group |         |                                          |
+
+**Return values**: -
+
+**Code structure**
+
+`void setDefaultRecipientFilterEnabled(String sessionId, long mailingId, boolean enabled)
+`

@@ -1,0 +1,23 @@
+---
+title: "getClickCount"
+description: "Counts the clicks of a mailing in Optimizely Campaign."
+---
+
+**Type**: int
+
+**Parameters**
+
+| Name      | Type    | Value                                                                                                                                                   |
+| --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId | String  | ID of the session                                                                                                                                       |
+| mailingId | long    | ID of the mailing                                                                                                                                       |
+| unique    | Boolean | \- true – Double counts of recipients that clicked a link in the mailing several times are removed.\- false – The overall number of clicks is returned. |
+
+**Return values**
+
+Number of clicks of the mailing
+
+**Code structure**
+
+`int getClickCount(String sessionId, long mailingId, boolean unique)
+`

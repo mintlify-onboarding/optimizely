@@ -1,0 +1,22 @@
+---
+title: "getLinkNames"
+description: "Queries the names of all tracking links used in a mailing in Optimizely Campaign."
+---
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+Names of all tracking links that are used in the mailing
+
+**Code structure**
+
+`String[] getLinkNames(String sessionId, long mailingId)
+`

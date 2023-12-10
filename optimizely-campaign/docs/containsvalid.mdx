@@ -1,0 +1,34 @@
+---
+title: "containsValid"
+description: "Queries whether a recipient can receive mailings (is valid) in Optimizely Campaign."
+---
+
+Queries whether a recipient can receive mailings (is valid) in Optimizely Campaign by checking the following conditions:
+
+* already exists in a recipient list
+* is not blocked in a recipient list
+* is not unsubscribed in a recipient list
+* is not bounced-out in a recipient list
+* has finished an opt-in process (if any opt-in process exists) in a recipient list
+
+By default, the media type EMAIL is used. Use the [setMediaType](/optimizely-campaign/docs/setmediatype) method to select another media type such as SMS.
+
+**Type**: boolean
+
+**Parameters**
+
+| Name            | Type   | Value                    |
+| --------------- | ------ | ------------------------ |
+| sessionId       | String | ID of the session        |
+| recipientListId | long   | ID of the recipient list |
+| recipientId     | String | ID of the recipient      |
+
+**Return values**
+
+* true: Recipient matches all conditions and receives mailings
+* false: Recipient does not match at least one condition and does not receive any mailing
+
+**Code structure**
+
+`boolean containsValid(String sessionId, long recipientListId, String recipientId)
+`

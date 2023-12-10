@@ -1,0 +1,24 @@
+---
+title: "getParent"
+description: "Queries the ID of a parent folder in Optimizely Campaign."
+---
+
+**Type**: long
+
+**Parameters**
+
+| Name      | Type   | Value                     |
+| --------- | ------ | ------------------------- |
+| sessionId | String | ID of the current session |
+| folderId  | String | ID of the queried folder  |
+
+**Return values**
+
+ID of the parent folder
+
+If the queried folder does not have a parent folder, -1 is returned.
+
+**Code structure**
+
+`long getParent(String sessionId, long folderId)
+`

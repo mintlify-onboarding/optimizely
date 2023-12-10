@@ -1,0 +1,53 @@
+---
+title: "RecipientWebservice"
+description: "Query, add, update, and remove recipients in Optimizely Campaign."
+---
+
+| Method                     | Description                                                                                          |
+| -------------------------- | ---------------------------------------------------------------------------------------------------- |
+| add2                       | Adds a recipient to a recipient list.                                                                |
+| addAll3                    | Adds multiple recipients to a recipient list.                                                        |
+| addAll3Flat                | Adds multiple recipients to an existing recipient list.                                              |
+| changeRecipientId2)        | Changes the ID of a recipient.                                                                       |
+| clear                      | Deletes all recipients from a recipient list.                                                        |
+| contains                   | Queries whether a recipient already exists in a recipient list.                                      |
+| containsMultiple           | Queries whether a recipient already exists in multiple recipient lists.                              |
+| containsValid              | Queries whether a recipient is valid and can receive emails.                                         |
+| containsValidMultiple      | Queries whether a recipient is valid and can receive mailings from multiple recipient lists          |
+| createTrackingOptOut       | Deactivates the usage of action-based data (opens and clicks) for a recipient.                       |
+| deleteTrackingOptOut       | Reactivates the usage of action-based data (opens and clicks) for a recipient.                       |
+| getAll                     | Queries all recipients that are contained in a specific recipient list.                              |
+| getAllAdvanced             | Queries all recipients that are contained in a specific recipient list.                              |
+| getAllAdvancedFlat         | Queries all recipients that are contained in a specific recipient list.                              |
+| getAllFlat                 | Queries all recipients that are contained in a specific recipient list.                              |
+| getAttributes)             | Queries the attributes defined by the parameter **attributeNames**.                                  |
+| getCount)                  | Counts all recipients.                                                                               |
+| getDistinctValues)         | Queries all distinct values of an attribute.                                                         |
+| getDistinctValuesCount)    | Queries all distinct values of an attribute and counts the recipients for each value.                |
+| getDistinctValuesCountFlat | Queries all distinct values of an attribute and counts the recipients for each value.                |
+| remove)                    | Deletes a recipient from a recipient list.                                                           |
+| removeAll)                 | Deletes multiple recipients from a recipient list.                                                   |
+| removeBlacklisted          | Deletes all blocked recipients from a recipient list.                                                |
+| removeBounced              | Deletes all recipients who created bounces.                                                          |
+| removeNotOptined           | Deletes a recipient from a recipient list only if the opt-in process is not finished yet.            |
+| removeUnsubscribed         | Deletes all unsubscribed recipients from a recipient list.                                           |
+| setAttributes              | Defines new values for specific attributes of a recipient.                                           |
+| setAttributesByFilter      | Defines new values for specific attributes of all recipients contained in a specific recipient list. |
+| setAttributesInBatch       | Defines new values for specific attributes of multiple recipients.                                   |
+| setAttributesInBatchFlat   | Defines new values for specific attributes of multiple recipients.                                   |
+
+### Deprecated methods
+
+| Method            | Description                  |
+| ----------------- | ---------------------------- |
+| add               | Use **add2** instead.        |
+| addAll            | Use **addAll3** instead.     |
+| addAll2           | Use **addAll3** instead.     |
+| addAll2Flat       | Use **addAll3Flat** instead. |
+| changeRecipientId | Use **changeRecipientId2**.  |
+
+### Attribute values
+
+Attribute values have to be provided in a serialized form. See \[Type conversion and formatting rules\]doc:soap-1-1-compatibility).
+
+Recipients that shall be added to a recipient list through a double opt-in process are not added until they have completed it.

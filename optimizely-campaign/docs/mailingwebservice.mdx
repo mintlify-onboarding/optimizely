@@ -1,0 +1,106 @@
+---
+title: "MailingWebservice"
+description: "Query, create, update, remove or start mailings as well as send emails on demand in Optimizely Campaign."
+---
+
+| Method                           | Description                                                                                                                                                     |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| cancel                           | Cancels a running mailing.                                                                                                                                      |
+| copy                             | Creates a copy of an existing mailing.                                                                                                                          |
+| create                           | Creates a mailing.                                                                                                                                              |
+| decodeTrackingLinks              | Converts all links found in the given content back to normal links.                                                                                             |
+| encodeTrackingLinks              | Converts all links found in the given content to tracking links.                                                                                                |
+| getAttachmentIds                 | Queries the IDs of one or more attachments of a mailing.                                                                                                        |
+| getCharset                       | Queries the character set for the content (subject + body) of a mailing.                                                                                        |
+| getColumnNames                   | Queries the column names of each mailing.                                                                                                                       |
+| getContent                       | Queries the content of a mailing of a specific MIME type.                                                                                                       |
+| getCount                         | Counts mailings of a specific type.                                                                                                                             |
+| getCreatedDate                   | Queries the creation date of a mailing.                                                                                                                         |
+| getDataSet                       | Queries the data of each mailing.                                                                                                                               |
+| getDataSetFlat                   | Queries the values of each mailing.                                                                                                                             |
+| getDescription                   | Queries the description of a mailing.                                                                                                                           |
+| getFailedRecipientCount          | Counts the recipients that have been skipped during dispatch.                                                                                                   |
+| getFromEmailPrefix               | Queries the email prefix of the sender of a mailing.                                                                                                            |
+| getFromName                      | Queries the name (not the email address) of the sender of a mailing.                                                                                            |
+| getHeader                        | Queries the header value of a mailing.                                                                                                                          |
+| getIds                           | Queries the IDs of all mailings of a specific type.                                                                                                             |
+| getIdsInStatus                   | Queries the IDs of all mailings of a specific type and status.                                                                                                  |
+| getMaxMailsPerHour               | Queries the maximum sending rate (emails per hour) of a mailing.                                                                                                |
+| getMaxRecipients                 | Queries the value of the option **Maximum number of recipients**.                                                                                               |
+| getMimeType                      | Queries the MIME type of a mailing.                                                                                                                             |
+| getName                          | Queries the name of a mailing.                                                                                                                                  |
+| getOverallRecipientCount         | Counts the recipients to whom a mailing was sent or tried to send.                                                                                              |
+| getPredictedRecipientCount       | Counts the recipients that will receive a mailing once it is started.                                                                                           |
+| getProperty                      | Queries the value of a specific mailing property.                                                                                                               |
+| getRecipientFilterIds            | Queries the target group IDs of a mailing.                                                                                                                      |
+| getRecipientListIds              | Queries the IDs of the recipient lists of a mailing.                                                                                                            |
+| getScheduleDate                  | Queries the sending date of a mailing.                                                                                                                          |
+| getSendingFinishedDate           | Queries the date at which the sending of a mailing finished.                                                                                                    |
+| getSendingStartedDate            | Queries the date at which a mailing was started.                                                                                                                |
+| getSendingStatus                 | Queries the sending status of a mailing to a specific recipient.                                                                                                |
+| getSentRecipientCount            | Counts the recipients to whom a mailing was successfully sent.                                                                                                  |
+| getStatus                        | Queries the status of a mailing.                                                                                                                                |
+| isClickTrackingEnabled           | Queries whether click tracking is activated for a mailing.                                                                                                      |
+| isDefaultRecipientFilterEnabled  | Queries whether the default target group is used for a mailing.                                                                                                 |
+| isMaxRecipientsPercentage        | Queries whether the maximum number of recipients is given as a percentaged value.                                                                               |
+| isMaxRecipientsRandomOrder       | Queries whether the recipients should be selected on a random basis.                                                                                            |
+| isOpenTrackingEnabled            | Queries whether open tracking is activated for a mailing.                                                                                                       |
+| pause                            | Pauses a mailing that is in the status SENDING.                                                                                                                 |
+| remove                           | Deletes a mailing.                                                                                                                                              |
+| restart                          | Resends a mailing.                                                                                                                                              |
+| resume                           | Resumes a paused mailing.                                                                                                                                       |
+| sendMail                         | Sends a mailing to a recipient.                                                                                                                                 |
+| sendMails                        | Sends a mailing to multiple recipients.                                                                                                                         |
+| sendTestMail                     | Sends a test email to a recipient.                                                                                                                              |
+| sendTestMail2                    | Sends a test email to a recipient.                                                                                                                              |
+| sendTestMails                    | Sends test emails to multiple recipients.                                                                                                                       |
+| sendTestMailToAll                | Sends test emails to all recipients of a specific recipient list.                                                                                               |
+| setAttachmentIds                 | Defines the IDs for one or more attachments of a mailing.                                                                                                       |
+| setCharset                       | Defines the character set for the content (subject + body) of a mailing.                                                                                        |
+| setClickTrackingEnabled          | Activates or deactivates click tracking for a mailing of a specific MIME type (click tracking is set separately for the two MIME types).                        |
+| setContent                       | Defines the content for a mailing of a specific MIME type.                                                                                                      |
+| setDefaultRecipientFilterEnabled | Activates or deactivates the default target group.                                                                                                              |
+| setDescription                   | Defines the description of a mailing.                                                                                                                           |
+| setFrom                          | Defines the sender identification of a mailing.                                                                                                                 |
+| setHeader                        | Defines a RFC822-compliant header value.                                                                                                                        |
+| setMaxMailsPerHour               | Defines the maximum sending rate (emails per hour) for a mailing.                                                                                               |
+| setMaxRecipients                 | Activates or deactivates the options **Maximum number of recipients** and **Random order** and sets absolute values for them.                                   |
+| setMaxRecipientsPercentage       | Activates or deactivates the options **Maximum number of recipients** and **Random order** and sets absolute percentaged values for them (a float from 0 to 1). |
+| setMimeType                      | Defines the MIME type of a mailing.                                                                                                                             |
+| setName                          | Defines the name of a mailing.                                                                                                                                  |
+| setOpenTrackingEnabled           | Activates or deactivates open tracking for a mailing.                                                                                                           |
+| setProperty                      | Defines the value of a specific mailing property.                                                                                                               |
+| setRecipientFilterIds            | Defines target group IDs for a mailing.                                                                                                                         |
+| setRecipientListIds              | Defines the IDs of the recipient lists to be used for a mailing.                                                                                                |
+| setReplyToAddress                | Defines the the reply to address for a mailing.                                                                                                                 |
+| setReplyToName                   | Defines the displayed name for the reply address (reply to).                                                                                                    |
+| setSubject                       | Defines the subject of a mailing.                                                                                                                               |
+| start                            | Starts a mailing.                                                                                                                                               |
+| validateContent                  | Validates the content of a mailing.                                                                                                                             |
+
+### Deprecated methods
+
+| Method               | Description                    |
+| -------------------- | ------------------------------ |
+| getRecipientFilterId | Use **getRecipientFilterIds**. |
+| setRecipientFilterId | Use **setRecipientFilterIds**. |
+
+### Mailing type
+
+The following mailing types are supported:
+
+* regular: This is a regular mailing.
+* event: This mailing type is used for trigger emails. After the mailing has been started you can send mails to any recipient.
+* confirmation: Used for opt-in processes only, see [OptinProcessWebservice](/optimizely-campaign/docs/optinprocesswebservice).
+* template: Can only be copied. Cannot be started and no emails can be sent.
+* campaign: All mailings of a campaign (not the campaign itself).
+* split: This is a split mailing of an A/B test.
+
+### MIME types
+
+The following MIME types are supported:
+
+* text/plain: Text emails
+* text/html: HTML emails
+* multipart/alternative: Text and HTML emails
+* text/optivosms: SMS messages

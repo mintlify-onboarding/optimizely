@@ -1,0 +1,25 @@
+---
+title: "getDataSet"
+description: "Queries the data of each recipient list in Optimizely Campaign."
+---
+
+You can replace this method by the .NET replacement methods [getColumnNames](/optimizely-campaign/docs/getcolumnnames-recipientlistws) and [getDataSetFlat](/optimizely-campaign/docs/getdatasetflat-recipientlistws).
+
+**Type**: String\[ \] \[ \]
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+
+**Return values**
+
+A data set where the first row contains the column names and the following rows contains the values for each recipient list.
+
+The data set's columns and column order are subject to change.
+
+**Code structure**
+
+`String[][] getDataSet(String sessionId)
+`

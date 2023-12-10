@@ -1,0 +1,26 @@
+---
+title: "CouponBlockWebservice"
+description: "Create coupon blocks, query names and assignments and delete blocks in Optimizely Campaign."
+---
+
+The WSDLs for the coupon code system can be found under these links:
+
+* [https://api.campaign.episerver.net/soap11/addons/CouponCode?wsdl](https://api.broadmail.de/soap11/addons/CouponCode?wsdl "Follow link")
+* [https://api.campaign.episerver.net/soap11/addons/CouponBlock?wsdl](https://api.broadmail.de/soap11/addons/CouponBlock?wsdl "Follow link")
+
+The following methods are available in this web service:
+
+| Method                 | Description                                                      |
+| ---------------------- | ---------------------------------------------------------------- |
+| create                 | Creates a new coupon block                                       |
+| getAllIds              | Queries IDs of existing coupon blocks                            |
+| getAssignedCodeCount   | Queries the number of assigned coupon codes in a block           |
+| getAssignedMailings    | Queries the IDs of the mailings in which a coupon block was used |
+| getCodeCount           | Queries the number of coupon codes of a block                    |
+| getCreated             | Queries the creation date of a coupon block                      |
+| getModified            | Queries the modification date of a coupon block                  |
+| getName                | Queries the name of a coupon block                               |
+| getUnAssignedCodeCount | Queries the number of available codes in a block                 |
+| remove                 | Deletes a coupon block                                           |
+
+To use this web service, you must have the coupon system add-on installed. See [Coupon system](https://support.optimizely.com/hc/en-us/articles/4413192215949-Introduction-to-the-coupon-system) in the Optimizely User Guide.

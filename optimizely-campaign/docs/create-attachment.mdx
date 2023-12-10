@@ -1,0 +1,25 @@
+---
+title: "create"
+description: "Creates an attachment in Optimizely Campaign."
+---
+
+**Type**: long
+
+**Parameters**
+
+| Name      | Type      | Value                                                                                 |
+| --------- | --------- | ------------------------------------------------------------------------------------- |
+| sessionId | String    | ID of the session                                                                     |
+| Name      | String    | Internal name of the attachment to be added                                           |
+| mimeType  | String    | Corresponding MIME type of the fileExample: image/gif or text/comma-separated-values. |
+| filename  | String    | File name to be used for the attachment                                               |
+| content   | byte\[ \] | Content of the attachment (in binary form)                                            |
+
+**Return values**
+
+ID of the created attachment
+
+**Code structure**
+
+`long create(String sessionId, String name, String mimeType, String filename, byte[] content)
+`

@@ -1,0 +1,32 @@
+---
+title: "getAllAdvancedFlat"
+description: "Queries all recipients contained in a specific recipient list in Optimizely Campaign."
+---
+
+The selection can be limited to a specified target group.
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name               | Type        | Value                                                                                                                                                                                                                              |
+| ------------------ | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId          | String      | ID of the session                                                                                                                                                                                                                  |
+| recipientListId    | long        | ID of the recipient list                                                                                                                                                                                                           |
+| attributeNames     | String\[ \] | Names of the fields, whose recipient data will be queried.                                                                                                                                                                         |
+| recipientFilterId  | long        | (optional) ID of the target groupIf the value is greater than 0, only recipients that match the target group with this ID are returned. If you do not want to use a target group, set the value to 0.                              |
+| orderByAttribute   | String      | The name of the attribute (e.g., firstname) used for sortingIf you set the value to NULL, sorting is disabled.                                                                                                                     |
+| ascendingSortOrder | boolean     | \- true – Recipient list is sorted in ascending order.\- false – Recipient list is sorted in descending order.**Note:** This parameter is ineffective if you set the value of the previous parameter **orderByAttribute** to NULL. |
+| pageStart          | int         | The number of the first recipient to be returned                                                                                                                                                                                   |
+| pageSize           | int         | The total number of recipients to be returned                                                                                                                                                                                      |
+
+**Return values**
+
+All recipients that are contained in the recipient list.
+
+Returns an array of strings containing an array of strings with the attribute names for each recipient according to the given attribute names. Furthermore the result can be sorted and paged.
+
+**Code structure**
+
+`String[] getAllAdvancedFlat(String sessionId, long recipientListId, String[] attributeNames, long recipientFilterId, String orderByAttribute, boolean ascendingSortOrder, int pageStart, int pageSize)
+`

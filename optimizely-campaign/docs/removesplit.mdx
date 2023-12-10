@@ -1,0 +1,21 @@
+---
+title: "removeSplit"
+description: "Converts a split mailing into a regular mailing; that is, the split is deleted but the mailing itself remains in Optimizely Campaign"
+---
+
+If, after performing this method, no split mailings are assigned to the master mailing, the master mailing is converted to a regular mailing.
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value                   |
+| --------- | ------ | ----------------------- |
+| sessionId | String | ID of the session       |
+| mailingId | long   | ID of the split mailing |
+
+**Return values**
+
+* **Code structure**  
+`void removeSplit(String sessionId, long mailingId)  
+`

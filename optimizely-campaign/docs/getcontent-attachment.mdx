@@ -1,0 +1,23 @@
+---
+title: "getContent"
+description: "Queries the content of a mailing of a specific MIME type in Optimizely Campaign."
+---
+
+**Type**: String
+
+**Parameters**
+
+| Name      | Type   | Value                                              |
+| --------- | ------ | -------------------------------------------------- |
+| sessionId | String | ID of the session                                  |
+| mailingId | long   | ID of the mailing                                  |
+| mimeType  | String | MIME type (text/plain or text/html) of the mailing |
+
+**Return values**
+
+Content of the mailing
+
+**Code structure**
+
+`String getContent(String sessionId, long mailingId, String mimeType)
+`

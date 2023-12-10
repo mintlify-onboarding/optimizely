@@ -1,0 +1,102 @@
+---
+title: "RecipientFilterWebservice"
+description: "Query, create, or update target groups in Optimizely Campaign."
+---
+
+| Method                      | Description                                                                               |
+| --------------------------- | ----------------------------------------------------------------------------------------- |
+| addAndCondition             | Adds a target group condition using the AND operator.                                     |
+| addOrCondition              | Adds a target group condition using the OR operator.                                      |
+| beginConditionModification  | Begins a transaction for modifications of a target group.                                 |
+| cancelConditionModification | Ends a transaction for modifications of a target group without updating the target group. |
+| clearConditions             | Clears the conditions of a target group.                                                  |
+| commitConditionModification | Ends a transaction for modifications of a target group and update the target group.       |
+| create                      | Creates a persistent target group, that is valid after the end of the session.            |
+| createTemporary             | Creates a temporary target group, that becomes invalid after the end of the session.      |
+| getColumnNames              | Queries the column names of each target group.                                            |
+| getCount                    | Counts all available target groups.                                                       |
+| getDataSet                  | Queries the data of each target group.                                                    |
+| getDataSetFlat              | Queries the values of each target group.                                                  |
+| getDescription              | Queries the internal description of a target group.                                       |
+| getIds                      | Queries the IDs of all available target groups.                                           |
+| getName                     | Queries the internal name of a target group.                                              |
+| isInUse)                    | Queries whether a target group is used anywhere.                                          |
+| isTemporary                 | Queries whether a target group is temporary.                                              |
+| setDescription              | Defines the internal description of a target group.                                       |
+| setName                     | Defines the internal name of a target group.                                              |
+
+### Temporary target groups
+
+Temporary target groups are only valid during the current session. These target groups can be used in ad hoc queries. You should use temporary target groups where possible since relying on persistent target groups may cause problems with concurrent modifications (by users of Optimizely Campaign). Using the RecipientFilterWebservice, you can [create temporary target groups](/optimizely-campaign/docs/createtemporary) and [check whether a target group is temporary](/optimizely-campaign/docs/istemporary).
+
+### Conditions
+
+A target group consists of multiple conditions tied together by the AND or OR operator. Each condition consists of the following parameters:
+
+* **Negate condition (y/n)**: A boolean that defines whether the condition will be wrapped in a NOT condition
+* **Attribut** **e**: The name of the recipient attribute the condition is based on
+* **Operator**: The name of the operation (like > or equals)
+* **Attribute value**: One or more parameters to the operation
+
+These conditions are to be read in the logic: negate condition (y/n) \[attribute name-operator-attribute value\], e.g.:
+
+`[residence-is(equals)-Berlin]
+`
+
+### Available operators
+
+Read the notation of the available operations as follows:
+
+`operator(param1, param2)
+`
+
+whereas param1 and param2 are the attribute values you provide to the methods [addAndCondition](/optimizely-campaign/docs/addandcondition) and [addOrCondition](/optimizely-campaign/docs/addorcondition).
+
+The following operators are available:
+
+* **contains(value)**: applicable only to attributes of the type **String**  
+This filter is case insensitive.
+* **startsWith(value)**: applicable only to attributes of the type **String**  
+This filter is case insensitive.
+* **endsWith(value)**: applicable only to attributes of the type **String**  
+This filter is case insensitive.
+* **isEmpty()**: applicable to all attributes
+* **isNotEmpty()**: applicable to all attributes
+* **\==(value)**: Aapplicable to all attributes  
+ This filter is case insensitive.
+* **\>=(value)**: applicable only to attributes of type **Number**, **boolean** and **Date**.
+* **\>(value)**: applicable only to attributes of type **Number**, **boolean** and **Date**.
+* **<=(value)**: applicable only to attributes of type **Number**, **boolean** and **Date**.
+* **<(value)**: applicable only to attributes of type **Number**, **boolean** and **Date**.
+* **receivedMailing(mailingId)**: Checks whether a recipient has received the mailing with the given ID. Provide 0 as **mailingId** to test whether the recipient received any mailing. **attributeName** is not used.
+* **openedMailing(mailingId)**: Checks whether a recipient has opened the mailing with the given ID. Provide 0 as **mailingId** to test whether the recipient opened any mailing. **attributeName** is not used.
+
+### Attribute values
+
+If not otherwise stated, attribute values and attributes must be of the same type. All attribute values for an operation must be given as strings. See [Type conversion and formatting rules](/optimizely-campaign/docs/soap-1-1-compatibility) for detailed information on how to convert values.
+
+**Example: Creates a target group that selects all Gmail recipients**
+
+`####################
+// SessionWebservice
+$sessionWebservice = new SoapClient("http://api.campaign.episerver.net/soap11/RpcSession?wsdl");
+ 
+// Login
+$stringSessionId =
+$sessionWebservice->login($longMandatorId, $stringUsername, $stringPassword);
+ 
+// RecipientFilterWebservice
+$recipientFilterWebservice = new SoapClient("http://api.campaign.episerver.net/soap11/RpcRecipientFilter?wsdl");
+ 
+// Create a new filter with the initial condition
+"email contains '@gmail.com'"
+ 
+$longRecipientFilterId = $recipientFilterWebservice->create($stringSessionId, "Filter name", false, "Email", "contains", array("@gmail.com"));
+ 
+// Add the or condition
+$stringModificationId = $recipientFilterWebservice->beginConditionModification($stringSessionId, $longRecipientFilterId); $recipientFilterWebservice->addOrCondition($stringSessionId, $stringModificationId, false, "Email", "contains", array("@outlook.com")); $recipientFilterWebservice->commitConditionModification($stringSessionId, $stringModificationId);
+ 
+// Logout
+$sessionWebservice->logout($stringSessionId);
+####################
+`

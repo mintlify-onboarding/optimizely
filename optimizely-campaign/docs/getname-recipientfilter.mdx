@@ -1,0 +1,22 @@
+---
+title: "getName"
+description: "Queries the internal name of a target group in Optimizely Campaign. Temporary target groups are excluded."
+---
+
+**Type**: String
+
+**Parameters**
+
+| Name      | Type   | Value                  |
+| --------- | ------ | ---------------------- |
+| sessionId | String | ID of the session      |
+| filterId  | long   | ID of the target group |
+
+**Return values**
+
+Internal name of the target group
+
+**Code structure**
+
+`String getName(String sessionId, long filterId)
+`

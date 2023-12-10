@@ -1,0 +1,23 @@
+---
+title: "getMailingResponseCount"
+description: "Counts the responses of a specific type for a mailing in Optimizely Campaign."
+---
+
+**Type**: int
+
+**Parameters**
+
+| Name      | Type   | Value                                                                    |
+| --------- | ------ | ------------------------------------------------------------------------ |
+| sessionId | String | ID of the session                                                        |
+| category  | String | See [Response categories](/optimizely-campaign/docs/responsewebservice). |
+| mailingId | long   | ID of the mailing                                                        |
+
+**Return values**
+
+Number of responses of the given type for a mailing
+
+**Code structure**
+
+`int getMailingResponseCount(String sessionId, String category, long mailingId)
+`

@@ -1,0 +1,22 @@
+---
+title: "getIds"
+description: "Queries the IDs of all mailings of a specific type in Optimizely Campaign."
+---
+
+**Type**: long\[ \]
+
+**Parameters**
+
+| Name        | Type   | Value                                                                         |
+| ----------- | ------ | ----------------------------------------------------------------------------- |
+| sessionId   | String | ID of the session                                                             |
+| mailingType | String | Type of the mailing (regular, event, confirmation, template, campaign, split) |
+
+**Return values**
+
+IDs of all mailings of the given type
+
+**Code structure**
+
+`long[] getIds(String sessionId, String mailingType)
+`

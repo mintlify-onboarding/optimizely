@@ -1,0 +1,25 @@
+---
+title: "isMaxRecipientsPercentage"
+description: "Queries whether the maximum number of recipients is given as a percentaged value in Optimizely Campaign."
+---
+
+This method depends on the methods [setMaxRecipientsPercentage](/optimizely-campaign/docs/setmaxrecipientspercentage) and [setMaxRecipients](/optimizely-campaign/docs/setmaxrecipients).
+
+**Type**: boolean
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+* true: The option **Maximum number of recipients** has been set as a percentaged value.
+* false: The option **Maximum number of recipients** has not been set as a percentaged value.
+
+**Code structure**
+
+`boolean isMaxRecipientsPercentage(String sessionId, long mailingId)
+`

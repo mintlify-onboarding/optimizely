@@ -1,0 +1,42 @@
+---
+title: "Integrate iOS"
+description: "Describes how to integrate your iOS app for receiving push messages via Optimizely Campaign."
+---
+
+This topic includes information on how to receive the required code components for the integration and how to use the Software Developer Kit (SDK) .
+
+### Prerequisites
+
+See [Mobile Push](/optimizely-campaign/docs/mobile-push) how to set up required mobile push components before you start developing.
+
+### System requirements
+
+* iOS version 10.0 or higher.
+
+### Register with Firebase Cloud Messaging (FCM)
+
+1. Open the [Firebase console](https://console.firebase.google.com/ "Firebase console website") and log in using your Google account.
+2. Click **Add project** and create a new project for the app.
+3. Click **Settings** and then **Project settings**.
+4. Open the **Cloud Messaging** tab and note the _Legacy server key_ and _sender ID_ for passing to Optimizely Campaign.
+5. Click **Settings** and then **Users and permissions**.
+6. In the navigation on the left-hand side, click **Service accounts**.
+7. At the top of the navigation, click **\+ CREATE SERVICE ACCOUNT**.
+8. Enter the name of the service account and provide an optional service account ID.
+9. Select **Furnish a new private key** and activate the **JSON option**.
+10. Click **Create** and save the _generated JSON file_. The new service account appears in the overview along with the key ID.
+
+### Integrate the iOS SDK
+
+1. Log in to FCM with your Google Developer account.
+2. Download the **GoogleService-Info.plist** with the [iOS onfiguration for FCM](https://firebase.google.com/cdocs/ios/setup "Firebase website").
+3. Add the following code line to your Podfile:  
+Swift  
+`pod 'episerver.push.ios.sdk'  
+`
+
+> 📘
+> 
+> Note
+> 
+> How to use the iOS SDK, see [GitHub Optimizely Push SDK](https://github.com/optimizely-campaign/episerver.push.ios.sdk/blob/master/Example/episerver.push.ios.sdk/AppDelegate.swift). You can find the complete source code, further documentation and examples of the iOS SDK integration on [GitHub](https://github.com/optimizely-campaign/episerver.push.ios.sdk).

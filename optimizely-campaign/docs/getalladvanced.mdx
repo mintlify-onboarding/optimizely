@@ -1,0 +1,25 @@
+---
+title: "getAllAdvanced"
+description: "Queries all blocklist entries method. The selection can be limited."
+---
+
+This method can be replaced by the .NET replacement method [getAllAdvancedFlat](/optimizely-campaign/docs/getalladvancedflat-blacklist).
+
+**Type**: String\[ \] \[ \]
+
+**Parameters**
+
+| Name      | Type   | Value                                              |
+| --------- | ------ | -------------------------------------------------- |
+| sessionId | String | ID of the session                                  |
+| pageStart | int    | Number of the first blocklist entry to be returned |
+| pageSize  | int    | Total number of blocklist entries to be returned   |
+
+**Return values**
+
+All blocklist entries
+
+**Code structure**
+
+`String[][] getAllAdvanced(String sessionId, int pageStart, int pageSize)
+`

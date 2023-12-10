@@ -1,0 +1,31 @@
+---
+title: "getDistinctValues"
+description: "Queries all distinct values of an attribute (max. 10,000) in Optimizely Campaign."
+---
+
+> 🚧
+> 
+> Caution
+> 
+> Using this method with the wrong argument (no threshold for instance) can lead to huge amount of data returned.
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name              | Type   | Value                                                                                                                      |
+| ----------------- | ------ | -------------------------------------------------------------------------------------------------------------------------- |
+| sessionId         | String | ID of the session                                                                                                          |
+| recipientListId   | long   | ID of the recipient list                                                                                                   |
+| recipientFilterId | long   | ID of the target group                                                                                                     |
+| attributeName     | String | Field name (e.g. firstname, lastname etc.) to be queried for distinct values                                               |
+| threshold         | int    | Number of characters that are examinedExample: With a threshold of 4 , the values Test-A and Test-B are summed up to Test. |
+
+**Return values**
+
+Distinct values of the attribute (max. 10,000)
+
+**Code structure**
+
+`String[] getDistinctValues(String sessionId, long recipientListId, long recipientFilterId, String attributeName, int threshold)
+`

@@ -1,0 +1,36 @@
+---
+title: "containsValidMultiple"
+description: "Queries whether a recipient can receive mailings in Optimizely Campaign (i.e., are valid) from multiple recipient lists."
+---
+
+Queries whether a recipient can receive mailings in Optimizely Campaign (i.e., are valid) from multiple recipient lists by checking the following conditions:
+
+* already exists in all queried recipient lists
+* is not blocked in multiple recipient lists
+* is not unsubscribed in multiple recipient lists
+* is not bounced-out in multiple recipient lists
+* has finished an opt-in process (if any opt-in process exists) in multiple recipient lists
+
+By default, the media type EMAIL is used. Use the [setMediaType](/optimizely-campaign/docs/setmediatype) method to select another media type such as SMS.
+
+**Type**: Boolean\[ \]
+
+**Parameters**
+
+| Name             | Type      | Value                      |
+| ---------------- | --------- | -------------------------- |
+| sessionId        | String    | ID of the session          |
+| recipientListIds | long\[ \] | IDs of the recipient lists |
+| recipientId      | String    | ID of the recipient        |
+
+**Return values**
+
+For each recipient list:
+
+* true: Recipient matches all conditions and receives mailings
+* false: Recipient does not match at least one condition and does not receive any mailings
+
+**Code structure**
+
+`boolean[] containsValidMultiple(String sessionId, long[] recipientListIds, String recipientId)
+`

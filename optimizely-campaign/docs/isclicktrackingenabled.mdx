@@ -1,0 +1,26 @@
+---
+title: "isClickTrackingEnabled"
+description: "Queries whether click tracking is activated for a mailing in Optimizely Campaign."
+---
+
+The method must be invoked separately for each MIME type.
+
+**Type**: boolean
+
+**Parameters**
+
+| Name      | Type   | Value                                              |
+| --------- | ------ | -------------------------------------------------- |
+| sessionId | String | ID of the session                                  |
+| mailingId | long   | ID of the mailing                                  |
+| mimeType  | String | MIME type (text/plain or text/html) of the mailing |
+
+**Return values**
+
+* true: Click tracking is activated
+* false: Click tracking is deactivated
+
+**Code structure**
+
+`boolean isClickTrackingEnabled(String sessionId, long mailingId, String mimeType)
+`

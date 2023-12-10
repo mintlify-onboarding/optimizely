@@ -1,0 +1,23 @@
+---
+title: "getResponseCount"
+description: "Counts the responses generated for a mailing in Optimizely Campaign."
+---
+
+**Type**: int
+
+**Parameters**
+
+| Name      | Type   | Value                                                                                                     |
+| --------- | ------ | --------------------------------------------------------------------------------------------------------- |
+| sessionId | String | ID of the session                                                                                         |
+| mailingId | long   | ID of the mailing                                                                                         |
+| category  | String | Type of the responseYou can set the following values:\- hardbounce\- softbounce\- autoresponder\- unknown |
+
+**Return values**
+
+Number of responses generated for the mailing
+
+**Code structure**
+
+`int getResponseCount(String sessionId, long mailingId, String category)
+`

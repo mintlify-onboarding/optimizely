@@ -1,0 +1,39 @@
+---
+title: "add2"
+description: "Adds a recipient to a recipient list in Optimizely Campaign."
+---
+
+Be aware of the different behavior of this method according to the recipient status:
+
+* If there is already a recipient with the same ID and the same type of opt-in process that has not completed the opt-in process, the recipient is removed and re-added. If one of the opt-in processes is a double opt-in process and the other is not, the double opt-in process has a higher priority (see [Prioritization of parallel opt-in processes](https://support.optimizely.com/hc/en-us/articles/4413192291981#prioritization)).
+* If the recipient that is added with this method has been marked as unsubscribed and if no opt-in process ID is submitted, this recipient is activated immediately and receive mailings from your client. No further opt-in process is triggered.
+
+**Type**: int
+
+**Parameters**
+
+| Name            | Type        | Value                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| --------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| sessionId       | String      | ID of the session                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| recipientListId | long        | ID of the recipient list                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| optinProcessId  | long        | ID of the opt-in process. The recipient will be processed with the given opt-in process identified by this ID. If no opt-in process will be used and the recipient will be activated immediately, set the value to 0.**Note: When using a double opt-in recipient list**: If the recipient is unsubscribed and this ID is not being transmitted, 0 is returned (recipient has been added). **When using a non-double opt-in recipient list**: If the recipient is unsubscribed, regardless of whether the ID is transmitted or not, 2 is returned (recipient is unsubscribed). |
+| recipientId     | String      | ID of the recipient                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| emailAddress    | String      | Email address of the recipient                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| attributeNames  | String\[ \] | Defines a map of attributes in association with **attributeValues**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| attributeValues | String\[ \] | Defines a map of attributes in association with **attributeNames**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+
+**Return values**
+
+* 0: Recipient has been added
+* 1: Recipient validation failed, e.g., due to invalid email address syntax
+* 2: Recipient is unsubscribed
+* 3: Recipient is blacklisted
+* 4: Recipient is bounce overflowed (i.e., produced too many bounces in the past)
+* 5: Recipient is already in the list
+* 6: Recipient has been filtered
+* 7: A general error occurred
+
+**Code structure**
+
+`int add2(String sessionId, long recipientListId, long optinProcessId, String recipientId, String emailAddress, String[] attributeNames, String[] attributeValues)
+`

@@ -1,0 +1,121 @@
+---
+title: "Integrate Android"
+description: "Describes how to integrate your Android app for receiving push messages via Optimizely Campaign."
+---
+
+This topic includes access to the Software Developer Kit (SDK) and documentation to receive required code components for integration into your app.
+
+### Prerequisites
+
+See [Mobile Push](/optimizely-campaign/docs/mobile-push) how to set up required mobile push components before you start developing.
+
+### System requirements
+
+* Android Version 4.1 or higher.
+* Android API Level 16 or higher.
+* Google Play Store Version 7.5 or higher.
+
+### Register with Firebase Cloud Messaging (FCM)
+
+1. Open the [Firebase console](https://console.firebase.google.com/ "Firebase website") and log in using your Google account.
+2. Click **Add project** and create a new project for the app.
+3. Click **Settings** and then **Project settings**.
+4. Open the **Cloud Messaging** tab and note the _Legacy server key_ and _sender ID_ for passing to Optimizely Campaign.
+5. Click **Settings** and then **Users and permissions**.
+6. In the navigation on the left-hand side, click **Service accounts**.
+7. At the top of the navigation, click **\+ CREATE SERVICE ACCOUNT**.
+8. Enter the name of the service account and provide an optional service account ID.
+9. Select **Furnish a new private key** and activate the **JSON option**.
+10. Click **Create** and save the _generated JSON file_. The new service account appears in the overview along with the key ID.
+
+### Download SDK
+
+* [SDK for Android](https://world.optimizely.com/globalassets/downloads/episerver-campaign/episerver-push-sdk-7.0.jar "Download SDK for Android") (executable JAR file) - Version 7.0.
+* [SDK documentation for Android](https://world.optimizely.com/globalassets/downloads/episerver-campaign/episerver-push-sdk-7.0-doc.zip.zip "SDK documentation for Android") (zip file).
+
+### Integrate Android SDK
+
+1. Include the **SDK-JAR** and **Google Play Service**. If you use the **Gradle** build system, enter the dependencies as below into your \_build.gradle\_files.  
+   1. Enter the following into the **top level** project _build.gradle_ file:  
+   C#  
+   `dependencies  
+                 {  
+                   classpath 'com.android.tools.build:gradle:3.1.4'  
+                   classpath 'com.google.gms:google-services:4.1.0'  
+                 }  
+   `
+2. In the **lower level** build.gradle of your app, define the dependencies for _episerver-push-android-sdk.jar_. In this example the file resides in the _libs_ directory. In addition you add dependencies for **firebase-core** and **firebase-messaging**:  
+C#  
+`dependencies  
+              {  
+                api fileTree(dir: '../libs', include: ['*.jar'])  
+                api 'com.google.firebase:firebase-core:16.0.3'  
+                api 'com.google.firebase:firebase-messaging:17.3.1'  
+              }  
+`
+3. Add your message notification logo as **Drawable** with the name **bm\_default\_notification\_icon**.  
+> 📘  
+>  
+> Note  
+>  
+> Always create an icon to set your messages apart. To help designing a product icon, see [Material Design](https://material.io/design/iconography/ "Material Design website").
+4. Create a class that inherits from _com.episerver.sdk.PushNotificationReceiver_. You can override the methods _onNotificationClicked(Context, PushMessage)_ and _onNotificationReceived(Context, PushMessage)_ to handle incoming notifications.  
+Notifications received while your app is in the **background** are sent to the system tray by the Android system. When the recipient clicks the notification it can be handled in the _onNotificationClicked_ method.  
+Notifications received while the app is in the **foreground** are not shown as a notification automatically. They can be handled in the _onNotificationReceived_ method where you can update your app or show a custom notification to the recipient. The data transferred via the push message are available in the _PushMessage_ object.  
+Optionally, you can call the method _com.episerver.sdk.EpiSdk.trackOpen(Context, PushMessage)_ from within the _handleClick_ method to track clicks on messages.
+1. Register the class that inherits from _PushNotificationReceiver_ in the **AndroidManifest**, and change the class names accordingly:  
+Replace \[com.example\] with the package name of your app.  
+XML  
+`<receiver android:name=".DemoPushNotificationReceiver"  
+                  android:enabled="true"  
+                  android:exported="true" >  
+          <intent-filter>  
+            <action android:name="[com.example].NOTIFICATION_CLICKED" />  
+            <action android:name="[com.example].NOTIFICATION_RECEIVED" />  
+          </intent-filter>  
+        </receiver>  
+`
+2. Register the following services in the **AndroidManifest**:  
+XML  
+`<service android:name="com.episerver.sdk.EpiMessagingService">  
+          <intent-filter>  
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />  
+          </intent-filter>  
+        </service>  
+          
+        <service android:name="com.episerver.sdk.RestApiService"  
+                 android:exported="false" >  
+        </service>  
+          
+        <service android:name="com.episerver.sdk.TrackingUrlService"  
+                 android:exported="false" >  
+        </service>  
+`
+3. Register the following **Activity** in the **AndroidManifest**:  
+Replace \[com.example\] with the package name of your app.  
+XML  
+`<activity android:name="com.episerver.sdk.PushNotificationClickedActivity"  
+                  android:enabled="true"  
+                  android:exported="true" >  
+          <intent-filter>  
+            <action android:name="[com.example].intent.action.PUSH_NOTIFICATION" />  
+            <category android:name="android.intent.category.DEFAULT" />  
+          </intent-filter>  
+        </activity>  
+`
+4. When starting the application, or when the recipient logs in or goes online, the SDK must be initialized to receive messages. Initialization of the **framework**:  
+C#  
+`EpiSdk.init(  
+          getApplicationContext(),        // App context  
+          "xxx");                         // Optimizely provides the auth token to authenticate calls.  
+`
+
+Alternatively, for recipient lists with a recipient ID field which is **not** the standard GCM recipient token: 
+
+C#
+
+`EpiSdk.initWithRecipientId(
+          getApplicationContext(),       // App context
+          "xxx",                         // Optimizely provides the auth token to authenticate calls.
+          recipientId);                  // ID of the app user
+`

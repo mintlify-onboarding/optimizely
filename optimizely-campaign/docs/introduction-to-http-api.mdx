@@ -1,0 +1,55 @@
+---
+title: "HTTP API introduction"
+description: "Describes the HTTP mail service and form service for Optimizely Campaign."
+---
+
+### Application possibilities
+
+The email marketing solution Optimizely Campaign cannot only be used with the graphical user interface (GUI). With the help of an HTTP interface, frequently used functions can be integrated into your own website. In addition, functions can be performed by email.
+
+The HTTP API provides a simple method to integrate Optimizely Campaign in your website. To perform functions, you simply call a URL and pass some parameters.
+
+Additionally, the HTTP API provides special URLs to add data to recipient profiles by using emails.
+
+The HTTP API provides the following features:
+
+* All functions are executed using a simple HTTP request (GET or POST).
+* All functions are stateless, i.e. one request has one response.
+* Using the HTTP API no data can be retrieved. New data can only be sent.
+
+The following examples show you the possibilities and limitations of the HTTP API. The HTTP API is suitable for:
+
+* Integration of subscribe/unsubscribe forms on your website to Optimizely Campaign
+* Adding data to a recipient profile by email
+
+The HTTP API is inappropriate or only suitable with certain restrictions for:
+
+* Profile change forms that directly access the Optimizely Campaign database.
+* Recommendation forms that directly access the Optimizely Campaign database.
+
+### Restrictions
+
+Existing data stored in the Optimizely Campaign database cannot be retrieved using the HTTP API. However, to change a recipients profile, it is absolutely necessary to retrieve data. To implement this function using the HTTP API, the recipient data must be kept in your own database. Changes are made in this database. Before a mailing is sent, the data must be copied from your database to the Optimizely Campaign database. This can be done with the HTTP API.
+
+For the latter functionalities, you should use the [REST API](/optimizely-campaign/docs/rest-api). This convenient interface offers almost unlimited possibilities to connect Optimizely Campaign to your website.
+
+### General use
+
+If you wish to restrict the requests of the HTTP API to the services and operations needed for your purposes, contact [customer support](/cdn-cgi/l/email-protection#592a2c2929362b2d1936292d303430233c3520773a3634) and tell us which services and operations you want to use.
+
+For every HTTP API request from the form service, Optimizely sets up an IP address or IP address range from which the interface can be accessed. This setting reduces the risk of unauthorized access through the HTTP API. Tell us the IP address or IP address range you want to allow.
+
+For performance reasons, there is a limit of 40 parallel SOAP API connections for each Optimizely Campaign client. Customer support can adjust this limit on request.
+
+> 📘
+> 
+> Note
+> 
+> You can as well restrict the access to the API server by using a firewall. If you wish to do so, we recommend to use **DNS-based filter rules** or the **subnet 193.169.180.0/23**.
+
+Before starting the implementation of the HTTP API on your system, read the following carefully: The correct functionality of the HTTP API interface can only be guaranteed if the automatically sent exceptions and return values are continuously analyzed by your IT department and necessary adjustments resulting from these are carried out on your system and/or website. Give us a contact person we can inform about extensions, updates and troubleshooting. The following data are required:
+
+* First name
+* Last name
+* Email address
+* Telephone number

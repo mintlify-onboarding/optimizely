@@ -1,0 +1,36 @@
+---
+title: "containsByRecipientList"
+description: "Queries whether a recipient is contained in a recipient list-based unsubscribe list in Optimizely Campaign."
+---
+
+> 🚧
+> 
+> Prerequisite
+> 
+> Recipient list-based unsubscribe lists have been created.
+
+> 📘
+> 
+> Note
+> 
+> If only one client-wide unsubscribe list exists, this method does exactly the same as [contains](/optimizely-campaign/docs/contains-unsubscribews).
+
+**Type**: Boolean
+
+**Parameters**
+
+| Name            | Type   | Value                    |
+| --------------- | ------ | ------------------------ |
+| sessionId       | String | ID of the session        |
+| recipientListId | long   | ID of the recipient list |
+| recipientId     | String | ID of the recipient      |
+
+**Return values**
+
+* true: Recipient is found on at least one recipient list-based unsubscribe list
+* false: Recipient is not found on any recipient list-based unsubscribe list
+
+**Code structure**
+
+`boolean containsByRecipientList(String sessionId, long recipientListId, String recipientId)
+`

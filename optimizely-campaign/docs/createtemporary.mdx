@@ -1,0 +1,33 @@
+---
+title: "createTemporary"
+description: "Creates a temporary target group in Optimizely Campaign."
+---
+
+The target group becomes invalid after the end of the session.
+
+> 📘
+> 
+> Note
+> 
+> Temporary target groups cannot be used for mailings. Use them to filter the results of a query.
+
+**Type**: long
+
+**Parameters**
+
+| Name                | Type        | Value                                                                                        |
+| ------------------- | ----------- | -------------------------------------------------------------------------------------------- |
+| sessionId           | String      | ID of the session                                                                            |
+| negateCondition     | boolean     | See [Type conversion and formatting rules](/optimizely-campaign/docs/soap-1-1-compatibility) |
+| attributeName       | String      | See [Type conversion and formatting rules](/optimizely-campaign/docs/soap-1-1-compatibility) |
+| operation           | String      | See [Available operators](/optimizely-campaign/docs/soap-1-1-compatibility)                  |
+| operationParameters | String\[ \] | See [Attribute values](/optimizely-campaign/docs/soap-1-1-compatibility)                     |
+
+**Return values**
+
+ID of the target group
+
+**Code structure**
+
+`long createTemporary(String sessionId, boolean negateCondition, String attributeName, String operation, String[] operationParameters)
+`

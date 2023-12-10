@@ -1,0 +1,41 @@
+---
+title: "sendMails"
+description: "Sends a mailing to multiple recipients in Optimizely Campaign."
+---
+
+This method is only applicable to mailings of the type event.
+
+> 📘
+> 
+> Notes
+> 
+> * If a target group is defined for the mailing, the mailing will be sent only if the recipient meets the target group criteria.
+> * The actual mail is sent asynchronously. So, you should not delete the recipients immediately after invoking this method.
+
+**Type**: int\[ \]
+
+**Parameters**
+
+| Name            | Type        | Value                                                                                                                                                             |
+| --------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId       | String      | ID of the session                                                                                                                                                 |
+| mailingId       | long        | ID of the mailing                                                                                                                                                 |
+| recipientListId | long        | ID of the recipient listThis recipient list must be assigned to the given mailing. See also [getRecipientListIds](/optimizely-campaign/docs/getrecipientlistids). |
+| recipientIds    | String\[ \] | IDs of the recipients                                                                                                                                             |
+
+**Return values**
+
+For each recipient:
+
+* 0: if the mail has been spooled
+* 1: if the recipient is blocked
+* 2: if the recipient is unsubscribed
+* 3: if the recipient was not found
+* 4: if the recipient list is invalid (the recipient list is not assigned to the given mailing)
+* 5: if the recipient is blocked by the mailing's target group
+* 6: if the recipient has caused too many bounces
+
+**Code structure**
+
+`int[] sendMails(String sessionId, long mailingId, long recipientListId, String[] recipientIds)
+`

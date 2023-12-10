@@ -1,0 +1,33 @@
+---
+title: "getUnsubscribes"
+description: "Queries recipients that unsubscribed and the time they unsubscribed without any reference to a mailing in Optimizely Campaign."
+---
+
+To synchronize properly, use the method [getCurrentTime](/optimizely-campaign/docs/getcurrenttime).
+
+**Remarks**
+
+* Data of mailings that are older than 30 days (calculated from dispatch) are no longer stored and are not included in the export of the dispatch statistics.
+* The maximum number of data sets that can be retrieved per call is 1000.
+* You receive the response data export in one or more CSV files. The start and end times of the query refer to the creation date or the modification date of the CSV files and not to the time stamp of the individual response data contained in the CSV files.
+
+**Type**: String\[ \]\[ \]
+
+**Parameters**
+
+| Name         | Type   | Value                                                              |
+| ------------ | ------ | ------------------------------------------------------------------ |
+| sessionId    | String | ID of the session                                                  |
+| since        | long   | The time (in milliseconds) from which the data is queried          |
+| until        | long   | The time (in milliseconds) until which the data is queried         |
+| startRow     | int    | The index number (starting with 0) of the first row to be selected |
+| numberOfRows | int    | The maximum number of rows to be returned                          |
+
+**Return values**
+
+Recipients that unsubscribed and the time they unsubscribed
+
+**Code structure**
+
+`String[][] getUnsubscribes(String sessionId, long since, long until, int startRow, int numberOfRows)
+`

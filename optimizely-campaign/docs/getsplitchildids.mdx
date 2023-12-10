@@ -1,0 +1,24 @@
+---
+title: "getSplitChildIds"
+description: "Queries the IDs of all split mailings which are assigned to a specific master mailing in Optimizely Campaign."
+---
+
+**Type**: long\[ \]
+
+**Parameters**
+
+| Name      | Type   | Value                    |
+| --------- | ------ | ------------------------ |
+| sessionId | String | ID of the session        |
+| mailingId | long   | ID of the master mailing |
+
+**Return values**
+
+IDs of all split mailings assigned to the master mailing.
+
+If no split mailings are found, NULL is returned.
+
+**Code structure**
+
+`long[] getSplitChildIds(String sessionId, long mailingId)
+`

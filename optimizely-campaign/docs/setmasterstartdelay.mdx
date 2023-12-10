@@ -1,0 +1,24 @@
+---
+title: "setMasterStartDelay"
+description: "Defines the sending delay for the start of a master mailing after all split mailings have been sent in Optimizely Campaign."
+---
+
+To deactivate this function, set the values of the **days**, **hours** and **minutes** parameters to 0.
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value                                   |
+| --------- | ------ | --------------------------------------- |
+| sessionId | String | ID of the session                       |
+| mailingId | long   | ID of the master mailing                |
+| days      | int    | Days by which the sending is delayed    |
+| hours     | int    | Hours by which the sending is delayed   |
+| minutes   | int    | Minutes by which the sending is delayed |
+
+**Return values**
+
+* **Code structure**  
+`void setMasterStartDelay(String sessionId, long mailingId, int days, int hours, int minutes)  
+`

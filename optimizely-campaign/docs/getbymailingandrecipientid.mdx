@@ -1,0 +1,24 @@
+---
+title: "getByMailingAndRecipientId"
+description: "Queries the coupon code of a coupon block on the basis of the mailing ID and recipient ID in Optimizely Campaign."
+---
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name        | Type        | Value                     |
+| ----------- | ----------- | ------------------------- |
+| sessionId   | String      | ID of the current session |
+| blockId     | long        | ID of the coupon block    |
+| mailingId   | String\[ \] | ID of the mailing         |
+| recipientId | String\[ \] | ID of the recipient       |
+
+**Return values**
+
+Normally, a coupon code from this block will be returned. If the queried mailing is of the type special, one recipient may have received several codes, though. If the returned array is empty, no coupon code has been assigned to the recipient in the queried mailing.
+
+**Code structure**
+
+`String[] getByMailingAndRecipientId(String sessionId, long blockId, long mailingId, String recipientId)
+`

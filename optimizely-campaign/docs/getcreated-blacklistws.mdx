@@ -1,0 +1,22 @@
+---
+title: "getCreated"
+description: "Queries the creation date of a blocklist entry in Optimizely Campaign."
+---
+
+**Type**: Date
+
+**Parameters**
+
+| Name      | Type   | Value                                                                                                           |
+| --------- | ------ | --------------------------------------------------------------------------------------------------------------- |
+| sessionId | String | ID of the session                                                                                               |
+| entry     | String | Entry (for example, an email address) whose creation date is to be queried (can contain wildcards like ? or \*) |
+
+**Return values**
+
+Creation date of a blocklist entry
+
+**Code structure**
+
+`Date getCreated(String sessionId, String entry)
+`

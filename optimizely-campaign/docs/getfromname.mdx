@@ -1,0 +1,22 @@
+---
+title: "getFromName"
+description: "Queries the name (not the email address) of the sender of a mailing in Optimizely Campaign."
+---
+
+**Type**: String
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+Name of the sender of the mailing
+
+**Code structure**
+
+`String getFromName(String sessionId, long mailingId)
+`

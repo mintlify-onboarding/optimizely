@@ -1,0 +1,176 @@
+---
+title: "Get started with REST API"
+description: "Describes how to set up the REST API and send requests to retrieve data from and send data to Optimizely Campaign."
+---
+
+### Client setup
+
+To set up the REST API in your client, contact [customer support](https://support.optimizely.com "Customer support").
+
+See also: [REST API resource documentation](https://world.optimizely.com/documentation/class-libraries/rest-apis/campaign/optimizely-campaign-rest-api-1/)
+
+Provide a separate email address that you do not yet use for Optimizely Campaign. This address must use the same domain as your Optimizely Campaign user login and should not be personalized, for example _[\[email protected\]](/cdn-cgi/l/email-protection#09687960247c7a6c7b496a666479686770276a6664)._
+
+You should also have access to the inbox of this address, as Optimizely will send an activation mail. Using that email address, customer support will set up your API user.
+
+> 📘
+> 
+> Note
+> 
+> Do not log in to the Optimizely Campaign front end by using your API user credentials. API users only have access to services and operations needed for API purposes.
+
+### Authenticate
+
+The authentication is done via HTTP Basic Authentication with the API user (email address) and API password that customer support sets up for you. Your credentials must be Base64-encoded. The encoded API key is required for all API requests. See also: Requests.
+
+To encode _User:Password_ and create the API key, do the following:
+
+* **Windows.** Enter the following command into the command prompt:  
+`powershell "[convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes(\"user:password\"))"`
+* **macOS.** Enter the following command into the terminal:  
+`echo -n 'user:password' | base64`
+* **Linux.** Enter the following command into the terminal:  
+`$ echo "user:password" | base64`
+
+You can also use online encoding tools such as [www.base64encode.net](https://www.base64encode.net/).
+
+#### Authorize in the resource documentation
+
+To use the **Try it out** feature and send REST API requests via the [Resource documentation](https://api.campaign.episerver.net/apidoc/index.html), do the following:
+
+1. Go to [Resource documentation](https://api.campaign.episerver.net/apidoc/index.html).
+2. Click **Authorize**.
+3. Enter your API key in the value field. The API key consists of the _Basic_ method and the Base64-encoded _User:Password_.
+
+![](/images/optimizely-campaign/docs/4c79fd5-BasicAuthentication.jpg "BasicAuthentication.jpg")
+
+1. Click **Authorize**.
+
+### General use
+
+The REST API only accepts HTTPS requests. For performance reasons, there is a default limit of 40 parallel REST API connections for each Optimizely Campaign client. Customer support can adjust this limit on request.
+
+> 📘
+> 
+> Note
+> 
+> Optimizely Campaign supports Transport Layer Security (TLS) version 1.2 and higher to encrypt data transmission via API requests.
+
+The base URL for all requests is as follows:
+
+[https://api.campaign.episerver.net/rest/{clientId}/{component}/{path}?{parameters}](https://api.campaign.episerver.net/rest/%7BclientId%7D/%7Bcomponent%7D/%7Bpath%7D?%7Bparameters%7D)
+
+* **clientId**. The ID of your Optimizely Campaign client. See also: Finding IDs.
+* **component**. The Optimizely Campaign feature or resource you want to work with. For example, /recipients/, /transactionalmail/, /smartcampaigns/.
+* **path**. The specific path or part of the resource you want to work with. For example, recipients/{recipientListId}.
+* **parameters**. The query parameters for modifying the request. Query parameters always begin with a question mark and are combined with an ampersand. For example, ?sort=created&limit=50.
+
+#### Find IDs
+
+After customer support has set up an API client, you can find the client ID in Optimizely Campaign under **Administration** \> **API Overview** \> **REST API**. See also [API Overview](https://webhelp.episerver.com/latest/en/campaign/integration/api-overview.htm) in the Optimizely User Guide.
+
+> 📘
+> 
+> Tip
+> 
+> Campaign ID, mailing ID, confirmation ID and so on are documented in the corresponding list in Optimizely Campaign.
+
+#### Data formats
+
+The following formatting rules apply:
+
+| Value        | Format                                         | Example                                              |
+| ------------ | ---------------------------------------------- | ---------------------------------------------------- |
+| int/long     | Decimal notation without additional symbols    | 10000 or 5                                           |
+| float/double | Decimal notation separated by a period (**.**) | 12345.67 or 29.99                                    |
+| date/time    | ISO-8601: YYYY-MM-DDTHH: MM: SSZ               | 2001-08-21T18:52:05+02:00 (_+02:00_ stands for CEST) |
+
+### Requests
+
+A REST API request consists of the following parts:
+
+* **Request method**. There are different HTTP methods, such as GET, POST, PUT and DELETE. For example, use the GET method to retrieve data, and the POST method to send data.
+* **Request URL**. The URL of the requested resource including IDs and parameters. For example,  
+[https://api.campaign.episerver.net/rest/123456789/recipientlists?sort=created](https://api.campaign.episerver.net/rest/123456789/recipientlists?sort=created).
+* **Request header**. For transferring additional information such as authentication credentials or resource information. For example, Authorization: BASIC k783r3fjn989dhnfjjdr83dgds1383NDfv= to authorize via Basic Authentication. See Responses.
+* **Request body**. For transferring data via POST, PUT, PATCH or DELETE requests. For example, recipientId=[\[email protected\]](/cdn-cgi/l/email-protection#9ce9eff9eedcf9e4fdf1ecf0f9b2fff3f1).
+
+To send a request and test the Optimizely Campaign REST API, you can use the **Try it out** feature in the [Resource documentation](https://api.campaign.episerver.net/apidoc/index.html). You can also use REST API clients, such as curl or Postman.
+
+#### GET request example
+
+The following curl example retrieves information about all recipient lists in a client. The retrieved data is in JSON format and sorted by creation date.
+
+`curl -X GET "https://api.campaign.episerver.net/rest/123456789/recipientlists?sort=created " -H  "accept: application/json" -H  "Authorization: BASIC k783r3fjn989dhnfjjdr83dgds1383NDfv="
+`
+
+get/{clientId}/recipientlistsGet information about all recipient lists
+
+#### POST request example
+
+The following curl example adds a recipient to a recipient list using the ID of the specific recipient list. The ID (email address) of the new recipient is sent via the request body.
+
+`curl -X POST "https://api.campaign.episerver.net/rest/123456789/recipients/987654321" -H  "accept: application/json" -H  "Authorization: BASIC k783r3fjn989dhnfjjdr83dgds1383NDfv=" -H  "Content-Type: application/x-www-form-urlencoded" -d "address=&optinProcessId=&data=&returnOptInMailId=&recipientId=user%40example.com"
+`
+
+post/{clientId}/recipients/{recipientListId}Add a recipient to a recipient list
+
+### Responses
+
+A REST API response consists of the response header and the response body. The response header provides information about the response, such as content type, server or creation date and time. The response body is usually in JSON format and consists of status codes and parameter-value pairs of the retrieved data.
+
+The following example shows a JSON response body for a GET request to retrieve information about a recipient:
+
+JSON
+
+`{
+      "id": "[[email protected]](/cdn-cgi/l/email-protection)",
+      "created": "2020-09-28T18:18:15+02:00",
+      "modified": "2020-09-28T18:18:15+02:00",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.campaign.episerver.net/rest/123456789/recipients/987654321/[[email protected]](/cdn-cgi/l/email-protection)"
+        }
+      ]
+    }
+`
+
+#### Status codes
+
+> 📘
+> 
+> Note
+> 
+> Due to updates on the API, the responses will no longer contain the default reason phrase (status description) appended to the HTTP status code, such as _HTTP 200 "OK"_ or _HTTP 404 "NOT FOUND"_. If your API client relies on the reason phrase, and to avoid system failures, please adjust your API response handling to ignore the reason phrase until **2021-12-31**. See also [HTTP specification RFC 7230 3.1.2](https://datatracker.ietf.org/doc/html/rfc7230#section-3.1.2).
+
+Each response provides status codes and status descriptions (reason phrase), whether the request was successful. You can find all possible status codes for each request in the **[Resource documentation](https://api.campaign.episerver.net/apidoc/index.html)**.
+
+##### Success status codes
+
+Usually, GET requests return a 200 status code if the data is successfully retrieved. POST requests usually return a 201 status code if new data is successfully created.
+
+> 🚧
+> 
+> Tip
+> 
+> Even if you get a success status code, the response may contain errors, failures or warnings. Therefore, always check the response.
+
+The following list shows sample success status codes. Depending on the request, the description may differ.
+
+| Success status code | Description                                     |
+| ------------------- | ----------------------------------------------- |
+| 200                 | The recipient was retrieved successfully.       |
+| 201                 | The recipient was added successfully.           |
+| 202                 | The recipient history was deleted successfully. |
+
+##### Error status codes
+
+The following list shows sample error status codes. Depending on the request, the description may differ.
+
+| Error status code | Description                                                                                                                                                                        |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 400               | Recipient ID update is not possible because of a general error.                                                                                                                    |
+| 404               | The recipient could not be found. Ensure that the required parameters such as 'recipientId' and 'recipientListId' are correct and the recipient exists.                            |
+| 406               | The tracking opt-out is not activated for this client. Ensure that the 'clientId' is correct and the required feature is enabled in the indicated client.                          |
+| 409               | The coupon block is not assigned to the indicated client. Ensure that 'clientId' and 'couponBlockId' are correct and that the 'couponBlockId' is assigned to the indicated client. |

@@ -1,0 +1,24 @@
+---
+title: "MailIdWebservice"
+description: "Provides information about a mail ID in Optimizely Campaign."
+---
+
+A **mail ID** identifies a single mail that has been sent to a single recipient. It is the aggregation of these three IDs: **mailing ID**, **recipient list ID** and **recipient ID**. The **mail ID** can be appended to a tracked link.
+
+| Method             | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| getMailingId       | Queries the mailing ID.                                      |
+| getMandatorId      | Queries the client's ID.                                     |
+| getRecipientId     | Queries the ID of a recipient that received a mail.          |
+| getRecipientListId | Queries the ID of the recipient list a recipient belongs to. |
+
+### Using mail IDs
+
+To include the **mail ID** into a tracking link, use the special field function **{bmMailId}**.
+
+**Example**
+
+`http://www.example.com/mypage.php?myId={bmMailId}
+`
+
+Within **mypage.php**, the parameter **myId** contains the mail ID.

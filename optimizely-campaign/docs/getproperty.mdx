@@ -1,0 +1,25 @@
+---
+title: "getProperty"
+description: "Queries the value of a specific mailing property in Optimizely Campaign."
+---
+
+**Type**: String
+
+**Parameters**
+
+| Name      | Type   | Value                        |
+| --------- | ------ | ---------------------------- |
+| sessionId | String | ID of the session            |
+| mailingId | long   | ID of the mailing            |
+| Name      | String | Name of the mailing property |
+
+**Return values**
+
+Value of the mailing property
+
+If the property is not set, NULL is returned. See also [setProperty](/optimizely-campaign/docs/setproperty).
+
+**Code structure**
+
+`String getProperty(String sessionId, long mailingId, String name)
+`

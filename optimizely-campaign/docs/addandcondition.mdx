@@ -1,0 +1,23 @@
+---
+title: "addAndCondition"
+description: "Adds a target group condition using the AND operator in Optimizely Campaign."
+---
+
+**Type**: void
+
+**Parameters**
+
+| Name                | Type        | Value                                                                                                      |
+| ------------------- | ----------- | ---------------------------------------------------------------------------------------------------------- |
+| sessionId           | String      | ID of the session                                                                                          |
+| modificationId      | String      | Identifier created by [beginConditionModification](/optimizely-campaign/docs/beginconditionmodification) . |
+| negateCondition     | boolean     | See [Type conversion and formatting rules](/optimizely-campaign/docs/soap-1-1-compatibility)               |
+| attributeName       | String      | See [Type conversion and formatting rules](/optimizely-campaign/docs/soap-1-1-compatibility)               |
+| operation           | String      | See [Available operators](/optimizely-campaign/docs/soap-1-1-compatibility)                                |
+| operationParameters | String\[ \] | See [Attribute values](/optimizely-campaign/docs/soap-1-1-compatibility)                                   |
+
+**Return values**
+
+* **Code structure**  
+`void addAndCondition(String sessionId, String modificationId, boolean negateCondition, String attributeName, String operation, String[] operationParameters)  
+`

@@ -1,0 +1,22 @@
+---
+title: "getAllIds"
+description: "Queries the IDs of all existing coupon blocks in Optimizely Campaign."
+---
+
+**Type**: long\[ \]
+
+**Parameters**
+
+| Name         | Type   | Value                                                                                                                                                                                                                                                                                                                        |
+| ------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId    | String | ID of the current session                                                                                                                                                                                                                                                                                                    |
+| couponSource | String | Type of the coupon block:\- **static** – Contains static coupon codes. These must be added manually ([add](/optimizely-campaign/docs/add-couponcode) or [addAll](/optimizely-campaign/docs/addall-couponcodewebservice).\- **generated** – Coupon codes are automatically generated when sending the mailing and are unique. |
+
+**Return values**
+
+The IDs of all existing coupon blocks
+
+**Code structure**
+
+`long[] getAllIds(String sessionId, String couponSource)
+`

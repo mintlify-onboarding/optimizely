@@ -1,0 +1,22 @@
+---
+title: "getDataSetFlat"
+description: "Queries the values of each attachment in Optimizely Campaign."
+---
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+
+**Return values**
+
+Values of the attachments  
+To assign the returned values to different attachments, you can use the [getColumnNames](/optimizely-campaign/docs/getcolumnnames-attachment) method. With this method, you can determine the number of values of an attachment.
+
+**Code structure**
+
+`String[] getDataSetFlat(String sessionId)
+`

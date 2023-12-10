@@ -1,0 +1,24 @@
+---
+title: "getBounceCounterThreshold"
+description: "Queries the maximum number of responses a recipient can produce before the recipient will not receive any further mailings in Optimizely Campaign."
+---
+
+See also [resetBounceCounter](/optimizely-campaign/docs/resetbouncecounter).
+
+**Type**: int
+
+**Parameters**
+
+| Name      | Type   | Value                                                                                                 |
+| --------- | ------ | ----------------------------------------------------------------------------------------------------- |
+| sessionId | String | ID of the session                                                                                     |
+| category  | String | See [Response categories](/optimizely-campaign/docs/responsewebservice),Only hardbounce or softbounce |
+
+**Return values**
+
+Maximum number of responses a recipient can produce before the recipient receives no further mailings.
+
+**Code structure**
+
+`int getBounceCounterThreshold(String sessionId, String category)
+`

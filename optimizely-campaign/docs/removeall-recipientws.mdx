@@ -1,0 +1,30 @@
+---
+title: "removeAll"
+description: "Deletes multiple recipients from a recipient list in Optimizely Campaign."
+---
+
+> 📘
+> 
+> Note
+> 
+> Do not use this method with recipients who unsubscribe from a newsletter. Instead, use the [add](/optimizely-campaign/docs/add-unsubscribewebservicews) and [addAll](/optimizely-campaign/docs/addall-unsubscribewebservicews) methods of the [UnsubscribeWebservice](/optimizely-campaign/docs/unsubscribewebservice).
+
+**Type**: boolean\[ \]
+
+**Parameters**
+
+| Name            | Type        | Value                    |
+| --------------- | ----------- | ------------------------ |
+| sessionId       | String      | ID of the session        |
+| recipientListId | long        | ID of the recipient list |
+| recipientIds    | String\[ \] | IDs of the recipients    |
+
+**Return values**
+
+* true: Recipient has been deleted successfully
+* false: Recipient does not exist
+
+**Code structure**
+
+`boolean[] removeAll(String sessionId, long recipientListId, String[] recipientIds)
+`

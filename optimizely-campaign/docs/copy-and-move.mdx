@@ -1,0 +1,41 @@
+---
+title: "copy and move"
+description: "Copy or move a recipient from one recipient list to another in Optimizely Campaign."
+---
+
+Both operations use the same parameters. The **copy** operation creates a duplicate of an entry (i.e., the recipient). The **move** operation creates a duplicate of an entry and then removes the original entry.
+
+The copy and move operations are available in the mail and the form service. If you are using the mail service, we recommend using the system parameter [bmUrl](/optimizely-campaign/docs/http-basics) to avoid having a white page with a status message displayed to the recipient.
+
+**Parameters**
+
+| Name          | Mandatory | Default value | Description                                                                                                                                                                                                    |
+| ------------- | --------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bmRecipientId | yes/no    | –             | The ID of the recipient (usually the email address). If used in the mail service, this parameter is not mandatory (the email address is sent anyway). If used in the form service, the parameter is mandatory. |
+| bmListId      | yes       | –             | The ID of the recipient list to which the recipient is copied or moved.                                                                                                                                        |
+
+**Return values**
+
+| Value              | Description                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ok                 | Entry successfully moved/copied                                                                                                                                                                                                                                                                                                                                                             |
+| ok: already\_exist | Only with **bmVerbose=true**: Recipient already exists in the target list                                                                                                                                                                                                                                                                                                                   |
+| wrong\_tag         | Authorization failed.Error codes:\- 501=wrong authentication tag\- 502=wrong request IP\- 503=wrong request method\- 504=wrong protocol\- 505=wrong recipient list\- 506=wrong action\- 507=action not foundIf a verification of the authentication tag does not solve the problem, contact [customer support](/cdn-cgi/l/email-protection#44373134342b3630042b34302d292d3e21283d6a272b29). |
+| wrong\_id          | The transmitted **bmListId** is incorrect.                                                                                                                                                                                                                                                                                                                                                  |
+| not\_found         | Only when using the form service: The **bmRecipientId** was not found in the source recipient list nor in the target recipient list.                                                                                                                                                                                                                                                        |
+| missing\_id        | **bmRecipientId** and/or **bmListId** was/were not transmitted.                                                                                                                                                                                                                                                                                                                             |
+| system\_error      | A general error has occurred                                                                                                                                                                                                                                                                                                                                                                |
+
+**Example 1**
+
+`.../mail/.../copy?bmListId=12345&bmUrl=http://www.example.com
+`
+
+The recipient of the email is copied from the current recipient list to the recipient list with the ID _12345_. Then, the recipient is forwarded to _[www.example.com](http://www.example.com)_.
+
+**Example 2**
+
+`.../form/.../move?bmListId=12345&bmRecipientId=john.smith%40example.com
+`
+
+The recipient with the ID [\[email protected\]\_](/cdn-cgi/l/email-protection#7c2316131412520f111508143c19041d110c1019521f131123) is moved to the recipient list with the ID _12345_ and removed from the current recipient list.

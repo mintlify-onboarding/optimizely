@@ -1,0 +1,22 @@
+---
+title: "prepareNewWave"
+description: "Starts the closed loop process for a mailing in Optimizely Campaign."
+---
+
+**Type**: long
+
+**Parameters**
+
+| Name              | Type   | Value                                                                                                                                                                                                                                                                                                                                                     |
+| ----------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId         | String | ID of the session                                                                                                                                                                                                                                                                                                                                         |
+| templateMailingId | long   | Mailing ID This ID can be found in the mailing overview or can be retrieved by calling the MailingWebservice [getIds](/optimizely-campaign/docs/getids-mailingws) or [getIdsInStatus](/optimizely-campaign/docs/getidsinstatus) methods. This ID is also returned when creating a new mailing (see [create](/optimizely-campaign/docs/create-mailingws)). |
+
+**Return values**
+
+**waveId** – This ID identifies the closed loop process and is used by other methods of this web service.
+
+**Code structure**
+
+`long prepareNewWave(String sessionId, long templateMailingId)
+`

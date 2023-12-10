@@ -1,0 +1,23 @@
+---
+title: "getDataSetFlat"
+description: "Queries the values of each blocklist entry in Optimizely Campaign."
+---
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+
+**Return values**
+
+Values of the blocklist entries
+
+To assign the returned values to different blocklist entries, you can use the [getColumnNames](/optimizely-campaign/docs/getcolumnnames-blacklistws) method. With this method, you can determine the number of values of a blocklist entry.
+
+**Code structure**
+
+`String[] getDataSetFlat(String sessionId)
+`

@@ -1,0 +1,22 @@
+---
+title: "getAssignedCodeCount"
+description: "Counts the coupon codes of a coupon block that are assigned to an email in any sent mailing in Optimizely Campaign."
+---
+
+**Type**: long
+
+**Parameters**
+
+| Name      | Type   | Value                     |
+| --------- | ------ | ------------------------- |
+| sessionId | String | ID of the current session |
+| blockId   | long   | ID of the coupon block    |
+
+**Return values**
+
+The number of assigned codes in this block
+
+**Code structure**
+
+`long getAssignedCodeCount(String sessionId, long blockId)
+`

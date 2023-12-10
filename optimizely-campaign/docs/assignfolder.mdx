@@ -1,0 +1,21 @@
+---
+title: "assignFolder"
+description: "Assigns a mailing or a target group to a folder in Optimizely Campaign. Assigning a folder is the same as moving a mailing or target group into a folder."
+---
+
+**Type**: void
+
+**Parameters**
+
+| Name              | Type   | Values                                                                                                                                                                                                           |
+| ----------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId         | String | ID of the current session                                                                                                                                                                                        |
+| mailingOrFilterId | long   | ID of the mailing or target group to be assigned to the folder referenced by the parameter **folderId.**                                                                                                         |
+| folderId          | long   | ID of the folder to which the mailing or target group is to be assigned.                                                                                                                                         |
+| folderType        | String | The folderType parameter is used to indicate whether a folder contains mailings or target groups. So, the value of this parameter can be mailing or filter. The type must correspond to the item being assigned. |
+
+**Return values**
+
+* **Code structure**  
+`void assignFolder(String sessionId, long mailingOrFilterId, long folderId, String folderType)  
+`

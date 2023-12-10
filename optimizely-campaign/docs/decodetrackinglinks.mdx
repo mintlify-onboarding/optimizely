@@ -1,0 +1,26 @@
+---
+title: "decodeTrackingLinks"
+description: "Converts all links found in the given content back to normal links methods."
+---
+
+The mailing is not altered in any way. See also [encodeTrackingLinks](/optimizely-campaign/docs/encodetrackinglinks).
+
+**Type**: String
+
+**Parameters**
+
+| Name      | Type   | Value                                                                                            |
+| --------- | ------ | ------------------------------------------------------------------------------------------------ |
+| sessionId | String | ID of the session                                                                                |
+| mailingId | long   | ID of the mailing                                                                                |
+| content   | String | Content of the mailing (HTML content or text)                                                    |
+| mimeType  | String | MIME type of the mailing (text/plain or text/html)The content will be treated as this MIME type. |
+
+**Return values**
+
+Content with all tracking links replaced by their corresponding normal links
+
+**Code structure**
+
+`String decodeTrackingLinks(String sessionId, long mailingId, String content, String mimeType)
+`

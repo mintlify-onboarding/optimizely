@@ -1,0 +1,24 @@
+---
+title: "isAssigned"
+description: "Queries whether a coupon code has been assigned to a recipient (i.e., used in a mailing) in Optimizely Campaign."
+---
+
+**Type**: boolean
+
+**Parameters**
+
+| Name      | Type   | Value                     |
+| --------- | ------ | ------------------------- |
+| sessionId | String | ID of the current session |
+| blockId   | long   | ID of the coupon block    |
+| code      | String | Coupon code to be queried |
+
+**Return values**
+
+* true: Coupon code has been assigned to a mailing
+* false: Coupon code has not been assigned to a mailing
+
+**Code structure**
+
+`boolean isAssigned(String sessionId, long blockId, String code)
+`

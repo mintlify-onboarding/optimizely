@@ -1,0 +1,85 @@
+---
+title: "Web services"
+description: "Describes how to use the web services in Optimizely Campaign."
+---
+
+Basically, you need three things to use the web services in Optimizely Campaign:
+
+* A functional SOAP 1.1 client environment
+* A valid Optimizely Campaign account that has the permission to access the SOAP API (provided by Optimizely)
+* A client ID (provided by Optimizely)
+
+### List of web services
+
+* [AttachmentWebservice](/optimizely-campaign/docs/attachmentwebservice): Query, create or update attachments
+* [BlacklistWebservice](/optimizely-campaign/docs/blacklistwebservice-soap) : Query, update or remove blocklist entries as well as determine whether a given email address is blocked
+* [ClosedLoopWebservice](/optimizely-campaign/docs/closedloopwebservice): Manage closed-loop processes
+* [CouponBlockWebservice](/optimizely-campaign/docs/couponblockwebservice): Create coupon blocks, query names and assignments and delete blocks
+* [CouponCodeWebservice](/optimizely-campaign/docs/couponcodewebservice): Create, query and delete coupon codes
+* [FolderWebservice](/optimizely-campaign/docs/folderwebservice): Retrieve information about folders, create folders, move or delete folders
+* [MailIdWebservice](/optimizely-campaign/docs/mailidwebservice): Provides access to detailed information about a mail ID
+* [MailingReportingWebservice](/optimizely-campaign/docs/mailingreportingwebservice): Query statistics for a mailing
+* [MailingWebservice](/optimizely-campaign/docs/mailingwebservice): Query, create, update, remove or start mailings as well as send emails on demand
+* [OptinProcessWebservice](/optimizely-campaign/docs/optinprocesswebservice): Provides methods to access the opt-in processes
+* [RecipientFilterWebservice](/optimizely-campaign/docs/recipientfilterwebservice): Query, create or update recipient filters
+* [RecipientListWebservice](/optimizely-campaign/docs/recipientlistwebservice): Query or update recipient lists
+* [RecipientWebservice](/optimizely-campaign/docs/recipientwebservice): Query, add, update and remove recipients
+* [ResponseWebservice](/optimizely-campaign/docs/responsewebservice): Query email responses on a mailing or recipient basis, reset the bounce counter
+* [SessionWebservice](/optimizely-campaign/docs/sessionwebservice): Session handling (login, logout etc.) for all web services
+* [Soap11Webservice](/optimizely-campaign/docs/soap11webservice): Basic interface for all web services
+* [SplitMailingWebservice](/optimizely-campaign/docs/splitmailingwebservice): Query, create, edit and delete split mailings
+* [UnsubscribeWebservice](/optimizely-campaign/docs/unsubscribewebservice): Query, update or delete unsubscribes
+
+### Validity of a session
+
+A session is always valid for 20 minutes, i.e., after this time the so-called **sessionId** becomes invalid and you must request a new one. To do so, use the [login](/optimizely-campaign/docs/login) method.
+
+### Web service endpoints
+
+Currently, all web services are deployed RPC-encoded only. Each web service is deployed under a URL of the form. We recommend always using an encrypted SSL connection using the HTTPS protocol:
+
+`http://api.campaign.episerver.net/soap11/Rpc[WebserviceName]
+https://api.campaign.episerver.net/soap11/Rpc[WebserviceName]
+`
+
+> 📘
+> 
+> Note
+> 
+> Replace **\[WebserviceName\]** with the name of the actual web service _without_ the term **webservice**. For example, the **SessionWebservice** is deployed under the URL _[http://api.campaign.episerver.net/soap11/RpcSession](http://api.campaign.episerver.net/soap11/RpcSession)_.
+
+### Coupon system web services
+
+The WSDLs for the CouponBlock and CouponCode web service of the coupon system can be found under the following links:
+
+`https://api.campaign.episerver.net/soap11/addons/CouponCode?wsdl
+https://api.campaign.episerver.net/soap11/addons/CouponBlock?wsdl
+`
+
+> 📘
+> 
+> Note
+> 
+> These web services are not part of the standard distribution of our SOAP API. They must be activated separately. To do this, you need the Optimizely Campaign add-on [coupon system](https://support.optimizely.com/hc/en-us/articles/4413192215949-Introduction-to-the-coupon-system). Contact [\[email protected\]](/cdn-cgi/l/email-protection#ff8c8a8f8f908d8bbf908f8b969296859a9386d19c9092) if you want to use this function.
+
+### Error messages
+
+Throughout the whole API, errors are reported as exceptions (SOAP faults). So you should implement some kind of error handling on the client side.
+
+> 📘
+> 
+> Note
+> 
+> Due to updates on the API, HTTP responses will no longer contain the default reason phrase (status description) appended to the HTTP status code, such as _HTTP 200 "OK"_ or _HTTP 404 "NOT FOUND"_. If your API client relies on the reason phrase, and to avoid system failures, please adjust your API response handling to ignore the reason phrase until **2021-12-31**. See also [HTTP specification RFC 7230 3.1.2](https://datatracker.ietf.org/doc/html/rfc7230#section-3.1.2).
+
+### Usage example
+
+Here is a short example (written in pseudo Java syntax) that illustrates the process flow of a web service session:
+
+`// Login to the client 1234 
+// The session ID obtained by this call is needed to call any other webservice's method. 
+// A session is valid for 20 minutes. String sessionID = SessionWebservice.login(1234, "myusername", "mypassword"); 
+// Call some methods. In this example we retrieve the ids of all regular mailings available. long[] mailingIds = MailingWebservice.getIds(sessionId, "regular"); 
+// Now do something with the mailingIds ... 
+// Finally logout SessionWebservice.logout (sessionId);
+`

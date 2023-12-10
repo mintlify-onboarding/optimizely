@@ -1,0 +1,27 @@
+---
+title: "getCount"
+description: "Counts all recipients in Optimizely Campaign. Optionally, you can use a target group."
+---
+
+**Type**: int
+
+**Parameters**
+
+| Name              | Type   | Value                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ----------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| sessionId         | String | ID of the session                                                                                                                                                                                                                                                                                                                                                                                      |
+| recipientListId   | long   | ID of the recipient list                                                                                                                                                                                                                                                                                                                                                                               |
+| recipientFilterId | long   | ID of the target group\- If the value is 0, all recipients of the recipient list are counted.\- If the value is a target group ID, only recipients that match the target group with this ID are counted.If a default target group is used in the client, this is not considered when counting the recipient of this recipient list. The counting may therefore differ from the actual dispatch result. |
+
+**Return values**
+
+Number of all recipients
+
+**Code structure**
+
+`int getCount(String sessionId, long recipientListId, long recipientFilterId)
+`
+
+**Request limit**
+
+In total, a maximum of 10 simultaneous requests for the following operations are permitted per client: SOAP API getCount (RecipientWebservice), [REST API selectRecipients](https://api.campaign.episerver.net/apidoc/index.html#/Recipients/selectRecipients) and [REST API countRecipients](https://api.campaign.episerver.net/apidoc/index.html#/Recipients/countRecipients).

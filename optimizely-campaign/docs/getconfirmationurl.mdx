@@ -1,0 +1,24 @@
+---
+title: "getConfirmationUrl"
+description: "Queries the confirmation URL of an opt-in process in Optimizely Campaign."
+---
+
+This method is only applicable to opt-in processes of the type double.
+
+**Type**: String
+
+**Parameters**
+
+| Name           | Type   | Value                    |
+| -------------- | ------ | ------------------------ |
+| sessionId      | String | ID of the session        |
+| optinProcessId | long   | ID of the opt-in process |
+
+**Return values**
+
+Confirmation URL of the opt-in process.
+
+**Code structure**
+
+`String getConfirmationUrl(String sessionId, long optinProcessId)
+`

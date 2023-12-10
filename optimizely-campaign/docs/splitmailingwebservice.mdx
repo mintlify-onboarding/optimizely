@@ -1,0 +1,39 @@
+---
+title: "SplitMailingWebservice"
+description: "Query, create, edit, and delete split mailings in Optimizely Campaign."
+---
+
+To create mailings to be used as splits, use the [MailIdWebservice](/optimizely-campaign/docs/mailidwebservice) methods.
+
+| Method                          | Description                                                                                          |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| addSplit                        | Converts an existing mailing into a split mailing and assigns this mailing to a master mailing.      |
+| getSplitChildIds                | Queries the IDs of all split mailings which are assigned to a specific master mailing.               |
+| getSplitMasterId                | Queries the ID of the master mailing, which is associated with a specific split mailing.             |
+| removeSplit                     | Converts a split mailing into a regular mailing.                                                     |
+| setFinalSplitSelectionCriterion | Defines the selection criterion for sending a split mailing as master mailing.                       |
+| setMasterStartDelay             | Defines the sending delay for the start of a master mailing after all split mailings have been sent. |
+
+### Mailing type
+
+The following mailing type is supported:
+
+* split: A regular split mailing
+
+### MIME type
+
+The following MIME types are supported:
+
+* text/plain: Text emails
+* text/html: HTML emails
+* multipart/alternative: Text and HTML emails
+
+### Selection criteria
+
+The following selection criteria are supported:
+
+* OPEN\_RATE: Open rate
+* BOUNCE\_RATE: Bounce rate
+* CLICK\_RATE: Click rate
+* EFFECTIVE\_CLICK\_RATE: Effective click rate
+* UNSUBSCRIBE\_RATE: Unsubscribe rate

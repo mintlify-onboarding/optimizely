@@ -1,0 +1,51 @@
+---
+title: "REST API"
+description: "Integrate Optimizely Campaign features into your software or manage and control them remotely by using HTTP requests."
+---
+
+The REST API is a convenient alternative to the SOAP API that lets you also manage Smart Campaigns.
+
+See also: [REST API resource documentation](https://world.optimizely.com/documentation/class-libraries/rest-apis/campaign/optimizely-campaign-rest-api-1/)
+
+REST supports several standards and formats, such as HTTPS, URI, JSON and XML. You can retrieve data from and send data to Optimizely Campaign via REST API.
+
+### What can I do with the REST API?
+
+You can execute virtually any function of Optimizely Campaign from a remote system without using the web browser and logging into your client manually, for example:
+
+* Campaign management  
+   * Activate and start a Smart Campaign  
+   * Get report data of sent mailings  
+   * Create and send transactional messages
+* Recipient management  
+   * Create recipient lists and add new recipients  
+   * Update blocklists or create a custom blocklist  
+   * Add recipients to an unsubscribe list
+* Bounce management  
+   * Check the bounce status of recipients  
+   * Reset the bounce counter of a recipient
+
+### Services and operations
+
+In total, Optimizely provides more than 200 operations for the Optimizely Campaign services listed below. For an overview of all resources and operations, see the **[Swagger resource documentation](https://api.campaign.episerver.net/apidoc/index.html)**.
+
+* **[Assets](https://api.campaign.episerver.net/apidoc/index.html#/Assets).** Manage assets such as images.
+* **[Attachments](https://api.campaign.episerver.net/apidoc/index.html#/Attachments).** Manage email attachments. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/manage-content/attachments/attachments.htm).
+* **[Blacklist entries](https://api.campaign.episerver.net/apidoc/index.html#/Blacklist%5Fentries).** Manage recipients on a blocklist. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/recipients/blacklist/blacklist-overview.htm).
+* **[Confirmations](https://api.campaign.episerver.net/apidoc/index.html#/Confirmations)**. Manage registration confirmations (opt-in emails). See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/omnichannel/confirmations.htm).
+* **[Click profiles](https://api.campaign.episerver.net/apidoc/index.html#/Click%20profiles)**. Manage click profiles. See also [Optimizely User Guide](http://webhelp.episerver.com/latest/de/campaign/recipients/click-profiles/click-profiles.htm).
+* **[Coupon blocks](https://api.campaign.episerver.net/apidoc/index.html#/Coupon%5Fblocks)**. Manage coupon blocks that organize coupon codes. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/manage-content/coupon-system/coupon-blocks.htm).
+* **[Custom blacklists](https://api.campaign.episerver.net/apidoc/index.html#/Custom%5Fblacklists)**. Manage custom blocklists. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/recipients/blacklist/custom-blacklist.htm).
+* **[Folders](https://api.campaign.episerver.net/apidoc/index.html#/Folders)**. Manage folders for mailings and message templates. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/basics/lists.htm).
+* **[Mail archive](https://api.campaign.episerver.net/apidoc/index.html#/Mail%20archive)**. Get archived mailings, such as opt-in emails and transactional mails. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/recipients/recipient-history.htm).
+* **[Mail ID](https://api.campaign.episerver.net/apidoc/index.html#/Mail%20ID)**. Get information about a mail ID.
+* **[Message templates](https://api.campaign.episerver.net/apidoc/index.html#/Message%5Ftemplates)**. Manage message templates. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/omnichannel/message-templates.htm).
+* **[Opt-in processes](https://api.campaign.episerver.net/apidoc/index.html#/Opt-in%5Fprocesses)**. View, update and create opt-in processes. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/recipients/opt-in/opt-in.htm).
+* **[Recipient lists](https://api.campaign.episerver.net/apidoc/index.html#/Recipient%5Flists)**. View, copy and update recipient lists. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/recipients/lists/recipient-lists.htm).
+* **[Recipients](https://api.campaign.episerver.net/apidoc/index.html#/Recipients)**. Manage recipients. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/recipients/recipients-overview.htm).
+* **[Responses](https://api.campaign.episerver.net/apidoc/index.html#/Responses)**. Manage mailing responses, such as hard or soft bounces. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/recipients/returned-emails.htm).
+* **[Scheduled jobs](https://api.campaign.episerver.net/apidoc/index.html#/Scheduled%20jobs)**. Get information about scheduled jobs. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/support/scheduled-jobs.htm).
+* **[Smart Campaigns](https://api.campaign.episerver.net/apidoc/index.html#/Smart%5FCampaigns)**. Manage Smart Campaigns. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/omnichannel/smart-campaigns/smart-campaigns.htm).
+* **[Transactional mails](https://api.campaign.episerver.net/apidoc/index.html#/Transactional%5Fmails)**. Manage transactional mails that are triggered by a recipient action or event. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/omnichannel/xmails.htm).
+* **[Unsubscribes](https://api.campaign.episerver.net/apidoc/index.html#/Unsubscribes)**. Manage recipients on an unsubscribe list. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/recipients/unsubscribers.htm).
+* [**Webhooks**](https://api.campaign.episerver.net/apidoc/index.html#/Webhooks). Manage webhooks to export event data in real time. See also [Optimizely User Guide](https://webhelp.episerver.com/latest/en/campaign/integration/webhooks.htm).

@@ -1,0 +1,52 @@
+---
+title: "blacklist and unblacklist"
+description: "Generate or remove a blocklist entry in Optimizely Campaign."
+---
+
+Blocklist entries can be individual recipients (i.e., an email address) or wildcards, which block all recipients that match a defined pattern (e.g., a whole domain). Use a question mark (?) for a single character and an asterisk (\*) for several characters.
+
+> 📘
+> 
+> Note
+> 
+> If the blocklist entry pattern contains special characters, the pattern must be URL-encoded. For example, use the code %2f for a forward slash (/), %252f for a double slash (//), _%2B_ for a plus sign (+) etc.
+
+These operations are available in the form service.
+
+**Parameters**
+
+| Name      | Mandatory | Default value | Description                                                                                                                                                 |
+| --------- | --------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bmPattern | yes       | –             | If the blocklist entry refers to a single recipient, the email address can be set here. To blocklist multiple recipients, use wildcards as described above. |
+| bmReason  | no        | http-api      | The reason for blocking.                                                                                                                                    |
+
+**Return values**
+
+| Value                    | Description                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ok                       | **blocklist**: Entry successfully added to the blocklist. **unblocklist**: Entry successfully removed from blocklist.                                                                                                                                                                                                                                                                       |
+| ok: already\_blacklisted | Only with **bmVerbose=true**: The entry already exists in the blocklist.                                                                                                                                                                                                                                                                                                                    |
+| wrong\_tag               | Authorization failed.Error codes:\- 501=wrong authentication tag\- 502=wrong request IP\- 503=wrong request method\- 504=wrong protocol\- 505=wrong recipient list\- 506=wrong action\- 507=action not foundIf a verification of the authentication tag does not solve the problem, contact [customer support](/cdn-cgi/l/email-protection#fa898f8a8a95888eba958a8e939793809f9683d4999597). |
+| missing\_id              | No **bmRecipientId** was transmitted (mandatory) when using the form service.                                                                                                                                                                                                                                                                                                               |
+| system\_error            | A general error has occurred                                                                                                                                                                                                                                                                                                                                                                |
+
+**Example 1**
+
+`.../form/.../blacklist?bmPattern=john.smith%40example.com
+`
+
+The recipient with the ID [\[email protected\]\_](/cdn-cgi/l/email-protection#b2edd8dddadc9cc1dfdbc6daf2d7cad3dfc2ded79cd1dddfed) is blocked.
+
+**Example 2**
+
+`.../form/.../unblacklist?bmPattern=john.smith%40example.com
+`
+
+The recipient with the ID [\[email protected\]\_](/cdn-cgi/l/email-protection#5a0530353234742937332e321a3f223b372a363f7439353705) is removed from the blocklist.
+
+**Example 3**
+
+`.../form/.../blacklist?bmPattern=%2A%40example.com
+`
+
+All recipients with an email address containing the domain _example.com_ are blocked.

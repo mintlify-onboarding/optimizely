@@ -1,0 +1,26 @@
+---
+title: "createConfirmedOptinProcess"
+description: "Creates a confirmed opt-in process in Optimizely Campaign."
+---
+
+The mailing must be of the type confirmation.
+
+**Type**: long
+
+**Parameters**
+
+| Name        | Type   | Value                                                 |
+| ----------- | ------ | ----------------------------------------------------- |
+| sessionId   | String | ID of the session                                     |
+| Name        | String | Internal name of the opt-in process                   |
+| Description | String | Internal description of the opt-in process            |
+| mailingId   | long   | ID of the mailing that is used for the opt-in process |
+
+**Return values**
+
+ID of the opt-in process
+
+**Code structure**
+
+`long createConfirmedOptinProcess(String sessionId, String name, String description, long mailingId)
+`

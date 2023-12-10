@@ -1,0 +1,27 @@
+---
+title: "UnsubscribeWebservice"
+description: "Query, update, or delete unsubscribes in Optimizely Campaign."
+---
+
+| Method                     | Description                                                                                   |
+| -------------------------- | --------------------------------------------------------------------------------------------- |
+| add                        | Adds a recipient to a unsubscribe list.                                                       |
+| addAll                     | Adds multiple recipients to a unsubscribe list.                                               |
+| addByMailId                | Unsubscribes a recipient that belongs to a specific mail ID.                                  |
+| contains                   | Queries the unsubscribe status of a recipient.                                                |
+| containsAll                | Queries the unsubscribe status of multiple recipients.                                        |
+| containsAllByRecipientList | Queries whether multiple recipients are contained in a recipient list-based unsubscribe list. |
+| containsByRecipientList    | Queries whether a recipient is contained in a recipient list-based unsubscribe list.          |
+| getCount                   | Count the recipients that are currently unsubscribed.                                         |
+| remove                     | Removes a recipient from the internal unsubscribe list.                                       |
+| removeAll                  | Removes multiple recipients from the internal unsubscribe list.                               |
+| removeAllByRecipientList   | Removes multiple recipients from a recipient list-based unsubscribe list.                     |
+| removeByRecipientList      | Removes a recipient from a recipient list-based unsubscribe list.                             |
+
+### Unsubscribe list
+
+Each client uses one unsubscribe list. If there is an unsubscribe for any recipient list the recipient is added to this list and will not receive any further mailings send by this client.
+
+### Internal processing of unsubscribes
+
+Internally, an unsubscribe event does not simply remove a recipient from the corresponding recipient list. Each unsubscribe is stored internally and must be removed explicitly. This is done if the recipient re-subscribes via a web form or by invoking the [remove](/optimizely-campaign/docs/remove-unsubscribews) method.

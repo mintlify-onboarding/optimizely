@@ -1,0 +1,23 @@
+---
+title: "getAssignedMailing"
+description: "Queries the mailing ID of a used coupon code in Optimizely Campaign."
+---
+
+**Type**: long
+
+**Parameters**
+
+| Name      | Type   | Value                     |
+| --------- | ------ | ------------------------- |
+| sessionId | String | ID of the current session |
+| blockId   | long   | ID of the coupon block    |
+| code      | String | Coupon code to be queried |
+
+**Return values**
+
+The ID of the mailing the code has been assigned to.
+
+**Code structure**
+
+`long getAssignedMailing(String sessionId, long blockId, String code)
+`

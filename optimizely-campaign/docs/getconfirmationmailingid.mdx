@@ -1,0 +1,24 @@
+---
+title: "getConfirmationMailingId"
+description: "Queries the ID of the mailing that sends the confirmation email in Optimizely Campaign."
+---
+
+This method is only applicable to opt-in processes of the type double or confirmed.
+
+**Type**: long
+
+**Parameters**
+
+| Name           | Type   | Value                    |
+| -------------- | ------ | ------------------------ |
+| sessionId      | String | ID of the session        |
+| optinProcessId | long   | ID of the opt-in process |
+
+**Return values**
+
+ID of the mailing that sends the confirmation email
+
+**Code structure**
+
+`long getConfirmationMailingId(String sessionId, long optinProcessId)
+`

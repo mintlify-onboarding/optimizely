@@ -1,0 +1,23 @@
+---
+title: "getHeader"
+description: "Queries the mailing header."
+---
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name      | Type   | Value                                                                                |
+| --------- | ------ | ------------------------------------------------------------------------------------ |
+| sessionId | String | ID of the session                                                                    |
+| mailingId | long   | ID of the mailing                                                                    |
+| Name      | String | Field nameMust be compliant with RFC822 (only 7bit US-ASCII characters are allowed). |
+
+**Return values**
+
+All values of the header
+
+**Code structure**
+
+`String[] getHeader(String sessionId, long mailingId, String name)
+`

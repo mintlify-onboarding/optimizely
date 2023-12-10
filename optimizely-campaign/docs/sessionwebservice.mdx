@@ -1,0 +1,21 @@
+---
+title: "SessionWebservice"
+description: "Control the session handling (login, logout etc.) for all web services in Optimizely Campaign."
+---
+
+| Method       | Description                                                    |
+| ------------ | -------------------------------------------------------------- |
+| getLocale    | Queries the locale of a session.                               |
+| getMediaType | Queries the media type of a session.                           |
+| login        | Starts the login for a session in the localization version de. |
+| logout       | Ends a session.                                                |
+| setLocale    | Defines the locale for a session.                              |
+| setMediaType | Defines the media type for a session.                          |
+
+### Locale-based information
+
+Some methods (mostly reporting functions) require parameters for localization. The localization version for the current session can be set active by using the [setLocale](/optimizely-campaign/docs/setlocale) method. The default value is de for German.
+
+### Media type
+
+Some API methods work differently on different media types (such as EMAILor SMS). Use the [setMediaType](/optimizely-campaign/docs/setmediatype) method to switch between media types. Default is EMAIL.

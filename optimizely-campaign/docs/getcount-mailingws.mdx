@@ -1,0 +1,22 @@
+---
+title: "getCount"
+description: "Counts mailings of a specific type in Optimizely Campaign."
+---
+
+**Type**: int
+
+**Parameters**
+
+| Name        | Type   | Value                                                                         |
+| ----------- | ------ | ----------------------------------------------------------------------------- |
+| sessionId   | String | ID of the session                                                             |
+| mailingType | String | Type of the mailing (regular, event, confirmation, template, campaign, split) |
+
+**Return values**
+
+Number of all mailings of the given type
+
+**Code structure**
+
+`int getCount(String sessionId, String mailingType)
+`

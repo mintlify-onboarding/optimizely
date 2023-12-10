@@ -1,0 +1,24 @@
+---
+title: "createFolder"
+description: "Creates a new folder in Optimizely Campaign."
+---
+
+**Type**: long
+
+**Parameters**
+
+| Name           | Type   | Value                                                                    |
+| -------------- | ------ | ------------------------------------------------------------------------ |
+| sessionId      | String | ID of the current session                                                |
+| folderName     | String | Name of the new folder                                                   |
+| parentFolderId | long   | ID of the parent folder, or 0 if you want to create a new root directory |
+| folderType     | String | Type of the new folder                                                   |
+
+**Return values**
+
+ID of the new folder
+
+**Code structure**
+
+`long createFolder(String sessionId, String folderName, long parentFolderId, String folderType)
+`

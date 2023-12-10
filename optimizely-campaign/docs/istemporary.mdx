@@ -1,0 +1,23 @@
+---
+title: "isTemporary"
+description: "Queries whether a target group is temporary in Optimizely Campaign."
+---
+
+**Type**: Boolean
+
+**Parameters**
+
+| Name      | Type   | Value                  |
+| --------- | ------ | ---------------------- |
+| sessionId | String | ID of the session      |
+| filterId  | long   | ID of the target group |
+
+**Return values**
+
+* true: Target group is temporary
+* false: Target group is not temporary
+
+**Code structure**
+
+`boolean isTemporary(String sessionId, long filterId)
+`

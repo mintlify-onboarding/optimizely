@@ -1,0 +1,27 @@
+---
+title: "isBounceCounterThresholdExeeded"
+description: "Queries whether a recipient has exceeded either the hard or the soft bounce threshold in Optimizely Campaign."
+---
+
+See also [getBounceCounterThreshold](/optimizely-campaign/docs/getbouncecounterthreshold).
+
+By default, the media type EMAIL is used. Use the SessionWebservice's [setMediaType](/optimizely-campaign/docs/setmediatype) method to select another media type such as SMS.
+
+**Type**: Boolean
+
+**Parameters**
+
+| Name        | Type   | Value               |
+| ----------- | ------ | ------------------- |
+| sessionId   | String | ID of the session   |
+| recipientId | String | ID of the recipient |
+
+**Return values**
+
+* true: Recipient has exceeded the hard or soft bounce threshold
+* false: Recipient has not exceeded the hard or soft bounce threshold
+
+**Code structure**
+
+`boolean isBounceCounterThresholdExeeded(String sessionId, String recipientId)
+`

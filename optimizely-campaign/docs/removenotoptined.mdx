@@ -1,0 +1,26 @@
+---
+title: "removeNotOptined"
+description: "Deletes a recipient from a recipient list in Optimizely Campaign only if the opt-in process is not finished yet."
+---
+
+Example: A recipient has been created using a double opt-in process but has never clicked the confirmation link. This recipient can be deleted with this method.
+
+**Type**: boolean
+
+**Parameters**
+
+| Name            | Type   | Value                    |
+| --------------- | ------ | ------------------------ |
+| sessionId       | String | ID of the session        |
+| recipientListId | long   | ID of the recipient list |
+| recipientId     | String | ID of the recipient      |
+
+**Return values**
+
+* true: Recipient has been deleted successfully
+* false: Recipient does not exist or has finished the opt-in process
+
+**Code structure**
+
+`boolean removeNotOptined(String sessionId, long recipientListId, String recipientId)
+`

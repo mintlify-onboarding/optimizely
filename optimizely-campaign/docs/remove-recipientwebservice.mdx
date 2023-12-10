@@ -1,0 +1,29 @@
+---
+title: "remove"
+description: "Deletes a recipient from a recipient list in Optimizely Campaign."
+---
+
+> 📘
+> 
+> Note
+> 
+> Do not use this method with recipients who unsubscribe from a newsletter. Instead, use the [add](/optimizely-campaign/docs/add-unsubscribewebservicews) and [addAll](/optimizely-campaign/docs/addall-unsubscribewebservicews) methods of the [UnsubscribeWebservice](/optimizely-campaign/docs/unsubscribewebservice).
+
+**Type**: void
+
+**Parameters**
+
+| Name            | Type   | Value                    |
+| --------------- | ------ | ------------------------ |
+| sessionId       | String | ID of the session        |
+| recipientListId | long   | ID of the recipient list |
+| recipientId     | String | ID of the recipient      |
+
+**Return values**
+
+\*\* \*\*-
+
+**Code structure**
+
+`void remove(String sessionId, long recipientListId, String recipientId)
+`

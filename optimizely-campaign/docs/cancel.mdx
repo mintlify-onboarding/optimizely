@@ -1,0 +1,21 @@
+---
+title: "cancel"
+description: "Cancels a running mailing (status: SENDING or PAUSED) in Optimizely Campaign."
+---
+
+The mailing must be of the type regular. All other mailings (event, confirmation, template) cannot be canceled.
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+* **Code structure**  
+`void cancel(String sessionId, long mailingId)  
+`

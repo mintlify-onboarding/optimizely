@@ -1,0 +1,24 @@
+---
+title: "removeUnsubscribed"
+description: "Deletes all unsubscribed recipients from a recipient list in Optimizely Campaign."
+---
+
+By default, the media type EMAIL is used. Use the [setMediaType](/optimizely-campaign/docs/setmediatype) method to select another media type such as SMS.
+
+**Type**: int
+
+**Parameters**
+
+| Name            | Type   | Value                    |
+| --------------- | ------ | ------------------------ |
+| sessionId       | String | ID of the session        |
+| recipientListId | long   | ID of the recipient list |
+
+**Return values**
+
+Number of recipients that have been deleted
+
+**Code structure**
+
+`int removeUnsubscribed(String sessionId, long recipientListId)
+`

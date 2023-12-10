@@ -1,0 +1,26 @@
+---
+title: "addAll"
+description: "Adds multiple recipients to a unsubscribe list in Optimizely Campaign."
+---
+
+The recipients are unsubscribed from all recipient lists (but are not informed). The unsubscribe status is valid until the [remove](/optimizely-campaign/docs/remove-unsubscribews) method is invoked or the recipient re-subscribes using a "normal" opt-in process.
+
+Use this method to mark multiple recipients as unsubscribed. Recipients that have been added to the unsubscribe list using this method are still visible in the recipient list, but are skipped on mailing dispatch. To undo this step and re-subscribe a recipient, use the [remove](/optimizely-campaign/docs/remove-unsubscribews) method.
+
+Be aware that re-adding a recipient using the [add2](/optimizely-campaign/docs/add2) method also removes him from the unsubscribe list if he had previously been marked as unsubscribed and no opt-in process ID is submitted.
+
+**Type**: void
+
+**Parameters**
+
+| Name            | Type        | Value                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| --------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId       | String      | ID of the session                                                                                                                                                                                                                                                                                                                                                                                                      |
+| recipientListId | long        | (Optional) Recipient list the recipients are assigned toIf a client-wide unsubscribe list is configured, this parameter is meaningless. If recipient list-based unsubscribe lists are configured, the parameter selects the recipient list from which the recipients are unsubscribed.Set the value to 0 to force a client-wide unsubscribe even if the client is configured to use recipient list-based unsubscribes. |
+| recipientIds    | String\[ \] | IDs of the recipients                                                                                                                                                                                                                                                                                                                                                                                                  |
+
+**Return values**
+
+* **Code structure**  
+`void addAll(String sessionId, long recipientListId, String[] recipientIds)  
+`

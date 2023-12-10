@@ -1,0 +1,88 @@
+---
+title: "Web Push"
+description: "Describes how to set up Web Push for Optimizely Campaign."
+---
+
+A Web Push message appears in the recipient's web browser without a specific request.
+
+For example, use Web Push together with Triggered Messages to send your online shop customers a reminder when items are in the shopping cart but the order was not completed. Or send personalized product recommendations created with Email Product Recommendations. 
+
+Optimizely Campaign uses Firebase Cloud Messaging (FCM), a free cross-platform solution for sending push messages. For information on the supported web browsers, see [Supported environments for the Firebase JavaScript SDK](https://firebase.google.com/support/guides/environments%5Fjs-sdk "Firebase website") in the Firebase documentation.
+
+### Prerequisites
+
+* Website (web app) to implement push notifications.
+* User account for [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/ "Firebase website").
+* Optimizely Campaign recipient list of type "Push" that customer support sets up for you. The push recipient list stores the user registration token generated during the opt-in process.
+
+### Create a Firebase web app project
+
+To set up Web Push in your client, you first have to create a Firebase web app project and register your web app with FCM. Do the following:
+
+1. Open the [Firebase Console](https://console.firebase.google.com/ "Firebase website") and log in using your Google account.
+2. Click **Add project** and create a new project for your web app. See [Create a Firebase project](https://firebase.google.com/docs/web/setup/#create-firebase-project "Firebase website") in the Firebase documentation.
+3. Register your web app with FCM. See [Register your app with Firebase](https://firebase.google.com/docs/web/setup/#register-app "Firebase website") in the Firebase documentation.
+4. Open your project and go to **Project settings** \> **Cloud Messaging**.
+
+> 📘
+> 
+> Note
+> 
+> Take note of the _server key_ and _sender ID_ to pass to Optimizely.
+
+### Push assignment
+
+Provide Optimizely customer support [\[email protected\]](/cdn-cgi/l/email-protection#d2a1a7a2a2bda0a692bda2a6bbbfbba8b7beabfcb1bdbf) with the following information that is required for the client setup and push assignment in Optimizely Campaign:
+
+* Optimizely Campaign client. Name or ID of your Optimizely Campaign client.
+* Recipient list ID. The ID of the push recipient list that you use to store the user registration tokens. To see the recipient list ID, go to the Optimizely Campaign menu bar and select **Administration** \> **API Overview** \> **Recipient Lists**.
+* Server key. Your FCM account's API key. To see the server key, open the Firebase Console and select **Project settings** \> **Cloud Messaging**.
+* Sender ID. The ID with which the web app registers at FCM. To see the sender ID, open the Firebase Console and select **Project settings** \> **Cloud Messaging**.
+* Optional: App nickname. The name of your web app that is used for FCM. To see the app nickname, open the Firebase Console and select **Project settings** \> **General**.
+
+> 📘
+> 
+> Note
+> 
+> If you change the app nickname in Firebase, contact [\[email protected\]](/cdn-cgi/l/email-protection#2b585e5b5b44595f6b445b5f424642514e475205484446) and provide the new name.
+
+* Optional: Push app package name.
+
+> 📘
+> 
+> Tip
+> 
+> Use your website/domain name, such as _com.example_ or _example.com_.
+
+### Integrate the Firebase SDK
+
+To integrate your web app with Firebase, see [Set up a JavaScript Firebase Cloud Messaging client app](https://firebase.google.com/docs/cloud-messaging/js/client "Firebase website") in the Firebase documentation.
+
+#### Enable tracking
+
+To track opens, do the following:
+
+1. Open your website project.
+2. Open the service worker (_firebase-messaging-sw.js_) and add the following code snippet:  
+JavaScript  
+`self.addEventListener('push', function(event) {  
+             console.log("Event Push  : ${event.data}");  
+             var notification = {};  
+             if (event.data) {  
+                 notification = event.data.json();  
+                 fetch(notification.data.bm_tracking_url, {mode: 'no-cors'});  
+             }  
+             console.log('Event Push: ' + notification.data.bm_tracking_url);  
+          });  
+`
+1. Save the service worker file.
+
+### Opt-in
+
+When a user opens your website, a dialog box appears and asks for permission to send push messages. By accepting, the user registration token is generated. Save the generated token, for example in a CSV file.
+
+To send push messages to the registered user, add a new recipient with the corresponding token to the push recipient list. You can [create new recipients manually](https://support.optimizely.com/hc/en-us/articles/4413200609165-Recipient-overview) and enter the token into the list, or [import a CSV file](https://support.optimizely.com/hc/en-us/articles/4413192281357-Importing-recipients). You can also use the Optimizely Campaign REST API to add new recipients to a recipient list. See the **[REST API documentation](https://api.campaign.episerver.net/apidoc/index.html#/Recipients/addRecipient)**.
+
+### Opt-out
+
+If mailing recipients disable push notifications in their web browser, they will no longer receive Web Push messages. After the opt-out, the recipient and corresponding token are deleted from the recipient list.

@@ -1,0 +1,39 @@
+---
+title: "getDistinctValuesCountFlat"
+description: "Queries all distinct values of an attribute and counts the recipients for each value in Optimizely Campaign."
+---
+
+> 🚧
+> 
+> Caution
+> 
+> Using this method with the wrong argument (e.g., no threshold) can lead to huge amount of data returned.
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name              | Type   | Value                                                                                                                                   |
+| ----------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId         | String | ID of the session                                                                                                                       |
+| recipientListId   | long   | ID of the recipient list                                                                                                                |
+| recipientFilterId | long   | (optional) ID of the target groupIf the value is greater than 0, only recipients that match the target group with this ID are returned. |
+| attributeName     | String | Field name of the field (e.g., firstname, lastname etc.) that is to be queried for distinct values                                      |
+| threshold         | int    | Number of characters that are examinedExample: With a threshold of 4, the values Test-A and Test-B will be summed up to Test.           |
+
+**Return values**
+
+The first index is the value, the second one is the count.
+
+Example: result\[0\]=="Value 1", result\[1\]=="123", result\[2\]=="Value 2", result\[3\]=="678"
+
+> 📘
+> 
+> Note
+> 
+> A maximum of 10,000 values is returned.
+
+**Code structure**
+
+`String[] getDistinctValuesCountFlat(String sessionId, long recipientListId, long recipientFilterId, String attributeName, int threshold)
+`

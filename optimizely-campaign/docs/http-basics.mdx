@@ -1,0 +1,156 @@
+---
+title: "HTTP API basics"
+description: "Describes URL structures and parameters used in the HTTP integration API for Optimizely Campaign."
+---
+
+### URL structure
+
+A URL for an HTTP API request has the following structure (example):
+
+`https://api.campaign.episerver.net/http/form/DHS45MDL2/[[email protected]](/cdn-cgi/l/email-protection) 
+`
+
+or:
+
+`https://api.campaign.episerver.net/http/mail/SDGF-GH2-123S/updatefields?john.smith=example&mark.spencer[add]=1 
+`
+
+The components of the URL have the following meaning:
+
+The root address of the HTTP-API for Optimizely Campaign; called via an SSL connection:
+
+`https://api.campaign.episerver.net/http/... 
+`
+
+Without SSL encryption, the root address starts with:
+
+`http://api.campaign.episerver.net/http/... 
+`
+
+The service selector sets the service to be used. Currently, the form service (form) or mail service (mail) is available.
+
+`.../form/... 
+`
+
+The authorization code. The operation is performed only if the authorization code is correct:
+
+`.../DHS45MDL2/... 
+`
+
+The operation selector defines the operation to be performed:
+
+`.../unsubscribe... 
+`
+
+Parameters needed for the operation. See Parameters.
+
+`[[email protected]](/cdn-cgi/l/email-protection)... 
+`
+
+### Parameters
+
+#### System parameters
+
+Almost any operation requires several parameters. Parameters that control an operation are prefixed with a **bm** (for example, "bmRecipientId=[\[email protected\]](/cdn-cgi/l/email-protection#5b31343335752836322f331b3e233a362b373e75383436)").
+
+> 📘
+> 
+> Note
+> 
+> The HTTP API expects case sensitive parameters. Make sure that you use the parameters in the correct upper and lower case. (For example:_bmRecipientId_ instead of _bmrecipientid_.)
+
+The following system parameters are accepted for **each** operation:
+
+| Parameter                                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bmSuccessUrl                                                            | If a URL is passed using this parameter, the result (success message) is forwarded to this URL after the operation is successfully performed. The GET parameter, bmResult, is appended to this URL. This parameter contains the success message, such as ok or ok:update.                                                                                                                                                                                                                                           |
+| **Note**: The **bmSuccessUrl** parameter takes priority over the bmUrl. |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| bmFailureUrl                                                            | If a URL is passed using this parameter, the result (error message) is forwarded to this URL after the operation fails. The GET parameter **bmResult** is appended to this URL. This parameter contains the error message, such as duplicate or blacklisted.**Note**: The **bmFailureUrl** parameter takes priority over the **bmUrl**.                                                                                                                                                                             |
+| bmUrl                                                                   | If a URL is passed using this parameter, the result is forwarded to this URL after performing the operation (whether successful or failed). The GET parameter **bmResult** is appended to this URL. This parameter contains the notification message, such as ok or duplicate.**Note**: This parameter can be replaced by **bmSuccessUrl** or **bmFailureUrl** to handle success and failure messages separately. **bmSuccessUrl** and **bmFailureUrl** take priority over **bmUrl** if used in the same operation. |
+| bmEncoding                                                              | This parameter defines the character set for the transmitted data. By default, it is set to iso-8859-1\. If the characters are erroneous, try to set the value to utf-8\. The encoding is particularly important if arrays of data are transmitted, for example when using the [subscribe](/optimizely-campaign/docs/subscribe) and [updatefields](/optimizely-campaign/docs/updatefields).                                                                                                                         |
+| bmVerbose                                                               | To receive detailed success and failure messages, set the value of this parameter to true (for example, instead of ok, the message ok: removed is returned). By default, this parameter is set to false.                                                                                                                                                                                                                                                                                                            |
+
+> 🚧
+> 
+> Tip
+> 
+> Additional system parameters are described in the respective operation.
+
+#### Data parameters
+
+Data parameters designate a field of the same name in the recipient list, e.g., firstname=John (the parameter **firstname** contains the value John). If the field does not exist, the parameter is ignored. Otherwise, what happens to the value of this parameter depends on the particular operation. Typically, the content of the field in the database is overwritten with the given value.
+
+Data parameters can:
+
+* overwrite existing data (salutation=Mr.)
+* be added to existing data (add)
+* be subtracted from existing data (sub)
+* be prefixed to existing data (pre)
+* be appended to existing data (post)
+
+The desired operation is added to the parameter using square brackets (**\[\]**).
+
+Examples
+
+* firstname=John: Set value of the field **firstname** to John
+* vote\[add\]=1: Increase the number of **vote** by 1
+* language\[post\]=en: Append the value en to the existing value of the field **language** (e. g., de) . Then, the new value would be: de-en.
+
+> 📘
+> 
+> Note
+> 
+> Make sure to transmit only URL-encoded data parameters.
+
+The following symbols are used for URL encoding:
+
+* A question mark (?) marks the beginning of the part of the URL that contains the data request.
+* An equals sign (=) is inserted between the name of a parameter and its value.
+* An ampersand (&) separates two "parameter=value" elements.
+
+You can find the correct spelling of a recipient list's fields in the recipient list details. To do this, perform these steps:
+
+1. Log in to Optimizely Campaign.
+2. From the start menu, go to **Recipients** \> **Recipient Lists**.
+3. Click the respective recipient list.
+4. In the **Recipient List Details** area, check the spelling of the recipient list fields.
+
+> 📘
+> 
+> Tip
+> 
+> In an HTTP API request, you can use the display name as well as the internal name of a recipient list field.
+
+### Format rules
+
+The following formatting rules apply:
+
+| Value         | Format                                                  | Example    |
+| ------------- | ------------------------------------------------------- | ---------- |
+| int/long      | Decimal notation without additional symbols.            | 10000 or 5 |
+| float/double  | Decimal notation separated by a period (**.**).         | 12345.67   |
+| date/datetime | The following date formats are supported:yyyyMMddHHmmss |            |
+
+* yyyy-MM-dd'T'HH:mm:ssZ
+* yyyy-MM-dd HH:mm:ss
+* yyyy-MM-dd HH:mm
+* yyyy-MM-dd
+ | 2001-08-21T18:52:05+02:00 (+02:00 means CEST) |
+
+### Return values
+
+> 📘
+> 
+> Note
+> 
+> Due to updates on the API, the responses will no longer contain the default reason phrase (status description) appended to the HTTP status code, such as _HTTP 200 "OK"_ or _HTTP 404 "NOT FOUND"_. If your API client relies on the reason phrase, and to avoid system failures, please adjust your API response handling to ignore the reason phrase until **2021-12-31**. See also [HTTP specification RFC 7230 3.1.2](https://datatracker.ietf.org/doc/html/rfc7230#section-3.1.2).
+
+Usually, operations return a value that contains a success or error message, such as OK: 32 or duplicate. You can use these return values to display a respective message in your form.
+
+Many operations also support forwarding. After an operation is performed, the user is forwarded to a URL. The return message is added to that URL as an additional parameter (**bmResult**). For detailed information, see the operation description.
+
+> 🚧
+> 
+> Tip
+> 
+> If you use the parameter **bmVerbose=true**, a detailed message is returned (e.g., OK: already\_unsubscribed).

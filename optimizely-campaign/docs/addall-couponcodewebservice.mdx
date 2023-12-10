@@ -1,0 +1,26 @@
+---
+title: "addAll"
+description: "Adds multiple coupon codes to a coupon block in Optimizely Campaign."
+---
+
+With each call of this method, you can add up to 1000 codes. This method is only valid for static coupon blocks. The contained coupon codes are not deleted.
+
+**Type**: boolean\[ \]
+
+**Parameters**
+
+| Name      | Type        | Value                            |
+| --------- | ----------- | -------------------------------- |
+| sessionId | String      | ID of the current session        |
+| blockId   | long        | ID of the coupon block           |
+| codes     | String\[ \] | The coupon codes you want to add |
+
+**Return values**
+
+* true: Coupon code was successfully added
+* false: Coupon code could not be added
+
+**Code structure**
+
+`boolean[] addAll(String sessionId, long blockId, String[] codes)
+`

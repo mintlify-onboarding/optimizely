@@ -1,0 +1,28 @@
+---
+title: "create"
+description: "Creates a persistent target group in Optimizely Campaign."
+---
+
+The target group is still valid after the end of the session.
+
+**Type**: long
+
+**Parameters**
+
+| Name                | Type        | Value                                                                                        |
+| ------------------- | ----------- | -------------------------------------------------------------------------------------------- |
+| sessionId           | String      | ID of the session                                                                            |
+| filterName          | String      | Internal name of the target group                                                            |
+| negateCondition     | boolean     | See [Type conversion and formatting rules](/optimizely-campaign/docs/soap-1-1-compatibility) |
+| attributeName       | String      | See [Type conversion and formatting rules](/optimizely-campaign/docs/soap-1-1-compatibility) |
+| operation           | String      | See [Available operators](/optimizely-campaign/docs/soap-1-1-compatibility)                  |
+| operationParameters | String\[ \] | See [Attribute values](/optimizely-campaign/docs/soap-1-1-compatibility)                     |
+
+**Return values**
+
+ID of the target group
+
+**Code structure**
+
+`long create(String sessionId, String filterName, boolean negateCondition, String attributeName, String operation, String[] operationParameters)
+`

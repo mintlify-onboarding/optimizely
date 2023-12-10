@@ -1,0 +1,24 @@
+---
+title: "importFinishedAndScheduleMailing"
+description: "Schedules the dispatch of the mailing for imported recipients in Optimizely Campaign."
+---
+
+After calling this method, no more recipients can be imported for this closed loop process. The scheduled mailing is sent to all recipients that were imported before (see [importRecipients](/optimizely-campaign/docs/importrecipients)). This process may take a while to finish.
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value                                                                                                                                               |
+| --------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId | String | ID of the session                                                                                                                                   |
+| waveId    | long   | ID returned by [prepareNewWave](https://world.optimizely.com/documentation/developer-guides/campaign/SOAP-API/closedloopwebservice/preparenewwave/) |
+
+**Return values**
+
+–
+
+**Code structure**
+
+`void importFinishedAndScheduleMailing(String sessionId, long waveId)
+`

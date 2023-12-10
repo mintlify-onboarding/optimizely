@@ -1,0 +1,89 @@
+---
+title: "subscribe"
+description: "Adds a new recipient to a recipient list or updates an existing recipient in Optimizely Campaign."
+---
+
+Be aware of the different behavior of this method according to the recipient status:
+
+* If there is already a recipient with the same ID and the same type of opt-in process that has not completed the opt-in process, the recipient is removed and re-added. If one of the opt-in processes is a double opt-in process and the other is not, the double opt-in process has a higher priority (see [Prioritization of parallel opt-in processes](https://support.optimizely.com/hc/en-us/articles/4413192291981#prioritization)).
+
+The **subscribe** operation is available in the mail and the form service. To update recipient data using the mail service, we recommend using the [updatefields](/optimizely-campaign/docs/updatefields) operation instead.
+
+> 📘
+> 
+> Note
+> 
+> Stick to [formatting rules](/optimizely-campaign/docs/http-basics) when transmitting recipient data.
+
+**Parameters**
+
+| Name                  | Mandatory | Default value | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| --------------------- | --------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bmRecipientId         | yes/no    | –             | The ID of the new recipient (usually the email address)If used in the mail service, this parameter is not mandatory (the email address is sent anyway). If used in the form service, the parameter is mandatory.                                                                                                                                                                                                                                                                                                                                              |
+| bmOptInId             | No        | –             | The ID of an opt-in processThe opt-in process will be started when the parameter is transmitted. If there is a pending opt-in process the recipient has not finished yet, a new opt-in process is started and no error message is returned.                                                                                                                                                                                                                                                                                                                   |
+| bmOptinFrequencyLimit | No        | 10            | By default, the period that defines how long the last opt-in process of the recipient must date back so that a new opt-in process can be started is 10 minutes. You can set the period to up to 2147483647 minutes. If, for example, a new recipient is created and a value of 60 is given, then the last opt-in process must date back at least 60 minutes. Otherwise no new opt-in process is started, and no further confirmation mail (opt-in mail) will be sent to this recipient.**Tip**: This parameter is only relevant with a double opt-in process. |
+| bmFailOnUnsubscribe   | No        | false         | By default, unsubscribed recipients will be reactivated when subscribed again. If this parameter is set to true, unsubscribed recipients are skipped and a message is returned (unsubscribed).                                                                                                                                                                                                                                                                                                                                                                |
+| bmOverwrite           | No        | false         | By default, recipients who already exist are recognized as duplicates, and a duplicate message is returned. When you set the parameter to true, all existing data is overwritten with the new data. No **duplicate** message is returned.**Note:** See the examples below.                                                                                                                                                                                                                                                                                    |
+| bmOptinSource         | No        | –             | Optional parameter that defines the opt-in source of the recipientThe parameter can only be set using this operation. It is not possible to set or change the value of this parameter afterwards using the Campaign user interface.                                                                                                                                                                                                                                                                                                                           |
+| bmSanitize            | no        | –             | Set the value of this parameter to true to convert potentially dangerous characters in the supplied recipient data into their respective HTML equivalents .                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ...                   | No        | –             | Any parameter that corresponds to a parameter of the recipient list.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+
+**Return values**
+
+| Value                   | Description                                                                                                                                                                                                                                                                                                                                                                                 |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ok                      | Recipient successfully added to the recipient list                                                                                                                                                                                                                                                                                                                                          |
+| ok: updated             | Only with **bmVerbose=true**: Recipient data successfully updated                                                                                                                                                                                                                                                                                                                           |
+| optin\_already\_started | Only with double opt-in and a given value for **bmOptinFrequencyLimit**: Another subscribe operation was triggered for the same recipient, but no opt-in process was triggered, because the new subscription was sent during the pre-defined blocking period.                                                                                                                               |
+| wrong\_tag              | Authorization failed.Error codes:\- 501=wrong authentication tag\- 502=wrong request IP\- 503=wrong request method\- 504=wrong protocol\- 505=wrong recipient list\- 506=wrong action\- 507=action not foundIf a verification of the authentication tag does not solve the problem, contact [customer support](/cdn-cgi/l/email-protection#75060005051a0701351a05011c181c0f10190c5b161a18). |
+| duplicate               | Dataset already exists (no overwriting).                                                                                                                                                                                                                                                                                                                                                    |
+| unsubscribed            | Recipient is unsubscribed.                                                                                                                                                                                                                                                                                                                                                                  |
+| syntax\_error           | Syntax error in the parameter, e.g., the email address is invalid.                                                                                                                                                                                                                                                                                                                          |
+| too\_many\_bounces      | The recipient is or has already been subscribed and has exceeded the bounce limit.                                                                                                                                                                                                                                                                                                          |
+| blacklisted             | Recipient is blocked.                                                                                                                                                                                                                                                                                                                                                                       |
+| system\_error           | A general error has occurred                                                                                                                                                                                                                                                                                                                                                                |
+
+**Example 1**
+
+`.../subscribe?bmRecipientId=john.smith%40example.com&bmOptInId=2131232 
+`
+
+Adds the recipient with the ID [\[email protected\]\_](/cdn-cgi/l/email-protection#e6b98c898e88c8958b8f928ea6839e878b968a83c885898bb9) to the recipient list and starts opt-in process _2131232_ for this recipient.
+
+> 🚧
+> 
+> Tips
+> 
+> If the recipient subscribed via double opt-in and already exists, the return value duplicate is sent. No new opt-in process is started.
+> 
+> If the recipient is on the unsubscribe list, the recipient will be reactivated and a new opt-in process is started. To skip unsubscribed recipients, set the \_bmFailOnUnsubscribe\_parameter to true (see Example 3).
+
+**Example 2**
+
+`.../subscribe?bmRecipientId=john.smith%40example.com&bmOverwrite=true&bmOptInId=2131232 
+`
+
+Adds the recipient with the ID [\[email protected\]\_](/cdn-cgi/l/email-protection#9bc4f1f4f3f5b5e8f6f2eff3dbfee3faf6ebf7feb5f8f4f6c4) to the recipient list and starts opt-in process _2131232_ for this recipient.
+
+> 🚧
+> 
+> Tips
+> 
+> If the recipient already exists, the existing data is overwritten and updated with the new data. No new opt-in process is started.
+> 
+> If the recipient is on the unsubscribe list, the recipient will be removed from it and overwritten in the recipient list. No new opt-in process is started.
+
+**Example 3**
+
+`.../subscribe?bmRecipientId=john.smith%40example.com&bmOverwrite=false&bmFailOnUnsubscribe=true&bmOptInId=2131232 
+`
+
+Adds the recipient with the ID [\[email protected\]\_](/cdn-cgi/l/email-protection#4b1421242325653826223f230b2e332a263b272e6528242614) to the recipient list and starts opt-in process _2131232_ for this recipient.
+
+> 🚧
+> 
+> Tips
+> 
+> If the recipient subscribed via double opt-in and already exists, the return value duplicate is sent. The existing data is not overwritten. No new opt-in process is started.
+> 
+> If the recipient is on the unsubscribe list, the recipient is skipped and will **not** be reactivated. The return value unsubscribed is sent. The existing data is not overwritten. No new opt-in process is started.

@@ -1,0 +1,22 @@
+---
+title: "getAttributes"
+description: "Queries the attributes defined by the parameter attributeNames in Optimizely Campaign."
+---
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name            | Type        | Value                                        |
+| --------------- | ----------- | -------------------------------------------- |
+| sessionId       | String      | ID of the session                            |
+| recipientListId | long        | ID of the recipient list                     |
+| recipientId     | String      | ID of the recipient                          |
+| attributeNames  | String\[ \] | Field names (e.g., firstname, lastname etc.) |
+
+**Return values**: Attribute values according to the given attribute names. Each entry is formatted according to the [Type conversion and formatting rules](https://world.optimizely.com/documentation/developer-guides/campaign/SOAP-API/introduction-to-the-soap-api/soap-1-1-compatibility/#Type).
+
+**Code structure**
+
+`String[] getAttributes(String sessionId, long recipientListId, String recipientId, String[] attributeNames)
+`

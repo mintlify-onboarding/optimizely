@@ -1,0 +1,24 @@
+---
+title: "getClickCountByUrl"
+description: "Counts the clicks for each of the given URLs in Optimizely Campaign."
+---
+
+**Type**: int\[ \]
+
+**Parameters**
+
+| Name      | Type        | Value                                                                                                                                                                |
+| --------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId | String      | ID of the session                                                                                                                                                    |
+| mailingId | long        | ID of the mailing                                                                                                                                                    |
+| URLs      | String\[ \] | Link URLs of the mailing to be analyzed                                                                                                                              |
+| unique    | Boolean     | \- true – Multiple counts of recipients that clicked a link in the mailing several times are removed.\- false – The overall number of clicks for a link is returned. |
+
+**Return values**
+
+Number of clicks for each URL
+
+**Code structure**
+
+`int[] getClickCountByUrl(String sessionId, long mailingId, String[] URLs, boolean unique)
+`

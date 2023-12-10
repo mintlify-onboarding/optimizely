@@ -1,0 +1,24 @@
+---
+title: "getIdsInStatus"
+description: "Queries the IDs of all mailings of a specific type and status in Optimizely Campaign."
+---
+
+**Type**: long\[ \]
+
+**Parameters**
+
+| Name                                          | Type   | Value                                                                         |
+| --------------------------------------------- | ------ | ----------------------------------------------------------------------------- |
+| sessionId                                     | String | ID of the session                                                             |
+| mailingType                                   | String | Type of the mailing (regular, event, confirmation, template, campaign, split) |
+| mailingStatus                                 | String | Status of the mailing (NEW, SENDING, DONE and CANCELED)                       |
+| Status of the campaign (ACTIVATION\_REQUIRED) |        |                                                                               |
+
+**Return values**
+
+IDs of all mailings of the given type and status
+
+**Code structure**
+
+`long[] getIdsInStatus(String sessionId, String mailingType, String mailingStatus)
+`

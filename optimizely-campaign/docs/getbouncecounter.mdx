@@ -1,0 +1,29 @@
+---
+title: "getBounceCounter"
+description: "Counts the hard or soft bounces for a recipient in Optimizely Campaign."
+---
+
+See also: [resetBounceCounter](/optimizely-campaign/docs/resetbouncecounter) and [getBounceCounterThreshold](/optimizely-campaign/docs/getbouncecounterthreshold).
+
+This number is different from the one returned by [getRecipientResponseCount2](/optimizely-campaign/docs/getrecipientresponsecount2) as this is the counter used to determine if a recipient will receive further mailings. This bounce counter may be reset to re-enable a recipient once the bounce threshold (usually three _hard bounces_ and five _soft bounces_) is exceeded.
+
+By default, the media type EMAIL is used. Use the SessionWebservice's [setMediaType](/optimizely-campaign/docs/setmediatype) method to select another media type such as SMS.
+
+**Type**: int
+
+**Parameters**
+
+| Name        | Type   | Value                                                                                                                                                               |
+| ----------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId   | String | ID of the session                                                                                                                                                   |
+| recipientId | String | ID of the recipient                                                                                                                                                 |
+| category    | String | See [Response categories](https://world.optimizely.com/documentation/developer-guides/campaign/SOAP-API/responsewebservice/#Response).Only hardbounce or softbounce |
+
+**Return values**
+
+Number of hard or soft bounces for the recipient
+
+**Code structure**
+
+`int getBounceCounter(String sessionId, String recipientId, String category)
+`

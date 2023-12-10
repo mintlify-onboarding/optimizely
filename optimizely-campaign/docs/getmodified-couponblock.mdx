@@ -1,0 +1,23 @@
+---
+title: "getModified"
+description: "Queries the date on which the coupon code was last modified in Optimizely Campaign."
+---
+
+**Type**: Date
+
+**Parameters**
+
+| Name      | Type   | Value                     |
+| --------- | ------ | ------------------------- |
+| sessionId | String | ID of the current session |
+| blockId   | long   | ID of the coupon block    |
+| code      | String | Coupon code to be queried |
+
+**Return values**
+
+The last modification date of the coupon code
+
+**Code structure**
+
+`Date getModified(String sessionId, long blockId, String code)
+`

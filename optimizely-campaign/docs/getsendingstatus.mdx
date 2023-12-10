@@ -1,0 +1,32 @@
+---
+title: "getSendingStatus"
+description: "Queries the sending status of a mailing to a specific recipient in Optimizely Campaign."
+---
+
+> 📘
+> 
+> Note
+> 
+> The actual mail is sent asynchronously. Therefore, this method is not appropriate to query the status of recently sent out mailings.
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name            | Type   | Value                    |
+| --------------- | ------ | ------------------------ |
+| sessionId       | String | ID of the session        |
+| mailingId       | long   | ID of the mailing        |
+| recipientListId | long   | ID of the recipient list |
+| recipientId     | String | ID of the recipient      |
+
+**Return values**
+
+An array of **SENT**,**date** or **ERROR,date**, where **date** is formatted according to ISO 8601 (see also [Type conversion and formatting rules](/optimizely-campaign/docs/soap-1-1-compatibility)).
+
+The return value is given in a matrix, since it is theoretically possible for one and the same recipient to receive a mailing several times (only for mailings of type Event).
+
+**Code structure**
+
+`String[] getSendingStatus(String sessionId, long mailingId, long recipientListId, String recipientId)
+`

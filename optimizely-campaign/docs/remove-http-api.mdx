@@ -1,0 +1,42 @@
+---
+title: "remove"
+description: "Removes a recipient from a recipient list in Optimizely Campaign."
+---
+
+> 👍
+> 
+> Tip
+> 
+> This operation does not unsubscribe a recipient. To do that, use the [**unsubscribe**](https://world.optimizely.com/documentation/developer-guides/campaign/http-api/services-and-operations/unsubscribe/) operation.
+
+This operation is available in the mail and the form service.
+
+**Parameters**
+
+| Name          | Mandatory | Default value | Description                                                                                                                                                                                                        |
+| ------------- | --------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| bmRecipientId | yes/no    | –             | The ID of the new recipient (usually the email address). If used in the mail service, this parameter is not mandatory (the email address is sent anyway). If used in the form service, the parameter is mandatory. |
+
+**Return values**
+
+| Value          | Description                                                                                                                                                                                                                                                                                                                                                                                 |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ok             | Recipient successfully removed from the recipient list                                                                                                                                                                                                                                                                                                                                      |
+| ok: not\_found | Only with **bmVerbose=true**: The recipient could not be found in the recipient list.                                                                                                                                                                                                                                                                                                       |
+| wrong\_tag     | Authorization failed.Error codes:\- 501=wrong authentication tag\- 502=wrong request IP\- 503=wrong request method\- 504=wrong protocol\- 505=wrong recipient list\- 506=wrong action\- 507=action not foundIf a verification of the authentication tag does not solve the problem, contact [customer support](/cdn-cgi/l/email-protection#d5a6a0a5a5baa7a195baa5a1bcb8bcafb0b9acfbb6bab8). |
+| missing\_id    | When using the form service: No **bmRecipientId** was transmitted.                                                                                                                                                                                                                                                                                                                          |
+| system\_error  | A general error occurred.                                                                                                                                                                                                                                                                                                                                                                   |
+
+**Example 1**
+
+`.../form/.../remove?bmRecipientId=john.smith%40example.com
+`
+
+The recipient with the ID [\[email protected\]\_](/cdn-cgi/l/email-protection#efb085808781c19c82869b87af8a978e829f838ac18c8082b0) is removed from the recipient list. This recipient list is identified by the authorization code.
+
+**Example 2**
+
+`.../mail/.../remove?bmUrl=http://www.example.com
+`
+
+The recipient of the email is removed from the recipient list to which the mailing was sent. Then, the recipient is forwarded to _[www.example.com](http://www.example.com)_.

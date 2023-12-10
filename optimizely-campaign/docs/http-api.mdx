@@ -1,0 +1,17 @@
+---
+title: "HTTP API"
+description: "Execute the most common functions with an HTTP request."
+---
+
+If a user clicks a button or a link on a website or in an email (such as **Send registration**), a specific URL is called and the parameters are submitted. This URL contains an action to be executed (such as `sendEventMail`) and further parameters (such as recipient ID, mailing ID). The API server reads these parameters and calls the requested action.
+
+Use the HTTP API to integrate online forms, for example registration forms for new subscribers. It it also suitable to send triggered emails, such as order confirmations or invoices. The following functions can be used with the HTTP API:
+
+* Create new recipients
+* Send triggered emails
+* Blacklist recipients
+* Unsubscribe recipients
+
+### Modifications since the previous version
+
+The `bmOptinFrequencyLimit` parameter was added to the [subscribe](/optimizely-campaign/docs/subscribe) operation.

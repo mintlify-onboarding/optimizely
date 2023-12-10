@@ -1,0 +1,24 @@
+---
+title: "getSentRecipientCount"
+description: "Counts the recipients to whom a mailing was successfully sent in Optimizely Campaign."
+---
+
+**Type**: int
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+Number of recipients to whom a mailing was successfully sent
+
+Returns 0 if a mailing has not been started yet.
+
+**Code structure**
+
+`int getSentRecipientCount(String sessionId, long mailingId)
+`

@@ -1,0 +1,25 @@
+---
+title: "containsAll"
+description: "Queries whether multiple recipients are contained in an unsubscribe list in Optimizely Campaign."
+---
+
+**Type**: Boolean\[ \]
+
+**Parameters**
+
+| Name         | Type        | Value                 |
+| ------------ | ----------- | --------------------- |
+| sessionId    | String      | ID of the session     |
+| recipientIds | String\[ \] | IDs of the recipients |
+
+**Return values**
+
+For each recipient:
+
+* true: Recipient is found on at least one unsubscribe list
+* false: Recipient is not found on any unsubscribe list
+
+**Code structure**
+
+`boolean[] containsAll(String sessionId, String[] recipientIds)
+`

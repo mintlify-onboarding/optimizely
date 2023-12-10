@@ -1,0 +1,21 @@
+---
+title: "setProperty"
+description: "Defines the value of a specific mailing property in Optimizely Campaign."
+---
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value                                                                                                     |
+| --------- | ------ | --------------------------------------------------------------------------------------------------------- |
+| sessionId | String | ID of the session                                                                                         |
+| mailingId | long   | ID of the mailing                                                                                         |
+| Name      | String | Name of the mailing property                                                                              |
+| Value     | String | Value that has to be setThe value will be set as "as is"; i.e., no tracking link conversion etc. is done. |
+
+**Return values**
+
+* **Code structure**  
+`void setProperty(String sessionId, long mailingId, String name, String value)  
+`

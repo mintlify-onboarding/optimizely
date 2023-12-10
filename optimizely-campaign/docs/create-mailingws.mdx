@@ -1,0 +1,36 @@
+---
+title: "create"
+description: "Creates a mailing in Optimizely Campaign."
+---
+
+You must invoke the [setContent](/optimizely-campaign/docs/setcontent) and [setSubject](/optimizely-campaign/docs/setsubject) etc. methods afterwards to create a valid and meaningful mailing. The following default values are assumed:
+
+* [**Content**](/optimizely-campaign/docs/setcontent): empty (text and HTML)
+* [**Subject**](/optimizely-campaign/docs/setsubject): empty
+* [**Open tracking**](/optimizely-campaign/docs/setopentrackingenabled): disabled
+* [**Click tracking**](/optimizely-campaign/docs/setclicktrackingenabled): disabled
+* **Attachments**: none
+
+**Type**: long
+
+**Parameters**
+
+| Name              | Type      | Value                                                                                                                                     |
+| ----------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId         | String    | ID of the session                                                                                                                         |
+| mailingType       | String    | Type of the mailing (regular, event, confirmation, template)                                                                              |
+| Name              | String    | Name of the mailing                                                                                                                       |
+| mimeType          | String    | MIME type of the mailing (text/plain, text/html, multipart/alternative)                                                                   |
+| recipientListIds  | long\[ \] | IDs of the recipient lists used for the mailing                                                                                           |
+| senderEmailPrefix | String    | The given value is prefixed to the sending domain configured for this client.Examples: info, newsletter or john.                          |
+| senderName        | String    | Name of the senderExamples: My Company, John Doe, Newsletter                                                                              |
+| charset           | String    | Character set to be used for all contents (subject + body) in ISO namesIf set to null, the client's default (usually ISO-8859-1) is used. |
+
+**Return values**
+
+ID of the created mailing
+
+**Code structure**
+
+`long create(String sessionId, String mailingType, String name, String mimeType, long[] recipientListIds, String senderEmailPrefix, String senderName, String charset)
+`

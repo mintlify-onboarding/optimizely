@@ -1,0 +1,22 @@
+---
+title: "removeByRecipientList"
+description: "Removes a recipient from a recipient list-based unsubscribe list."
+---
+
+If the client is configured for a client-wide unsubscribe list, this method does exactly the same as the [remove](/optimizely-campaign/docs/remove-unsubscribews) method.
+
+**Type**: void
+
+**Parameters**
+
+| Name            | Type   | Value                    |
+| --------------- | ------ | ------------------------ |
+| sessionId       | String | ID of the session        |
+| recipientListId | long   | ID of the recipient list |
+| recipientId     | String | ID of the recipient      |
+
+**Return values**
+
+* **Code structure**  
+`void removeByRecipientList(String sessionId, long recipientListId, String recipientId)  
+`

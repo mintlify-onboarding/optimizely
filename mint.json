@@ -1,0 +1,403 @@
+{
+    "name": "Optimizely",
+    "logo": {
+      "light": "/logo/light.png",
+      "dark": "/logo/dark.png"
+    },
+    "backgroundImage": "/background.png",
+    "favicon": "/favicon.png",
+    "colors": {
+      "primary": "#0037FF",
+      "light": "#5F82FF",
+      "dark": "#0037FF",
+      "anchors": {
+        "from": "#0936ff",
+        "to": "#811fff"
+      }
+    },
+    "topbarCtaButton": {
+      "name": "Log In",
+      "url": "https://login.optimizely.com/oauth2/default/v1/authorize?client_id=0oa6iqmkqc6tAx4Ac697&code_challenge=7DoU79XMT0xg7uEhsZjYA3S1dlQXM3SBlGC_dhwkwCw&code_challenge_method=S256&nonce=zN46lkQsyNbN3ZVzlz6yD63KIh0VG6XCM17OWHX0liYLIA3uPYuTgXOWIFOQ2UOK&redirect_uri=https%3A%2F%2Fhome.optimizely.com%2Fcallback&response_type=code&state=cokJjpKyg8A5BdI1ioiS0qlaALzesUnsEy7kE25HluUKncSrieeiJ0FW9qsSbjck&scope=openid%20profile%20email%20offline_access%20idx_instancepermissions"
+    },
+    "topbarLinks": [
+      {
+        "name": "Get Started",
+        "url": "https://www.optimizely.com/get-started/"
+      }
+    ],
+    "anchors": [
+      {
+        "name": "GitHub",
+        "icon": "github",
+        "url": "https://github.com/episerver"
+      },
+      {
+        "name": "Dev Community",
+        "icon": "people",
+        "url": "https://optimizely-community.slack.com/join/shared_invite/zt-u3381bmd-XBhmbJPFoydyp7iF7raOkg#/shared-invite/email"
+      },
+      {
+        "name": "Doc Feedback",
+        "icon": "github",
+        "url": "https://support.optimizely.com/hc/en-us/requests/new?ticket_form_id=1900000400067"
+      }
+    ],
+    "navigation": [
+        {
+            "group": "Setting Up Your Domain",
+            "pages": [
+              "optimizely-campaign/docs/setting-up-a-domain"
+            ]
+          },
+          {
+            "group": "Rest API",
+            "pages": [
+              "optimizely-campaign/docs/rest-api",
+              "optimizely-campaign/docs/getting-started"
+            ]
+          },
+          {
+            "group": "HTTP API",
+            "pages": [
+              "optimizely-campaign/docs/http-api",
+              "optimizely-campaign/docs/introduction-to-http-api",
+              "optimizely-campaign/docs/security",
+              "optimizely-campaign/docs/http-basics"
+            ]
+          },
+          {
+            "group": "Assets",
+            "pages": [
+              "api-reference/assets/get-the-total-number-of-images",
+              "api-reference/assets/get-information-about-all-images",
+              "api-reference/assets/upload-an-image",
+              "api-reference/assets/get-information-about-an-image",
+              "api-reference/assets/update-the-image-name",
+              "api-reference/assets/delete-an-image"
+            ]
+          },
+          {
+            "group": "Attachments",
+            "pages": [
+              "api-reference/attachments/get-the-total-number-of-attachments",
+              "api-reference/attachments/get-information-about-all-attachments",
+              "api-reference/attachments/create-an-attachment",
+              "api-reference/attachments/get-the-content-of-an-uploaded-attachment",
+              "api-reference/attachments/update-the-content-of-an-uploaded-attachment",
+              "api-reference/attachments/get-information-about-an-attachment",
+              "api-reference/attachments/update-attachment-information",
+              "api-reference/attachments/delete-an-attachment"
+            ]
+          },
+          {
+            "group": "Personalized Attachments",
+            "pages": [
+              "api-reference/personalized-attachments/create-a-personalized-attachment"
+            ]
+          },
+          {
+            "group": "Blocklist entries",
+            "pages": [
+              "api-reference/blocklist-entries/check-whether-an-address-is-blocklisted",
+              "api-reference/blocklist-entries/get-the-total-number-of-blocklist-entries",
+              "api-reference/blocklist-entries/get-information-about-all-blocklist-entries",
+              "api-reference/blocklist-entries/create-a-blocklist-entry",
+              "api-reference/blocklist-entries/delete-multiple-blocklist-entries",
+              "api-reference/blocklist-entries/get-information-about-a-blocklist-entry",
+              "api-reference/blocklist-entries/delete-a-blocklist-entry"
+            ]
+          },
+          {
+            "group": "Confirmations",
+            "pages": [
+              "api-reference/confirmations/get-information-about-all-confirmation-mailings",
+              "api-reference/confirmations/create-a-confirmation-mail",
+              "api-reference/confirmations/get-information-about-a-confirmation-mailing",
+              "api-reference/confirmations/delete-a-confirmation-mailing",
+              "api-reference/confirmations/update-a-mailing",
+              "api-reference/confirmations/get-the-content-of-a-mailing-email",
+              "api-reference/confirmations/get-information-about-the-sending-status-of-all-recipients-of-a-test-mailing",
+              "api-reference/confirmations/get-information-about-a-tracking-link-of-a-mailing",
+              "api-reference/confirmations/update-the-tracking-link-configuration-of-a-mailing",
+              "api-reference/confirmations/get-information-about-all-tracking-links-of-a-mailing",
+              "api-reference/confirmations/get-information-about-the-tracking-configuration-of-a-mailing",
+              "api-reference/confirmations/update-the-tracking-configuration-of-a-mailing",
+              "api-reference/confirmations/get-information-about-a-\"recipients\"-node",
+              "api-reference/confirmations/create-or-update-a-\"recipients\"-node",
+              "api-reference/confirmations/get-information-about-the-sending-status-of-all-recipients-of-a-test-mailing-1",
+              "api-reference/confirmations/send-a-test-mailing",
+              "api-reference/confirmations/get-a-campaign-report",
+              "api-reference/confirmations/start-a-confirmation-mailing",
+              "api-reference/confirmations/stop-a-confirmation-mailing"
+            ]
+          },
+          {
+            "group": "Smart Campaigns",
+            "pages": [
+              "api-reference/smart-campaigns/get-information-about-all-smart-campaigns",
+              "api-reference/smart-campaigns/create-or-copy-a-smart-campaign",
+              "api-reference/smart-campaigns/activate-a-smart-campaign",
+              "api-reference/smart-campaigns/deactivate-a-smart-campaign",
+              "api-reference/smart-campaigns/get-information-about-a-smart-campaign",
+              "api-reference/smart-campaigns/update-the-name-of-a-smart-campaign",
+              "api-reference/smart-campaigns/delete-a-smart-campaign",
+              "api-reference/smart-campaigns/get-information-about-a-\"ab-test\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/create-or-update-an-\"ab-test\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/delete-an-\"ab-test\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/get-information-about-a-connection-from-an-\"ab-test\"-node",
+              "api-reference/smart-campaigns/create-or-update-a-connection-from-a-\"ab-test\"-node",
+              "api-reference/smart-campaigns/delete-a-connection-from-a-\"ab-test\"-node-to-another-node",
+              "api-reference/smart-campaigns/get-information-about-all-connections-from-an-\"ab-test\"-node",
+              "api-reference/smart-campaigns/delete-all-connections-from-the-\"ab-test\"-node-to-other-nodes",
+              "api-reference/smart-campaigns/get-analysis-data-of-a-smart-campaign",
+              "api-reference/smart-campaigns/schedule-new-recipient-analysis-for-a-smart-campaign",
+              "api-reference/smart-campaigns/cancel-a-running-recipient-analysis-of-a-smart-campaign",
+              "api-reference/smart-campaigns/get-information-about-a-\"block\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/create-or-update-a-\"block\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/delete-a-\"block\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/get-information-about-a-\"limit\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/create-or-update-a-\"limit\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/delete-a-\"limit\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/get-information-about-all-mailings-of-a-smart-campaign",
+              "api-reference/smart-campaigns/create-a-mailing",
+              "api-reference/smart-campaigns/get-information-about-a-mailing",
+              "api-reference/smart-campaigns/update-a-mailing",
+              "api-reference/smart-campaigns/delete-a-mailing",
+              "api-reference/smart-campaigns/get-the-content-of-a-mailing-email",
+              "api-reference/smart-campaigns/update-the-content-of-a-mailing",
+              "api-reference/smart-campaigns/delete-the-content-of-a-mailing-email",
+              "api-reference/smart-campaigns/get-information-about-the-sending-status-of-all-recipients-of-a-test-mailing",
+              "api-reference/smart-campaigns/send-a-test-mailing",
+              "api-reference/smart-campaigns/get-information-about-a-tracking-link-of-a-mailing",
+              "api-reference/smart-campaigns/update-the-tracking-link-configuration-of-a-mailing",
+              "api-reference/smart-campaigns/get-information-about-all-tracking-links-of-a-mailing",
+              "api-reference/smart-campaigns/get-information-about-the-tracking-configuration-of-a-mailing",
+              "api-reference/smart-campaigns/update-the-tracking-configuration-of-a-mailing",
+              "api-reference/smart-campaigns/pause-a-mailing",
+              "api-reference/smart-campaigns/start-a-mailing",
+              "api-reference/smart-campaigns/stop-a-mailing",
+              "api-reference/smart-campaigns/get-information-about-a-\"recipients\"-node",
+              "api-reference/smart-campaigns/create-or-update-a-\"recipients\"-node",
+              "api-reference/smart-campaigns/get-information-about-all-\"wait\"-nodes-of-a-smart-campaign",
+              "api-reference/smart-campaigns/create-a-new-\"wait\"-node-in-a-smart-campaign",
+              "api-reference/smart-campaigns/get-information-about-a-\"wait\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/update-a-\"wait\"-node-in-a-smart-campaign",
+              "api-reference/smart-campaigns/delete-a-\"wait\"-node-in-a-smart-campaign",
+              "api-reference/smart-campaigns/get-information-about-all-\"target-groups\"-nodes-of-a-smart-campaign",
+              "api-reference/smart-campaigns/create-or-update-a-\"target-groups\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/delete-all-\"target-groups\"-nodes-of-a-smart-campaign",
+              "api-reference/smart-campaigns/get-information-about-a-\"target-groups\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/delete-a-\"target-groups\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/get-information-about-all-\"throttle\"-nodes-of-a-smart-campaign",
+              "api-reference/smart-campaigns/create-a-new-\"throttle\"-node-in-a-smart-campaign",
+              "api-reference/smart-campaigns/get-information-about-a-\"throttle\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/update-a-\"throttle\"-node-of-a-smart-campaign",
+              "api-reference/smart-campaigns/delete-a-\"throttle\"-node-in-a-smart-campaign",
+              "api-reference/smart-campaigns/pause-a-smart-campaign",
+              "api-reference/smart-campaigns/get-a-campaign-report",
+              "api-reference/smart-campaigns/start-a-smart-campaign",
+              "api-reference/smart-campaigns/cancel-a-smart-campaign"
+            ]
+          },
+          {
+            "group": "Transactional mails",
+            "pages": [
+              "api-reference/transactional-mails/get-information-about-all-transactional-mails",
+              "api-reference/transactional-mails/create-a-transactional-mail",
+              "api-reference/transactional-mails/get-information-about-a-transactional-mail",
+              "api-reference/transactional-mails/delete-a-transactional-mail",
+              "api-reference/transactional-mails/update-a-mailing",
+              "api-reference/transactional-mails/get-the-content-of-a-mailing-email",
+              "api-reference/transactional-mails/update-the-content-of-a-mailing",
+              "api-reference/transactional-mails/get-information-about-the-sending-status-of-all-recipients-of-a-test-mailing",
+              "api-reference/transactional-mails/get-information-about-a-tracking-link-of-a-mailing",
+              "api-reference/transactional-mails/update-the-tracking-link-configuration-of-a-mailing",
+              "api-reference/transactional-mails/get-information-about-all-tracking-links-of-a-mailing",
+              "api-reference/transactional-mails/get-information-about-the-tracking-configuration-of-a-mailing",
+              "api-reference/transactional-mails/update-the-tracking-configuration-of-a-mailing",
+              "api-reference/transactional-mails/get-information-about-a-\"recipients\"-node",
+              "api-reference/transactional-mails/create-or-update-a-\"recipients\"-node",
+              "api-reference/transactional-mails/get-information-about-the-sending-status-of-all-recipients-of-a-test-mailing-1",
+              "api-reference/transactional-mails/send-a-test-mailing",
+              "api-reference/transactional-mails/send-a-transactional-mail",
+              "api-reference/transactional-mails/get-a-campaign-report",
+              "api-reference/transactional-mails/start-a-transactional-mail",
+              "api-reference/transactional-mails/stop-a-transactional-mail",
+              "api-reference/transactional-mails/get-the-sending-status-of-a-sent-transactional-mail"
+            ]
+          },
+          {
+            "group": "Click profiles",
+            "pages": [
+              "api-reference/click-profiles/get-information-about-all-click-profiles",
+              "api-reference/click-profiles/create-a-new-click-profile",
+              "api-reference/click-profiles/get-links-a-click-profile-is-assigned-to",
+              "api-reference/click-profiles/assign-links-to-a-click-profile",
+              "api-reference/click-profiles/unassign-specific-links-from-a-click-profile",
+              "api-reference/click-profiles/get-information-about-a-click-profile",
+              "api-reference/click-profiles/update-a-click-profile"
+            ]
+          },
+          {
+            "group": "Coupon blocks",
+            "pages": [
+              "api-reference/coupon-blocks/get-information-about-all-coupon-blocks",
+              "api-reference/coupon-blocks/create-a-new-coupon-block",
+              "api-reference/coupon-blocks/get-information-about-a-coupon-block",
+              "api-reference/coupon-blocks/delete-a-coupon-block",
+              "api-reference/coupon-blocks/get-information-about-coupon-codes",
+              "api-reference/coupon-blocks/create-a-list-of-coupon-codes",
+              "api-reference/coupon-blocks/delete-coupon-codes",
+              "api-reference/coupon-blocks/get-information-about-a-coupon-code",
+              "api-reference/coupon-blocks/invalidate-a-coupon-code",
+              "api-reference/coupon-blocks/delete-a-coupon-code",
+              "api-reference/coupon-blocks/get-all-mailing-ids-a-coupon-block-is-assigned-to"
+            ]
+          },
+          {
+            "group": "Custom blocklists",
+            "pages": [
+              "api-reference/custom-blocklists/get-information-about-all-custom-blocklists",
+              "api-reference/custom-blocklists/create-a-custom-blocklist",
+              "api-reference/custom-blocklists/get-information-about-all-entries-of-a-custom-blocklist",
+              "api-reference/custom-blocklists/create-custom-blocklist-entries",
+              "api-reference/custom-blocklists/delete-all-entries-from-a-custom-blocklist",
+              "api-reference/custom-blocklists/get-information-about-a-custom-blocklist-entry",
+              "api-reference/custom-blocklists/update-a-custom-blocklist-entry",
+              "api-reference/custom-blocklists/delete-a-custom-blocklist-entry",
+              "api-reference/custom-blocklists/get-information-about-a-custom-blocklist",
+              "api-reference/custom-blocklists/update-a-custom-blocklist"
+            ]
+          },
+          {
+            "group": "Scheduled jobs",
+            "pages": [
+              "api-reference/scheduled-jobs/get-information-about-all-configured-scheduled-jobs",
+              "api-reference/scheduled-jobs/get-information-about-all-running-scheduled-jobs"
+            ]
+          },
+          {
+            "group": "Folders",
+            "pages": [
+              "api-reference/folders/get-information-about-all-folders",
+              "api-reference/folders/create-a-folder",
+              "api-reference/folders/assign-to-an-entity",
+              "api-reference/folders/get-information-about-a-folder",
+              "api-reference/folders/update-a-folder",
+              "api-reference/folders/delete-a-folder",
+              "api-reference/folders/unassign-from-an-entity"
+            ]
+          },
+          {
+            "group": "Mail archive",
+            "pages": [
+              "api-reference/mail-archive/get-information-about-an-archived-mailing",
+              "api-reference/mail-archive/get-information-about-all-archived-mailings",
+              "api-reference/mail-archive/get-the-content-of-an-archived-mailing",
+              "api-reference/mail-archive/get-compressed-file-with-archived-mailing-contents"
+            ]
+          },
+          {
+            "group": "Mail ID",
+            "pages": [
+              "api-reference/mail-id/get-information-about-a-mail-id"
+            ]
+          },
+          {
+            "group": "Message templates",
+            "pages": [
+              "api-reference/message-templates/get-information-about-all-message-templates",
+              "api-reference/message-templates/create-or-copy-a-message-template",
+              "api-reference/message-templates/get-information-about-a-message-template",
+              "api-reference/message-templates/update-a-message-template",
+              "api-reference/message-templates/delete-a-message-template",
+              "api-reference/message-templates/test-a-message-template"
+            ]
+          },
+          {
+            "group": "Opt-in processes",
+            "pages": [
+              "api-reference/opt-in-processes/get-information-about-all-opt-in-processes",
+              "api-reference/opt-in-processes/create-an-opt-in-process",
+              "api-reference/opt-in-processes/get-information-about-an-opt-in-process",
+              "api-reference/opt-in-processes/update-an-opt-in-process"
+            ]
+          },
+          {
+            "group": "Recipient lists",
+            "pages": [
+              "api-reference/recipient-lists/get-information-about-all-recipient-lists",
+              "api-reference/recipient-lists/copy-a-recipient-list",
+              "api-reference/recipient-lists/get-information-about-a-recipient-list",
+              "api-reference/recipient-lists/update-a-recipient-list",
+              "api-reference/recipient-lists/get-the-attribute-names-of-a-recipient-list"
+            ]
+          },
+          {
+            "group": "Recipients",
+            "pages": [
+              "api-reference/recipients/get-information-about-all-recipients-in-a-recipient-list",
+              "api-reference/recipients/add-multiple-recipients-to-a-recipient-list",
+              "api-reference/recipients/add-a-recipient-to-a-recipient-list",
+              "api-reference/recipients/delete-recipients-from-a-recipient-list",
+              "api-reference/recipients/get-the-total-number-of-recipients-in-a-recipient-list",
+              "api-reference/recipients/get-the-total-number-of-recipients-for-distinct-attribute-values",
+              "api-reference/recipients/get-all-distinct-attribute-values-of-a-recipient",
+              "api-reference/recipients/update-attribute-values-of-multiple-recipients",
+              "api-reference/recipients/update-attribute-values-of-recipients-filtered-by-a-target-group",
+              "api-reference/recipients/get-information-about-a-recipient",
+              "api-reference/recipients/update-attribute-values-of-a-recipient",
+              "api-reference/recipients/delete-a-recipient-from-a-recipient-list",
+              "api-reference/recipients/check-status-optin-of-given-recipient",
+              "api-reference/recipients/check-whether-a-recipient-is-valid",
+              "api-reference/recipients/create-a-tracking-opt-out",
+              "api-reference/recipients/delete-a-tracking-opt-out",
+              "api-reference/recipients/check-whether-a-recipient-is-valid-in-multiple-recipient-lists",
+              "api-reference/recipients/delete-the-recipient-history",
+              "api-reference/recipients/update-a-recipient-id"
+            ]
+          },
+          {
+            "group": "Responses",
+            "pages": [
+              "api-reference/responses/get-the-total-number-of-hard-or-soft-bounces-of-a-recipient",
+              "api-reference/responses/delete-hard-and-soft-bounces",
+              "api-reference/responses/get-information-about-whether-a-recipient-has-exceeded-the-hard-or-the-soft-bounce-threshold",
+              "api-reference/responses/get-the-maximum-number-of-allowed-bounces-of-a-recipient",
+              "api-reference/responses/get-information-about-all-responses-of-a-recipient"
+            ]
+          },
+          {
+            "group": "Unsubscribes",
+            "pages": [
+              "api-reference/unsubscribes/get-the-total-number-of-unsubscribes",
+              "api-reference/unsubscribes/get-information-about-all-unsubscribe-entries",
+              "api-reference/unsubscribes/add-recipients-to-the-internal-unsubscribe-list-or-unsubscribe-recipients-max-5000",
+              "api-reference/unsubscribes/remove-one-or-multiple-recipients-from-the-internal-unsubscribe-list"
+            ]
+          },
+          {
+            "group": "Users",
+            "pages": [
+              "api-reference/users/rotate-a-password-please-be-aware-that-after-rotation-it-can-take-some-minutes-until-the-new-password-can-be-used"
+            ]
+          },
+          {
+            "group": "Webhooks",
+            "pages": [
+              "api-reference/webhooks/activate-a-webhook",
+              "api-reference/webhooks/get-information-about-all-webhooks",
+              "api-reference/webhooks/create-a-webhook",
+              "api-reference/webhooks/deactivate-a-webhook",
+              "api-reference/webhooks/update-a-webhook",
+              "api-reference/webhooks/delete-a-webhook",
+              "api-reference/webhooks/verify-a-webhook"
+            ]
+          }
+    ],
+    "footerSocials":
+      {
+          "twitter": "https://twitter.com/Optimizely?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+          "linkedin": "https://www.linkedin.com/company/optimizely/"
+      }
+  }

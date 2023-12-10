@@ -1,0 +1,22 @@
+---
+title: "setRecipientFilterIds"
+description: "Defines target group IDs for a mailing in Optimizely Campaign."
+---
+
+See also [RecipientFilterWebservice](/optimizely-campaign/docs/recipientfilterwebservice).
+
+**Type**: void
+
+**Parameters**
+
+| Name               | Type      | Value                                                                                                                                   |
+| ------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId          | String    | ID of the session                                                                                                                       |
+| mailingId          | long      | ID of the mailing                                                                                                                       |
+| recipientFilterIds | long\[ \] | IDs of the target groupsSet the value to 0 to disable the target groups.**Note:** You cannot use temporary target groups for a mailing. |
+
+**Return values**
+
+* **Code structure**  
+`void setRecipientFilterIds(String sessionId, long mailingId, long[] recipientFilterIds)  
+`

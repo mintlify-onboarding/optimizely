@@ -1,0 +1,23 @@
+---
+title: "isTestRecipientList"
+description: "Queries whether a recipient list is a test recipient list in Optimizely Campaign."
+---
+
+**Type**: Boolean
+
+**Parameters**
+
+| Name            | Type   | Value                    |
+| --------------- | ------ | ------------------------ |
+| sessionId       | String | ID of the session        |
+| recipientListId | long   | ID of the recipient list |
+
+**Return values**
+
+* true: A test recipient list
+* false: Not a test recipient list
+
+**Code structure**
+
+`boolean isTestRecipientList(String sessionId, long recipientListId)
+`

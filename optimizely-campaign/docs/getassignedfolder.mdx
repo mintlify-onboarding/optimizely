@@ -1,0 +1,22 @@
+---
+title: "getAssignedFolder"
+description: "Queries the ID of a folder to which a mailing or target group has been assigned in Optimizely Campaign."
+---
+
+**Type**: long
+
+**Parameters**
+
+| Name              | Type   | Value                             |
+| ----------------- | ------ | --------------------------------- |
+| sessionId         | String | ID of the current session         |
+| mailingOrFilterId | long   | ID of the mailing or target group |
+
+**Return values**
+
+ID of the assigned folder
+
+**Code structure**
+
+`long getAssignedFolder(String sessionId, long mailingOrFilterId)
+`

@@ -1,0 +1,24 @@
+---
+title: "contains"
+description: "Queries whether a recipient already exists in a recipient list in Optimizely Campaign."
+---
+
+**Type**: Boolean
+
+**Parameters**
+
+| Name            | Type   | Value                    |
+| --------------- | ------ | ------------------------ |
+| sessionId       | String | ID of the session        |
+| recipientListId | long   | ID of the recipient list |
+| recipientId     | String | ID of the recipient      |
+
+**Return values**
+
+* true: Recipient already exists
+* false: Recipient does not exist or an entry exists but the opt-in process has not been finished yet (i.e., the double opt-in link has not been clicked)
+
+**Code structure**
+
+`boolean contains(String sessionId, long recipientListId, String recipientId)
+`

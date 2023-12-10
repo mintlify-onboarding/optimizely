@@ -1,0 +1,22 @@
+---
+title: "setClickTrackingEnabled"
+description: "Activates or deactivates click tracking for a mailing of a specific MIME type (click tracking is set separately for the two MIME types) in Optimizely Campaign. Open tracking only affects content of the MIME type text/html."
+---
+
+**Type**: void
+
+**Parameters**
+
+| Name                                              | Type    | Value                                               |
+| ------------------------------------------------- | ------- | --------------------------------------------------- |
+| sessionId                                         | String  | ID of the session                                   |
+| mailingId                                         | long    | ID of the mailing                                   |
+| mimeType                                          | String  | MIME type (text/plain or text/html) of the mailing. |
+| enabled                                           | boolean | true: Activates click tracking for the mailing      |
+| false: Deactivates click tracking for the mailing |         |                                                     |
+
+**Return values**
+
+* **Code structure**  
+`void setClickTrackingEnabled(String sessionId, long mailingId, String mimeType, boolean enabled)  
+`

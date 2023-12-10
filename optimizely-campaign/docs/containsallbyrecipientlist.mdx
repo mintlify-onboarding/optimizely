@@ -1,0 +1,34 @@
+---
+title: "containsAllByRecipientList"
+description: "Queries whether multiple recipients are contained in a recipient list-based unsubscribe list in Optimizely Campaign."
+---
+
+**Prerequisite:** Recipient list-based unsubscribe lists have been created.
+
+> 📘
+> 
+> Note
+> 
+> If only one client-wide unsubscribe list exists, this method does exactly the same as [contains](/optimizely-campaign/docs/contains-unsubscribews).
+
+**Type**: Boolean\[ \]
+
+**Parameters**
+
+| Name            | Type        | Value                    |
+| --------------- | ----------- | ------------------------ |
+| sessionId       | String      | ID of the session        |
+| recipientListId | long        | ID of the recipient list |
+| recipientIds    | String\[ \] | IDs of the recipients    |
+
+**Return values**
+
+For each recipient:
+
+* true: Recipient is found on at least one recipient list-based unsubscribe list
+* false: Recipient is not found on any recipient list-based unsubscribe list
+
+**Code structure**
+
+`boolean[] containsAllByRecipientList(String sessionId, long recipientListId, String[] recipientIds)
+`

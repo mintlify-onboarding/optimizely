@@ -1,0 +1,22 @@
+---
+title: "getCreated"
+description: "Queries the date on which a coupon block was created in Optimizely Campaign."
+---
+
+**Type**: Date
+
+**Parameters**
+
+| Name      | Type   | Value                     |
+| --------- | ------ | ------------------------- |
+| sessionId | String | ID of the current session |
+| blockId   | long   | ID of the coupon block    |
+
+**Return values**
+
+The creation date of the coupon block
+
+**Code structure**
+
+`Date getCreated(String sessionId, long blockId)
+`

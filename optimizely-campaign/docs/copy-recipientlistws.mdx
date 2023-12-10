@@ -1,0 +1,28 @@
+---
+title: "copy"
+description: "Creates a copy of an existing recipient list in Optimizely Campaign."
+---
+
+> 📘
+> 
+> Note
+> 
+> Only the definition of the given recipient list is copied, _not_ the recipients. The created list is empty.
+
+**Type**: long
+
+**Parameters**
+
+| Name            | Type   | Value                                 |
+| --------------- | ------ | ------------------------------------- |
+| sessionId       | String | ID of the session                     |
+| recipientListId | long   | ID of the recipient list to be copied |
+
+**Return values**
+
+ID of the new recipient list
+
+**Code structure**
+
+`long copy(String sessionId, long recipientListId)
+`

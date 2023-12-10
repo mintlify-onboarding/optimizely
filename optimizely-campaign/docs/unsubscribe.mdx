@@ -1,0 +1,41 @@
+---
+title: "unsubscribe"
+description: "Unsubscribes a recipient from a recipient list in Optimizely Campaign."
+---
+
+By default, unsubscribed recipients are not deleted from the list, but marked as unsubscribed.
+
+This operation is available in the mail and the form services.
+
+**Parameters**
+
+| Name          | Mandatory | Default value | Description                                                                                                                                                                                                   |
+| ------------- | --------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bmRecipientId | yes/no    | –             | The ID of the recipient (usually the email address).If used in the mail service, this parameter is not mandatory (the email address is sent anyway). If used in the form service, the parameter is mandatory. |
+| bmMailId      | no        | –             | This ID identifies the recipient to be unsubscribed and the received email. If not transmitted in the form service, the unsubscription is valid, but cannot be assigned to a specific mailing.                |
+| bmRemoveId    | no        | false         | If set to true, the recipient is removed from all recipient lists.**Note**: Recipients contained in test recipient lists and transaction recipient lists cannot be deleted with this parameter.               |
+
+**Return values**
+
+| Value                     | Description                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ok                        | Recipient successfully unsubscribed from recipient list                                                                                                                                                                                                                                                                                                                                     |
+| ok: not\_found            | Only with **bmVerbose=true** and **bmRemoveId=true**: The recipient to be removed was not found in any recipient list.                                                                                                                                                                                                                                                                      |
+| ok: already\_unsubscribed | Only with **bmVerbose=true**: Recipient is already unsubscribed. In this case, the recipient cannot be removed from the recipient list.                                                                                                                                                                                                                                                     |
+| wrong\_tag                | Authorization failed.Error codes:\- 501=wrong authentication tag\- 502=wrong request IP\- 503=wrong request method\- 504=wrong protocol\- 505=wrong recipient list\- 506=wrong action\- 507=action not foundIf a verification of the authentication tag does not solve the problem, contact [customer support](/cdn-cgi/l/email-protection#97e4e2e7e7f8e5e3d7f8e7e3fefafeedf2fbeeb9f4f8fa). |
+| missing\_id               | No **bmRecipientId** was set (mandatory) when using the form service.                                                                                                                                                                                                                                                                                                                       |
+| system\_error             | A general error has occurred                                                                                                                                                                                                                                                                                                                                                                |
+
+**Example 1**
+
+`.../form/.../unsubscribe?bmRecipientId=john.smith%40example.com
+`
+
+Unsubscribes the recipient with the ID [\[email protected\]\_](/cdn-cgi/l/email-protection#6a3500050204441907031e022a0f120b071a060f4409050735) using the form service.
+
+**Example 2**
+
+`.../mail/.../unsubscribe?bmRemoveId=true&bmUrl=http://www.example.com
+`
+
+Unsubscribes the recipient of the newsletter and removes the recipient from all recipient lists. Then, the recipient is forwarded to _[www.example.com](http://www.example.com)_.

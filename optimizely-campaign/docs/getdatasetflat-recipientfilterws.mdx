@@ -1,0 +1,23 @@
+---
+title: "getDataSetFlat"
+description: "Queries the values of each target group in Optimizely Campaign."
+---
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+
+**Return values**
+
+Values of the target groups
+
+To assign the returned values to different target groups, use the [getColumnNames](/optimizely-campaign/docs/getcolumnnames-recipientfilterws) method. With this method, you can determine the number of values of a target group.
+
+**Code structure**
+
+`String[] getDataSetFlat(String sessionId)
+`

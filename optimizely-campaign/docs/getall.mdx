@@ -1,0 +1,25 @@
+---
+title: "getAll"
+description: "Queries all recipients that are contained in a specific recipient list in Optimizely Campaign."
+---
+
+This method can be replaced by the .NET replacement method [getAllFlat](/optimizely-campaign/docs/getallflat).
+
+**Type**: String\[ \] \[ \]
+
+**Parameters**
+
+| Name            | Type        | Value                                                      |
+| --------------- | ----------- | ---------------------------------------------------------- |
+| sessionId       | String      | ID of the session                                          |
+| recipientListId | long        | ID of the recipient list                                   |
+| attributeNames  | String\[ \] | Names of the fields, whose recipient data shall be queried |
+
+**Return values**
+
+All recipients that are contained in the recipient list
+
+**Code structure**
+
+`String[][] getAll(String sessionId, long recipientListId, String[] attributeNames)
+`

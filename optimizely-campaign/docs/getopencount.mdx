@@ -1,0 +1,23 @@
+---
+title: "getOpenCount"
+description: "Counts the opens of a mailing in Optimizely Campaign."
+---
+
+**Type**: int
+
+**Parameters**
+
+| Name      | Type    | Value                                                                                                                                       |
+| --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId | String  | ID of the session                                                                                                                           |
+| mailingId | long    | ID of the mailing                                                                                                                           |
+| unique    | boolean | \- true – Double counts of recipients that opened the mailing several times are removed.\- false – The overall number of opens is returned. |
+
+**Return values**
+
+Number of opens of the mailing
+
+**Code structure**
+
+`int getOpenCount(String sessionId, long mailingId, boolean unique)
+`

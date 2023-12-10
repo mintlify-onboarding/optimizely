@@ -1,0 +1,22 @@
+---
+title: "changeRecipientId2"
+description: "Changes the ID of a recipient in Optimizely Campaign."
+---
+
+This method is especially useful when email addresses are the primary key of your recipient list. If you change a recipient's ID, all historical information is preserved and assigned to the new ID.
+
+**Type**: void
+
+**Parameters**
+
+| Name           | Type   | Value                   |
+| -------------- | ------ | ----------------------- |
+| sessionId      | String | ID of the session       |
+| recipientId    | String | Old ID of the recipient |
+| newRecipientId | String | New ID of the recipient |
+
+**Return values**
+
+* **Code structure**  
+`void changeRecipientId2(String sessionId, String recipientId, String newRecipientId)  
+`

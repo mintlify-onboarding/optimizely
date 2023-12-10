@@ -1,0 +1,27 @@
+---
+title: "getAttributeNames"
+description: "Queries the names of all attributes a recipient in a recipient list might have in Optimizely Campaign."
+---
+
+The names of the attributes are returned according to the given locale.
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name            | Type   | Value                                 |
+| --------------- | ------ | ------------------------------------- |
+| sessionId       | String | ID of the session                     |
+| recipientListId | long   | ID of the recipient list              |
+| locale          | String | Must be any locale like de or en etc. |
+
+**Return values**
+
+Names of all attributes a recipient may have in the recipient list
+
+If a language is not supported, the default values are returned.
+
+**Code structure**
+
+`String[] getAttributeNames(String sessionId, long recipientListId, String locale)
+`

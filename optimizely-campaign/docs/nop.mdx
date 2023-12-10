@@ -1,0 +1,27 @@
+---
+title: "nop"
+description: "This operation has no function in Optimizely Campaign; it is used to test authorization or forwarding to a URL."
+---
+
+The operation **nop** is available in the mail and the form service.
+
+**Parameters**
+
+| Name          | Mandatory | Default value | Description                |
+| ------------- | --------- | ------------- | -------------------------- |
+| any parameter | no        | –             | For testing purposes only. |
+
+**Return values**
+
+| Value         | Description                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ok            | Operation **nop** successfully performed; i.e., the test was successful.                                                                                                                                                                                                                                                                                                                    |
+| wrong\_tag    | Authorization failed.Error codes:\- 501=wrong authentication tag\- 502=wrong request IP\- 503=wrong request method\- 504=wrong protocol\- 505=wrong recipient list\- 506=wrong action\- 507=action not foundIf a verification of the authentication tag does not solve the problem, contact [customer support](/cdn-cgi/l/email-protection#84f7f1f4f4ebf6f0c4ebf4f0ede9edfee1e8fdaae7ebe9). |
+| system\_error | A general error occurred.                                                                                                                                                                                                                                                                                                                                                                   |
+
+**Example**
+
+`.../mail/.../nop?bmUrl=http://www.example.com
+`
+
+The recipient of the email is forwarded to _[www.example.com](http://www.example.com)_ if the recipient clicks any link.

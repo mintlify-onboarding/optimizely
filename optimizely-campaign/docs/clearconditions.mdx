@@ -1,0 +1,21 @@
+---
+title: "clearConditions"
+description: "Clears the conditions of a target group in Optimizely Campaign."
+---
+
+Afterwards, the target group is no longer valid until you set a new condition with [addAndCondition](/optimizely-campaign/docs/addandcondition) or [addOrCondition](/optimizely-campaign/docs/addorcondition).
+
+**Type**: void
+
+**Parameters**
+
+| Name           | Type   | Value                                                                                                    |
+| -------------- | ------ | -------------------------------------------------------------------------------------------------------- |
+| sessionId      | String | ID of the session                                                                                        |
+| modificationId | String | Identifier created by [beginConditionModification](/optimizely-campaign/docs/beginconditionmodification) |
+
+**Return values**
+
+* **Code structure**  
+`void clearConditions(String sessionId, String modificationId)  
+`

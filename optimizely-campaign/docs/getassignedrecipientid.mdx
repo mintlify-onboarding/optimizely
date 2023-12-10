@@ -1,0 +1,25 @@
+---
+title: "getAssignedRecipientId"
+description: "Queries the recipient ID a coupon code is assigned to in Optimizely Campaign."
+---
+
+Use this method to check whether a coupon code was used by the original recipient (e.g., for non-transferable coupons).
+
+**Type**: String
+
+**Parameters**
+
+| Name      | Type   | Value                     |
+| --------- | ------ | ------------------------- |
+| sessionId | String | ID of the current session |
+| blockId   | long   | ID of the coupon block    |
+| code      | String | Coupon code to be queried |
+
+**Return values**
+
+Recipient ID of the assigned code (in most cases, this is the recipient's email address)
+
+**Code structure**
+
+`String getAssignedRecipientId(String sessionId, long blockId, String code)
+`

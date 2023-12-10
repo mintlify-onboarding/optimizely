@@ -1,0 +1,77 @@
+---
+title: "Integrate into your website"
+description: "Describes a typical example for the form service in Optimizely Campaign."
+---
+
+### Simple registration form
+
+A simple registration form on your website allows users to register for your newsletter. The user enters personal data and submits it to the database. The example uses PHP implementation and consists of two pages: The actual registration page, and a "Thank you page" that opens when the registration is done.
+
+The static site **form.php** generates the form with the input fields and leads to a dynamic site **thank\_you.php**, which transmits the data to the HTTP API.
+
+#### Form page form.php
+
+PHP
+
+`<html>
+    <head>
+      <title>Newsletter registration</title>
+    </head>
+    <body>
+      <form action="thank_you.php" method="post">
+        <p>
+          <b>Salutation:</b>
+          <select name="salutation" id="salutationid">
+            <option value="Mr.">Mr.</option>
+            <option value="Mrs.">Mrs.</option>
+          </select><br>
+          <b>First name:*</b>
+          <input type="text" name="firstname"><br>
+          <b>Last name:*</b>
+          <input type="text" name="lastname"><br>
+          <b>Email:*</b>
+          <input type="text" name="email"><br>
+          <input type="submit" name="send" value="send" class="submit" />
+        </p>
+      </form>
+    </body>
+    </html>
+`
+
+#### Page thank\_you.php
+
+PHP
+
+`<?php
+      $url  = 'https://api.campaign.episerver.net/http/form/registration-S33D/subscribe';
+      $url .= '?bmRecipientId=' . urlencode(utf8_decode($_POST['email']));
+      $url .= '&salutation=' . urlencode(utf8_decode($_POST['salutation']));
+      $url .= '&firstname=' . urlencode(utf8_decode($_POST['firstname']));
+      $url .= '&lastname=' . urlencode(utf8_decode($_POST['lastname']));
+      $result = @file_get_contents($url);
+    ?>
+    <html>
+    <head>
+      <title>Newsletter registration</title>
+    </head>
+    <body>
+      <p>
+      <?php
+        if ($result == 'ok') {
+      ?>
+      <h1>Thank you for your registration.</h1>
+      <?php
+        } else if ($result == 'duplicate') {
+      ?>
+      <h1>You are already registered.</h1>
+      <?php
+        } else {
+      ?>
+      <h1>An error occurred. Please try again.</h1>
+      <?php
+        }
+      ?>
+      <p>
+    </body>
+    </html>
+`

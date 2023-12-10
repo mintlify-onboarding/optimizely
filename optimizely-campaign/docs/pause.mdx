@@ -1,0 +1,21 @@
+---
+title: "pause"
+description: "Pauses a mailing that is in the status SENDING in Optimizely Campaign."
+---
+
+The status can be queried with the [getStatus](/optimizely-campaign/docs/getstatus) method. The mailing must be of the type regular. All other mailings (event, confirmation, template) cannot be paused.
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+* **Code structure**  
+`void pause(String sessionId, long mailingId)  
+`

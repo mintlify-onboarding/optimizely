@@ -1,0 +1,22 @@
+---
+title: "addSplit"
+description: "Converts an existing mailing into a split mailing and assigns this mailing to a master mailing in Optimizely Campaign."
+---
+
+The mailing to be converted must be of the type regular.
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value                                                           |
+| --------- | ------ | --------------------------------------------------------------- |
+| sessionId | String | ID of the session                                               |
+| masterId  | long   | ID of the master mailing to which the split mailing is assigned |
+| childId   | long   | ID of the mailing assigned to the master mailing                |
+
+**Return values**
+
+* **Code structure**  
+`void addSplit(String sessionId, long masterId, long childId)  
+`

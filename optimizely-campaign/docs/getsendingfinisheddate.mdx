@@ -1,0 +1,24 @@
+---
+title: "getSendingFinishedDate"
+description: "Queries the date at which the sending of a mailing finished in Optimizely Campaign."
+---
+
+If the sending is not finished yet, an exception is thrown.
+
+**Type**: Date
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+Time at which the mailing was started
+
+**Code structure**
+
+`Date getSendingFinishedDate(String sessionId, long mailingId)
+`

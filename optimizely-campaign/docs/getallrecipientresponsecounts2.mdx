@@ -1,0 +1,24 @@
+---
+title: "getAllRecipientResponseCounts2"
+description: "Counts the responses of a specific type for multiple recipients in Optimizely Campaign."
+---
+
+**Type**: int\[ \]
+
+**Parameters**
+
+| Name         | Type        | Value                                                                    |
+| ------------ | ----------- | ------------------------------------------------------------------------ |
+| sessionId    | String      | ID of the session                                                        |
+| category     | String      | See [Response categories](/optimizely-campaign/docs/responsewebservice). |
+| recipientIds | String\[ \] | IDs of the recipients                                                    |
+| mailingId    | long        | ID of the mailing                                                        |
+
+**Return values**
+
+For each recipient: Number of responses of the given type for the recipient
+
+**Code structure**
+
+`int[] getAllRecipientResponseCounts2(String sessionId, String category, String[] recipientIds, long mailingId)
+`

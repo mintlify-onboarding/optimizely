@@ -1,0 +1,27 @@
+---
+title: "getAllAssigned"
+description: "Queries all coupon codes of a coupon block that have been used for a mailing in Optimizely Campaign."
+---
+
+A maximum of 1,000 entries can be returned per query.
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name            | Type    | Value                                          |
+| --------------- | ------- | ---------------------------------------------- |
+| sessionId       | String  | ID of the current session                      |
+| blockId         | long    | ID of the coupon block                         |
+| mailingId       | long    | ID of the mailing                              |
+| startEntry      | integer | (optional) Number of the entry to start with   |
+| numberOfEntries | integer | (optional) Maximum number of entries to return |
+
+**Return values**
+
+All coupon codes used in the queried mailing
+
+**Code structure**
+
+`String[] getAllAssigned(String sessionId, long blockId, long mailingId, int startEntry, int numberOfEntries)
+`

@@ -1,0 +1,61 @@
+---
+title: "updatefields"
+description: "Updates recipient data fields in Optimizely Campaign. Field values can be overwritten, added, subtracted, prepended or appended."
+---
+
+This operation is available in the mail and the form service. If you are using the mail service, we recommend to use the system parameter [bmUrl](/optimizely-campaign/docs/http-basics) to avoid that a white page with a status message is displayed to the recipient.
+
+> 📘
+> 
+> Note
+> 
+> Transactional recipient lists (recipient lists that can only be used for API calls) cannot be updated using this operation.
+
+**Parameters**
+
+| Name             | Mandatory | Default value | Description                                                                                                                                                                                                                                                                                                                                               |
+| ---------------- | --------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bmRecipientId    | yes/no    | –             | The ID of the recipient (usually the email address)If used in the mail service, this parameter is not mandatory (the recipient ID is resolved automatically from the bmMailId parameter). If used in the form service, the parameter is mandatory.                                                                                                        |
+| bmNewRecipientId | no        | –             | If you want to change the **bmRecipientId** of a recipient, use this parameter, since the parameter **bmRecipientId** is not a regular data field, but an identifier.**Note:** Changing the ID of a recipient also affects all other recipient lists of the same client. In addition, all historical information is preserved and assigned to the new ID. |
+| bmOverwrite      | no        | false         | If you want to change the **bmRecipientId** of a recipient (see previous parameter) and the specified **bmRecipientId** already exists, an error message is returned and the operation is cancelled. If you set the value of **bmOverwrite** to true, the existing value is overwritten and no error message is returned.                                 |
+| bmSanitize       | no        | –             | Set the value of this parameter to true to convert potentially dangerous characters in the supplied recipient data into their respective HTML equivalents.                                                                                                                                                                                                |
+| ...              | no        | –             | Any parameter that corresponds to a parameter of the recipient list.                                                                                                                                                                                                                                                                                      |
+
+**Return values**
+
+| Value          | Description                                                                                                                                                                                                                                                                                                                                                                                 |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ok             | Recipient data successfully updated                                                                                                                                                                                                                                                                                                                                                         |
+| wrong\_tag     | Authorization failed.Error codes:\- 501=wrong authentication tag\- 502=wrong request IP\- 503=wrong request method\- 504=wrong protocol\- 505=wrong recipient list\- 506=wrong action\- 507=action not foundIf a verification of the authentication tag does not solve the problem, contact [customer support](/cdn-cgi/l/email-protection#a4d7d1d4d4cbd6d0e4cbd4d0cdc9cddec1c8dd8ac7cbc9). |
+| already\_exist | Only with **bmOverwrite=false**: The new recipient ID transmitted using the parameter **bmNewRecipientId** already exists. To avoid this error and overwrite the existing ID, set **bmOverwrite** to true.                                                                                                                                                                                  |
+| missing\_id    | No **bmRecipientId** was transmitted (mandatory) when using the form service.                                                                                                                                                                                                                                                                                                               |
+| not\_found     | No entry with the given **bmRecipientId** was found or an attempt was made to change the recipient ID without providing the **bmNewRecipientId**.                                                                                                                                                                                                                                           |
+| system\_error  | A general error has occurred                                                                                                                                                                                                                                                                                                                                                                |
+
+**Example 1**
+
+`.../mail/.../updatefields?interesse=ja&bmUrl=http://www.example.com
+`
+
+The dataset field **interests** of the recipient is set to yes. Then, the recipient is forwarded to _[www.example.com](http://www.example.com)_.
+
+**Example 2**
+
+`.../mail/.../updatefields?myclicks[add]=3&hasclicked=true&bmUrl=http://www.example.com
+`
+
+The value of the dataset field **myclicks** of the recipient of the email is increased by 3\. The dataset field **hasclicked** is set to true. Then, the recipient is forwarded to _[www.example.com](http://www.example.com)_.
+
+**Example 3**
+
+`.../form/.../updatefields?myclicks[add]=3&hasclicked=true&bmRecipientId=john.smith%40example.com
+`
+
+The value of the dataset field **myclicks** of the recipient with the ID [\[email protected\]\_](/cdn-cgi/l/email-protection#e3bc898c8b8dcd908e8a978ba3869b828e938f86cd808c8ebc) is increased by 3\. The dataset field **hasclicked** is set to true.
+
+**Example 4**
+
+`.../form/.../updatefields?bmRecipientId=john.smith%40example.com&bmNewRecipientId=mark.spencer%40example.com
+`
+
+The ID of the recipient [\[email protected\]\_](/cdn-cgi/l/email-protection#015e6b6e696f2f726c687569416479606c716d642f626e6c5e) is changed to [\[email protected\]\_](/cdn-cgi/l/email-protection#bde2d0dccfd693cecdd8d3ded8cffdd8c5dcd0cdd1d893ded2d0e2).

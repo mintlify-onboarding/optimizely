@@ -1,0 +1,26 @@
+---
+title: "setReplyToName"
+description: "Defines the displayed name for the reply address (reply to) in Optimizely Campaign."
+---
+
+> 📘
+> 
+> Note
+> 
+> The displayed name is not identical with the email address for replies. The reply-to addresses are configured in your client and can be set with the [setReplyToAddress](/optimizely-campaign/docs/setreplytoaddress) method.
+
+**Type**: void
+
+**Parameters**
+
+| Name        | Type   | Value                                           |
+| ----------- | ------ | ----------------------------------------------- |
+| sessionId   | String | ID of the session                               |
+| mailingId   | long   | ID of the mailings                              |
+| replyToName | String | Displayed name for the reply address (reply to) |
+
+**Return values**
+
+* **Code structure**  
+`void MailingWebservice.setReplyToName(String sessionId, long mailingId, String replyToName)  
+`

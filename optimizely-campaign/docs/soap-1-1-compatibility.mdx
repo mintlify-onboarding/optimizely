@@ -1,0 +1,23 @@
+---
+title: "SOAP 1.1 compatibility"
+description: "Describes SOAP 1.1 compatibility in Optimizely Campaign."
+---
+
+The current version of the SOAP API was developed to provide great compatibility with various SOAP-implementations in Optimizely Campaign. For this reason, it uses only simple element types to make sure that the web service can be used with as many SOAP implementations as possible. Additionally, this version of the SOAP API is compatible with .NET.
+
+Methods that return or use multidimensional arrays can be replaced by replacement methods to achieve the same result. These replacement methods are used as a workaround solution for .NET users. Methods using multidimensional arrays are more intuitive to handle.
+
+### Type conversion and formatting rules
+
+In some cases, values are mapped as strings. The following rules apply:
+
+* int/long: decimal representation of the number without any decoration.  
+Example: 10000 or 5or
+* float/double: use the point (.) as decimal sign.  
+Example: 12345.67
+* date/datetime: formatted according to ISO8601: YYYY-MM-DD'T'HH:MM:SS+hh:mm  
+Example: 2001-08-21T18:52:05+02:00 (+02:00 stands for CE(S)T)
+
+### Batch call limits
+
+Some functions take arrays as arguments and thus bulk process multiple elements (example: Recipient.addAll3()). The number of elements allowed per call is restricted to 1000.

@@ -1,0 +1,95 @@
+---
+title: "Mobile Push"
+description: "Describes how to set up Mobile Push for Optimizely Campaign."
+---
+
+A Mobile Push message is delivered from a software application to an app on a mobile device, and appears on the device without a specific request from the recipient.
+
+Use Mobile Push, for example, to inform your customers about the current shipping status and delivery time of an ordered product. Or send appointment reminders.
+
+### Prerequisites
+
+To set up and use Mobile Push with Optimizely Campaign, you need the following:
+
+* An app that you created and manage.
+* A user account for [Firebase Cloud Messaging Service (FCM)](https://firebase.google.com/docs/cloud-messaging/ "Firebase Cloud Messaging (Google.com)"), a free cross-platform solution for sending push messages.
+
+Operating system depending on device:
+
+* Android, version 4.1 and higher
+* iOS, version 10.0 and higher
+
+### Get started
+
+The following information is required for the setup:
+
+* Name of your Optimizely Campaign client.
+* The app’s icon in a PNG file format (512x512 pixels and not greater than 1 MB).
+* The app ID/package name of the app into which the SDK is integrated.
+* Your FCM account’s API key.
+* The sender ID with which the app registers at FCM.
+* The name of your app
+* The desired recipient list fields.
+
+Complete a form from Optimizely customer support for setting up the client, and send it to [\[email protected\]](/cdn-cgi/l/email-protection#4e3d3b3e3e213c3a0e213e3a272327342b2237602d2123).
+
+#### Adapt your app
+
+When the configuration of your client is completed, you need the following resources from Optimizely:
+
+* Depending on device:  
+   * [Android integration](/optimizely-campaign/docs/android-integration) (ZIP file contains the executable JAR file).  
+   * [iOS integration](/optimizely-campaign/docs/ios-integration) (available via CocoaPods).
+* SDK documentation.
+* Optimizely Campaign authentication token that is generated for the app and required for the SDK.
+
+### Recipient list
+
+> 📘
+> 
+> Note
+> 
+> You can only have **one** recipient list per app in Optimizely Campaign.
+
+The SDK is integrated into the app, and when a user installs the app on a device, FCM automatically generates a registration token, when the SDK is initialized on the device. The registration token is a unique key used to identify the user in a recipient list, and is sent to Optimizely Campaign.
+
+The app sends this user registration token together with the following information about the device used:
+
+* Language used
+* Operating system platform
+* Operating system version
+* Operating system SDK
+* App version
+* App SDK
+* Device manufacturer
+* Device model
+* Device brand
+* Product
+* Timezone
+
+The app can also transfer additional client data such as user email address, if the user is registered in the app.
+
+> 🚧
+> 
+> Caution
+> 
+> Email addresses that are transferred with customer data are **not** a valid opt-in for your email marketing. However, you may still use these email addresses for reconciliation with other recipient lists.
+
+### Opt-in
+
+* **Android.** No mandatory opt-in method exists currently for end-devices running Android. App developers are free to offer a setting for receiving messages when installing the push messages app.
+* **iOS.** iOS requires users to consent to receiving messages.
+
+### Opt-out
+
+If users disable push notifications in the app settings or deletes the app, they will no longer receive push notifications.
+
+#### Effects on recipient lists
+
+If the user disables push notifications or deletes the app, the user is not added to the blocklist. However, the user is deleted from the list at the next sending attempt if:
+
+* The push token is the **recipient ID**.
+* The **push media field** is the only media field in the recipient list.
+* The push media field is **required**.
+
+The user is not deleted from mixed recipient lists with several media type fields. Only the push token data is removed from the push media field at the next sending trial.

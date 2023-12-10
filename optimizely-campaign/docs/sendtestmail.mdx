@@ -1,0 +1,38 @@
+---
+title: "sendTestMail"
+description: "Sends a test email to a recipient in Optimizely Campaign."
+---
+
+All mailing types and mailings in any status can be sent with this method.
+
+> 📘
+> 
+> Note
+> 
+> The actual mail is sent asynchronously. That means that you should not delete the recipient immediately after calling this method.
+
+**Type**: int
+
+**Parameters**
+
+| Name            | Type   | Value                                                                                                       |
+| --------------- | ------ | ----------------------------------------------------------------------------------------------------------- |
+| sessionId       | String | ID of the session                                                                                           |
+| mailingId       | long   | ID of the mailing                                                                                           |
+| recipientListId | long   | ID of the recipient listMust be a test recipient list and needs not to be configured for the given mailing. |
+| recipientId     | String | ID of the recipientMust match the target group and not be unsubscribed or blacklisted.                      |
+
+**Return values**
+
+* 0: if the mail has been spooled
+* 1: if the recipient is blocked
+* 2: if the recipient is unsubscribed
+* 3: if the recipient was not found
+* 4: if the recipient list is invalid
+* 5: if the recipient is blocked by the mailing's target group
+* 6: if the recipient has caused too many bounces
+
+**Code structure**
+
+`int sendTestMail(String sessionId, long mailingId, long recipientListId, String recipientId)
+`

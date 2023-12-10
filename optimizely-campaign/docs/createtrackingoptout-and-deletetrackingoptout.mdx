@@ -1,0 +1,45 @@
+---
+title: "createtrackingoptout and deletetrackingoptout"
+description: "Deactivate and reactivate the use of action-based data for a recipient in Optimizely Campaign."
+---
+
+These procedures are available in the form and mail service.
+
+On forms or in emails, you can give recipients the option to reject the use of personally identifiable data. If they do, the recipients are not included in action-based target groups (e.g., "has clicked Link B in Mailing A"), even if they meet the conditions of the target group.
+
+> 📘
+> 
+> Notes on tracking opt-out
+> 
+> * Opens and clicks are still saved anonymously and included in global reports. The open and clicks in a mailing of such a recipient would therefore be counted. However, the recipient is not taken into account if you create a target group containing all recipients of this mailing who opened or clicked it.
+> * All personal action-based data are anonymized from the time of activation. Action data in the recipient history is not retrospectively anonymized.
+
+**Parameter**
+
+| Name          | Mandatory | Default value | Description                                                                                                                                                      |
+| ------------- | --------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bmRecipientId | Yes/No    | –             | The recipient ID (usually the email address) This parameter is not required when using the mail service. This parameter is required when using the form service. |
+
+**Return values**
+
+| Value         | Description                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ok            | \- createtrackingoptout – The use of action-based data was deactivated for the recipient.\- deletetrackingoptout – The use of action-based data was reactivated for the recipient                                                                                                                                                                                                           |
+| vetoed        | The execution of this operation was prevented because it is deactivated. Ask [customer support](https://webhelp.episerver.com/EN/Campaign/7-service-and-support/customer-support.htm "Customer support") to activate this feature.                                                                                                                                                          |
+| wrong\_tag    | Authorization failed.Error codes:\- 501=wrong authentication tag\- 502=wrong request IP\- 503=wrong request method\- 504=wrong protocol\- 505=wrong recipient list\- 506=wrong action\- 507=action not foundIf a verification of the authentication tag does not solve the problem, contact [customer support](/cdn-cgi/l/email-protection#5a292f2a2a35282e1a352a2e333733203f362374393537). |
+| missing\_id   | No **bmRecipientId** was transmitted (mandatory) when using the form service.                                                                                                                                                                                                                                                                                                               |
+| system\_error | A general error has occurred                                                                                                                                                                                                                                                                                                                                                                |
+
+**Example 1**
+
+`.../form/.../[[email protected]](/cdn-cgi/l/email-protection) 
+`
+
+The use of action-based data has been deactivated for the recipient with ID [\[email protected\]\_](/cdn-cgi/l/email-protection#613e0b0e090f4f05040413210419000c110d044f020e0c3e).
+
+**Example 2**
+
+`.../form/.../[[email protected]](/cdn-cgi/l/email-protection) 
+`
+
+The use of action-based data has been reactivated for the recipient with ID [\[email protected\]\_](/cdn-cgi/l/email-protection#a3fcc9cccbcd8dc7c6c6d1e3c6dbc2ced3cfc68dc0cccefc).

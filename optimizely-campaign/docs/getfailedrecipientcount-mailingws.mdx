@@ -1,0 +1,24 @@
+---
+title: "getFailedRecipientCount"
+description: "Counts the recipients that have been skipped during dispatch in Optimizely Campaign."
+---
+
+**Type**: int
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+Number of skipped recipients during dispatch.
+
+This is the previously-calculated number of recipients minus the number of actual recipients. A significant number of skipped recipients indicates a serious configuration problem with the mailing. Returns 0 if a mailing has not been started yet.
+
+**Code structure**
+
+`int getFailedRecipientCount(String sessionId, long mailingId)
+`

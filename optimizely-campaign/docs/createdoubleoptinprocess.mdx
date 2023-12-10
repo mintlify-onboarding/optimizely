@@ -1,0 +1,27 @@
+---
+title: "createDoubleOptinProcess"
+description: "Creates a double opt-in process in Optimizely Campaign."
+---
+
+The mailing must be of the type confirmation.
+
+**Type**: long
+
+**Parameters**
+
+| Name            | Type   | Value                                                                                            |
+| --------------- | ------ | ------------------------------------------------------------------------------------------------ |
+| sessionId       | String | ID of the session                                                                                |
+| Name            | String | Internal name of the opt-in process                                                              |
+| Description     | String | Internal description of the opt-in process                                                       |
+| mailingId       | long   | ID of the mailing that is used for the opt-in process                                            |
+| confirmationUrl | String | URL of confirmation page to which the recipient is directed to complete the registration process |
+
+**Return values**
+
+ID of the opt-in process
+
+**Code structure**
+
+`long createDoubleOptinProcess(String sessionId, String name, String description, long mailingId, String confirmationUrl)
+`

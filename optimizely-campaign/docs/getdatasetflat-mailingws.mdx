@@ -1,0 +1,24 @@
+---
+title: "getDataSetFlat"
+description: "Queries the values of each mailing in Optimizely Campaign."
+---
+
+**Type**: String\[ \]
+
+**Parameters**
+
+| Name        | Type   | Value                                                                         |
+| ----------- | ------ | ----------------------------------------------------------------------------- |
+| sessionId   | String | ID of the session                                                             |
+| mailingType | String | Type of the mailing (regular, event, confirmation, template, campaign, split) |
+
+**Return values**
+
+Values of the mailings
+
+To assign the returned values to different mailings, you can use the method [getColumnNames](/optimizely-campaign/docs/getcolumnnames-mailingws). With this method, you can determine the number of values of a mailing.
+
+**Code structure**
+
+`String[] getDataSetFlat(String sessionId, String MailingType)
+`

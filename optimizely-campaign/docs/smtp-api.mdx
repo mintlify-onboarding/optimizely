@@ -1,0 +1,90 @@
+---
+title: "SMTP API"
+description: "Control the sending of your campaigns, to ensure high deliverability and control recipient lists, while still using your own software for design, distribution and recipient data management."
+---
+
+Benefits using the SMTP API for sending:
+
+* High email delivery rates.
+* Seamless integration into existing system architecture.
+* Mailing development and recipient management using your current system.
+* Deliverability monitoring by Optimizely deliverability experts.
+* Quicker and more reliable distribution, even for large recipient lists.
+
+### Response management
+
+By using SMTP API you can also take advantage of [response management](https://support.optimizely.com/hc/en-us/articles/4413192283021-Responses "Campaign user guide -returned emails") to ensure that blocked email addresses and email addresses that have exceeded a set limit of hard or soft bounces, will no longer receive messages. To use bounce management, installation of the SMTP API requires an email address to which returned emails can be forwarded. This forwarding address is mandatory and may not be part of the sending domain.
+
+Undelivered emails may be due to the following:
+
+1. The server charged with delivery does not recognize the email address (hard bounce) or the mailbox is temporarily unavailable (soft bounce).
+2. The mail server at Optimizely is unable to verify the email header or associate it with a mailing.
+3. The recipient's email address is on a _blocklist_ or it exceeded the bounce limit.
+
+### Install
+
+The following is required for an SMTP API installation:
+
+* A **client** for use by Optimizely Campaign. If you are not an Optimizely customer, [customer support](https://support.optimizely.com/hc/en-us/articles/4413200618253 "Customer support") can install this.
+* The **IP addresses** you use for sending out emails, to be able to activate the interface.
+* **Registration of the email server** as SMTP server, together with authentication, in your distribution system. Customer support will provide this information.
+* A **sending domain** that corresponds to the host name of the sender address. For example, if you send messages from "[\[email protected\]](/cdn-cgi/l/email-protection#6b050e1c18070e1f1f0e192b050e1c18450e130a061b070e45080406)", then the sending domain is "news.example.com". This domain will be delegated to Optimizely.
+
+#### Standard distribution
+
+The requirements previously described apply for standard distributions. Distribution is handled internally via a **mailing ID**. Billing for emails sent occurs monthly and is based on this mailing ID.
+
+#### Distribute through subclients
+
+Agencies sending out messages for different clients may need to bill each client separately. This can be done by addressing different messages through a single ID integrated into the email header. Optimizely will provide the code and relevant ID, and you simply integrate this code into the email header of the messages you wish to send out.
+
+#### What Optimizely needs for the installation 
+
+In order for Optimizely to install the SMTP API, you need to provide the information below. Complete the PDF form you get to set up your client, and send it to [\[email protected\]](/cdn-cgi/l/email-protection#394a4c4949564b4d7956494d505450435c5540175a5654).
+
+* Requested name of your client (or the name of your current Optimizely Campaign client).
+* IP addresses, to be used to access the SMTP interface.
+* Sending domain.
+* Email address for bounce management – note that the host name of this address may not be the same as the sending domain name.
+
+#### What you receive from Optimizely
+
+Once your client and SMTP API has been set up and configured, you will get the following:
+
+* Name of the SMTP server.
+* SMTP authentication.
+* An email header code for distribution via several mailings.
+
+#### What you need to do in your system
+
+Do the following to configure your sending system using the data you received from Optimizely:
+
+1. Delegate the sending domain to Optimizely. See instructions at [Setting up your domain](/optimizely-campaign/docs/setting-up-a-domain).
+2. Add the name of the SMTP server **smtpapi.campaign.episerver.net**, the SMTP authentication and the Port number to your sending software. The standard port is 25 but port 587 is available for AWS projects. To ensure that the authentication data is transmitted encrypted, TLS encryption must be enabled. Optimizely Campaign supports Transport Layer Security (TLS) version 1.2 and higher. The certificate **Sectigo RSA Domain Validation Secure Server CA** of the certification authority **Sectigo** must be known as a trusted certificate in your sending software.
+3. If you are sending via several campaigns, include the email header code in the header of the message drafts.
+4. Once this is completed, you can then begin sending out messages via the SMTP API.
+
+### Rule specifications
+
+When submitting emails for sending to Optimizely Campaign, apply the rules below.
+
+> 🚧
+> 
+> Note
+> 
+> If you do not apply these rules, the sending process will be aborted.
+
+* The size of each email must be below 300 KB.
+* A **message ID header** must be set and must have the pattern [\[email protected\]](/cdn-cgi/l/email-protection#ead9d8828298d9dec7ded882818082ded8aa8f928b879a868fc4898587).
+* The email must contain **exactly one "to" header** with a valid email address.
+* The email must contain **exactly one "from" header** with a valid email address. The domain of this address must be identical with the sending domain configured in your client.
+* **Do not** set a cc or bcc header.
+* The **subject** must be specified.
+* A **maximum** of one "reply-to" header must be set.
+* If you use an email header code (X-bm-mailing) from Optimizely to address a specific mailing, this code must be valid.
+* Envelope "sender" and "from" header must be identical.
+* The domain of the sending address must be identical with the sending domain configured in your client.
+* The organizational part of the **Return-Path header** (envelope-from) must match the organizational part of the **From header**.  
+   * Example domain in Return-Path header: Steps 1 to 4 as described [here](https://docs.developers.optimizely.com/content-cloud/v1.3.0-campaign/docs/setting-up-a-domain "Campaign - Setting up your domain").  
+   * Example domain in From header: Step 5 as described [here](https://docs.developers.optimizely.com/content-cloud/v1.3.0-campaign/docs/setting-up-a-domain "Campaign - Setting up your domain").
+* **Do not** set a return-path.

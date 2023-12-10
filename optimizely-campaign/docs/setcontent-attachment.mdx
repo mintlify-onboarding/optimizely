@@ -1,0 +1,23 @@
+---
+title: "setContent"
+description: "Defines the content for a mailing of a specific MIME type in Optimizely Campaign."
+---
+
+See also [validateContent](/optimizely-campaign/docs/validatecontent).
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value                                              |
+| --------- | ------ | -------------------------------------------------- |
+| sessionId | String | ID of the session                                  |
+| mailingId | long   | ID of the mailing                                  |
+| mimeType  | String | MIME type (text/plain or text/html) of the mailing |
+| content   | String | The content of the mailing (HTML code or text)     |
+
+**Return values**
+
+* **Code structure**  
+`void setContent(String sessionId, long mailingId, String mimeType, String content)  
+`

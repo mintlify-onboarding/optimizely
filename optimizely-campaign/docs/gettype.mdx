@@ -1,0 +1,26 @@
+---
+title: "getType"
+description: "Queries the type of an opt-in process in Optimizely Campaign."
+---
+
+**Type**: String
+
+**Parameters**
+
+| Name           | Type   | Value                    |
+| -------------- | ------ | ------------------------ |
+| sessionId      | String | ID of the session        |
+| optinProcessId | long   | ID of the opt-in process |
+
+**Return values**
+
+Type of the opt-in process:
+
+* single: The registration is confirmed and finished on a page of your website. The recipient is activated without further notification.
+* confirmed: The confirmation email with the recipient information will be sent to the email address of the recipient and the recipient is added to the recipient list.
+* double: A confirmation email with a confirmation link is sent to the recipient. Clicking this link finishes the opt-in process and activates the recipient.
+
+**Code structure**
+
+`String getType(String sessionId, long optinProcessId)
+`

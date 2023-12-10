@@ -1,0 +1,26 @@
+---
+title: "add"
+description: "Adds a coupon code to a coupon block in Optimizely Campaign."
+---
+
+This method is only valid for static coupon blocks. Existing codes will not be deleted.
+
+**Type**: boolean
+
+**Parameters**
+
+| Name      | Type   | Value                                                          |
+| --------- | ------ | -------------------------------------------------------------- |
+| sessionId | String | ID of the current session                                      |
+| blockId   | long   | ID of the coupon block                                         |
+| code      | String | The coupon code you want to add (e.g., 4LFSRKT-4LFSV67-SRTHMR) |
+
+**Return values**
+
+* true: Coupon code was successfully added
+* false: Coupon code could not be added
+
+**Code structure**
+
+`boolean add(String sessionId, long blockId, String code)
+`

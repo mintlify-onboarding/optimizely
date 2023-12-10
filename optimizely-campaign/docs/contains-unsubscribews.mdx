@@ -1,0 +1,25 @@
+---
+title: "contains"
+description: "Queries whether a recipient is contained in an unsubscribe list in Optimizely Campaign."
+---
+
+**Type**: Boolean
+
+**Parameters**
+
+| Name        | Type   | Value        |
+| ----------- | ------ | ------------ |
+| sessionId   | String | Session ID   |
+| recipientId | String | Recipient ID |
+
+**Return values**
+
+* true: Recipient is found on at least one unsubscribe list
+* false: Recipient is not found on any unsubscribe list
+
+**Note**: Usually, only one client-wide unsubscribe list exists.
+
+**Code structure**
+
+`boolean contains(String sessionId, String recipientId)
+`

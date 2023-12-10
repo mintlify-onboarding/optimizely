@@ -1,0 +1,197 @@
+---
+title: "Personalized Attachments - Examples"
+---
+
+> 📘
+> 
+> Note
+> 
+> The Personalized Attachment feature must first be activated by customer support.
+
+Personalized Attachments enable you to send individual attachments to particular recipients in Optimizely Campaign. Before sending, these attachments must be transmitted to Optimizely Campaign using the HTTP-API. The uploaded attachments can be used when sending transactional mails.
+
+### Usage and functionality
+
+Using Personalized Attachments you can, for example, easily and automatically send invoices and orders to your recipients. You can transmit these files (PDF, text file or another file format) to Optimizely Campaign using the [uploadpersonalizedattachments](/optimizely-campaign/docs/uploadpersonalizedattachments) operation. When calling this operation, it is possible to upload one or more attachments using an HTTP request. Therefore, the content of the POST requests consists of a multi-part message of the content type **multipart/form-data**. A correct header of the request can be structured as follows:
+
+Text
+
+`connection: Keep-Alive
+    content-length: 1332
+    content-type: multipart/form-data;
+    boundary=rTEJvW_pp2jgbYyxtf7sa8eXTJ1qUE8eizBIT
+    host: api.campaign.episerver.net
+    user-agent: Apache-HttpClient/4.2 (java 1.5)
+`
+
+Additionally, the attribute boundary is defined here. It is used to separate the content of the individual files in the post request from each other.
+
+The content of the POST request to upload two files looks as follows (abstract):
+
+PHP
+
+`--<Boundary>
+    Content-Disposition: form-data; name="bmFile"; filename="Your_Order.txt"
+    Content-Type: text/plain
+    Content-Transfer-Encoding: binary
+    <Text content>
+    --<Boundary>
+    Content-Disposition: form-data; name="bmFile"; filename="Your_Order.pdf"
+    Content-Type: application/pdf
+    Content-Transfer-Encoding: binary
+    <Content of the PDF file>
+    --<Boundary>--
+`
+
+The attribute filename defines the file name of the attachment. This file name is used when sending the mailing. This way, you can transmit recipient-related file names, such as _Invoice\_John\_Smith.pdf_. If the attachment was successfully uploaded, a token is returned:
+
+`ok: a16dbd294d700428a5704aca679d9a887489cca1098cc1bd7de54bd523a475eb8437813
+`
+
+To use the uploaded attachments in transactional mails, you have to transmit the above mentioned token when calling the [sendtransactionmail](/optimizely-campaign/docs/sendtransactionmail) operation. Such a call might look like this:
+
+`https://api.campaign.episerver.net/http/form/<authorisation code>/
+sendtransactionmail?bmRecipientId=<Email Address>&bmMailingId=<Mailing ID of the special mailing>
+&bmPersonalizedAttachmentsToken=<Returned token>
+`
+
+In this example, the recipient receives the content of the mailing and the attachments referenced by the token.
+
+### Further examples
+
+Below are examples of using the personalized attachment. The <auth\_code> placeholder used in these examples must be replaced with the actual authorization code.
+
+#### Java
+
+In the following example, the file _Your\_Order.pdf_ is uploaded and sent to the recipient with the email address "[\[email protected\]](/cdn-cgi/l/email-protection#aec4c1c6c080ddc3c7dac6eecbd6cfc3dec2cb80cdc1c3)". This example uses some Apache HHTTP components. You can get the required libraries from [http://hc.apache.org](http://hc.apache.org).
+
+C#
+
+`public static void main(String[] args) throws Exception 
+      {
+        final String token = uploadPersonalizedAttachments();
+        sendTransactionMail(token);
+      }
+     
+    private static String uploadPersonalizedAttachments() throws Exception 
+      {
+        final MultipartEntity uploadMultipartEntity = new MultipartEntity();
+        uploadMultipartEntity.addPart("bmFile", new FileBody(new File("Your_Order.pdf")));
+        final HttpPost httpPost = new HttpPost("https://api.campaign.episerver.net/http/form/<auth_code>/uploadpersonalizedattachments");
+        httpPost.setEntity(uploadMultipartEntity);
+        final HttpClient uploadHttpClient = new DefaultHttpClient();
+        final HttpResponse uploadResponse = uploadHttpClient.execute(httpPost);
+        final HttpEntity uploadResponseEntity = uploadResponse.getEntity();
+        final ByteArrayOutputStream uploadByteArrayOutputStream = new ByteArrayOutputStream();
+        uploadResponseEntity.writeTo(uploadByteArrayOutputStream);
+        final String answer = uploadByteArrayOutputStream.toString("UTF-8");
+        if(uploadResponse.getStatusLine().getStatusCode() != 200 || !answer.startsWith("ok: "))
+          {
+            throw new RuntimeException(answer);
+          }
+        return answer.replace("ok: ", "");
+      }
+     
+    private static void sendTransactionMail(String token) throws Exception
+      {
+        final MultipartEntity sendMultipartEntity = new MultipartEntity();
+        sendMultipartEntity.addPart("bmRecipientId", new StringBody("[[email protected]](/cdn-cgi/l/email-protection)"));
+        sendMultipartEntity.addPart("bmMailingId", new StringBody("123456"));
+        sendMultipartEntity.addPart("bmPersonalizedAttachmentsToken", new StringBody(token));
+        final HttpPost sendHttpPost = new HttpPost("https://api.campaign.episerver.net/http/form/<auth_code>/sendtransactionmail");
+        sendHttpPost.setEntity(sendMultipartEntity);
+        final HttpClient sendHttpClient = new DefaultHttpClient();
+        final HttpResponse sendResponse = sendHttpClient.execute(sendHttpPost);
+        final HttpEntity sendResponseEntity = sendResponse.getEntity();
+        final ByteArrayOutputStream sendByteArrayOutputStream = new ByteArrayOutputStream();
+        sendResponseEntity.writeTo(sendByteArrayOutputStream);
+        System.out.println(sendByteArrayOutputStream.toString("UTF-8"));
+      }
+`
+
+#### CURL
+
+The following shell script _upload\_attachment\_and\_send\_to\_recipient.sh_ uploads an attachment using CURL and sends it in a transaction email:
+
+Shell
+
+`#! /bin/sh
+    URL="https://api.campaign.episerver.net/http/form/<auth_code>"
+    MAILING="123456"
+    FILE="${1}"
+    RECIPIENT="${2}"
+     
+    if  [ -z "${FILE}" ] || [ -z "${RECIPIENT}" ]; then
+        echo "Some argument is missing. Please use following syntax: '$0 <file> <recipient>'"
+        exit 1
+    fi
+     
+    echo "Executing request to upload attachment ..."
+    uploadAnswer=$(curl -k -F bmFile=@${FILE} "${URL}/uploadpersonalizedattachments")
+    if echo "${uploadAnswer}" | grep "ok: ";
+    then
+      token=$(echo "${uploadAnswer}" | grep "ok: " | sed 's/ok: //')
+      echo "Executing request to send transaction mail with token '${token}' ..."
+      echo $(curl -k "${URL}/sendtransactionmail? 
+      bmRecipientId=${RECIPIENT}&bmMailingId=${MAILING}
+      &bmPersonalizedAttachmentsToken=${token}")
+    else
+      echo ${uploadAnswer}
+      exit 1
+    fi
+`
+
+To invoke the above mentioned file, the following command must be invoked:
+
+`sh upload_attachment_and_send_to_recipient.sh "Your_Order.pdf" "[[email protected]](/cdn-cgi/l/email-protection)"
+`
+
+#### PHP (Version 5.3.5)
+
+In the following example, the file _Your\_Order.pdf_ is uploaded and sent to the recipient with the email address "[\[email protected\]](/cdn-cgi/l/email-protection#f892979096d68b95918c90b89d80999588949dd69b9795)".
+
+PHP
+
+`<?php
+      $file = "Your_Order.pdf";
+      $authTag = '<auth_code>';
+      $recipientId = '[[email protected]](/cdn-cgi/l/email-protection)';
+      $mailingId = '123456';
+      $boundary = '---------------------' . substr(md5(rand(0, 32000)), 0, 10);
+      $pathinfo = pathinfo($file);
+      $data = '--' . $boundary . "\r\n" .
+        'Content-Disposition: form-data; name="bmFile"; filename="' . $pathinfo['basename'] . '"' . "\r\n" .
+        'Content-Type: application/binary' . "\r\n" .
+        'Content-Transfer-Encoding: binary' . "\r\n\r\n" .
+        file_get_contents($file) . "\r\n" .
+        '--' . $boundary . '--' . "\r\n";
+      $uploadUrl = 'https://api.campaign.episerver.net/http/form/' . $authTag . '/uploadpersonalizedattachments';
+      $context = stream_context_create(
+        array(
+               'http' => array(
+                                'method' => 'POST',
+                                'header' => 'Content-Type: multipart/form-data; boundary=' . $boundary,
+                                'content' => $data
+                              )
+             ));
+      if (!($uploadHandle = fopen($uploadUrl, 'rb', false, $context)))
+        {
+          throw new Exception('Problem with ' . $uploadUrl);
+        }
+      $response = stream_get_contents($uploadHandle);
+      fclose($uploadHandle);
+      $token = str_replace('ok: ', '', $response);
+      if ($response === $token)
+        {
+          throw new Exception($response);
+        }
+      
+      $sendUrl = 'https://api.campaign.episerver.net/http/form/' . $authTag . 
+        '/sendtransactionmail' .
+        '?bmRecipientId=' . urlencode(utf8_decode($recipientId)) .
+        '&bmMailingId=' . urlencode(utf8_decode($mailingId)) .
+        '&bmPersonalizedAttachmentsToken=' . urlencode(utf8_decode($token));
+      $result = file_get_contents($sendUrl);
+      echo $result;
+    ?>
+`

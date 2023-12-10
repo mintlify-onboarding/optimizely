@@ -1,0 +1,46 @@
+---
+title: "sendTestMail2"
+description: "Sends a test email to a recipient in Optimizely Campaign."
+---
+
+All mailing types and mailings in any status can be sent with this method.
+
+> 📘
+> 
+> Note
+> 
+> The actual mail is sent asynchronously. That means that you should not delete the recipient immediately after calling this method.
+
+**Type**: int
+
+**Parameters**
+
+| Name      | Type   | Value                                                                                                       |
+| --------- | ------ | ----------------------------------------------------------------------------------------------------------- |
+| sessionId | String | ID of the session                                                                                           |
+| mailingId | long   | ID of the mailing                                                                                           |
+| mimeType  | String | MIME type of the test emailFollowing values can be used:Empty string (the MIME type of the mailing is used) |
+
+* text/plain (the mailing must use either the same MIME type or the MIME type multipart/alternative)
+* text/html (the mailing must use either the same MIME type or the MIME type multipart/alternative)
+* The same MIME type as the mailing
+ | | recipientListId | long | ID of the recipient list  
+  
+Must be a test recipient list and needs not to be configured for the given mailing. | | recipientId | String | ID of the recipient  
+  
+Must match the target group and not be unsubscribed or blocked. |
+
+**Return values**
+
+* 0: if the mail has been spooled
+* 1: if the recipient is blocked
+* 2: if the recipient is unsubscribed
+* 3: if the recipient was not found
+* 4: if the recipient list is invalid
+* 5: if the recipient is blocked by the mailing's target group
+* 6: if the recipient has caused too many bounces
+
+**Code structure**
+
+`int sendTestMail2(String sessoinId, long mailingId, String mimeType, long recipientListId, String recipientId)
+`

@@ -1,0 +1,21 @@
+---
+title: "commitConditionModification"
+description: "Ends a transaction for modifications of a target group and updates the target group in Optimizely Campaign."
+---
+
+If the target group is empty, an exception is thrown.
+
+**Type**: void
+
+**Parameters**
+
+| Name           | Type   | Value                                                                                                    |
+| -------------- | ------ | -------------------------------------------------------------------------------------------------------- |
+| sessionId      | String | ID of the session                                                                                        |
+| modificationId | String | Identifier created by [beginConditionModification](/optimizely-campaign/docs/beginconditionmodification) |
+
+**Return values**
+
+* **Code structure**  
+`void commitConditionModification(String sessionId, String modificationId)  
+`

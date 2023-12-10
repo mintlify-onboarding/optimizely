@@ -1,0 +1,27 @@
+---
+title: "getStatus"
+description: "Queries the status of a mailing in Optimizely Campaign."
+---
+
+**Type**: String
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+Status of the mailing:
+
+* NEW
+* SENDING
+* DONE
+* CANCELLED
+
+**Code structure**
+
+`String getStatus(String sessionId, long mailingId)
+`

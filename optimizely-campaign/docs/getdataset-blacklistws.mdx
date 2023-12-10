@@ -1,0 +1,25 @@
+---
+title: "getDataSet"
+description: "Queries the data of each blocklist entry in Optimizely Campaign."
+---
+
+This method can be replaced by the .NET replacement methods [getColumnNames](/optimizely-campaign/docs/getcolumnnames-blacklistws) and [getDataSetFlat](/optimizely-campaign/docs/getdatasetflat-blacklist).
+
+**Type**: String\[ \] \[ \]
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+
+**Return values**
+
+A data set where the first row contains the column names and the following the values for each blocklist entry
+
+The columns and the column order of the data set are subject to change.
+
+**Code structure**
+
+`String[][] getDataSet(String sessionId)
+`

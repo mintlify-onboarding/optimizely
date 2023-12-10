@@ -1,0 +1,30 @@
+---
+title: "CouponCodeWebservice"
+description: "Create, query, and delete coupon codes."
+---
+
+The WSDLs for the coupon code system can be found under these links:
+
+* [https://api.campaign.episerver.net/soap11/addons/CouponCode?wsdl](https://api.broadmail.de/soap11/addons/CouponCode?wsdl "Follow link")
+* [https://api.campaign.episerver.net/soap11/addons/CouponBlock?wsdl](https://api.broadmail.de/soap11/addons/CouponBlock?wsdl "Follow link")
+
+The following methods are available in this web service:
+
+| Method                     | Description                                                    |
+| -------------------------- | -------------------------------------------------------------- |
+| add                        | Adds a single coupon code to a static block                    |
+| addAll                     | Adds multiple coupon codes to a block                          |
+| getAllAssigned             | Queries coupon codes assigned to a mailing                     |
+| getAllUnAssigned           | Queries all available coupon codes of a block                  |
+| getAssignedMailing         | Queries the mailing ID a code has been assigned to             |
+| getAssignedRecipientId     | Queries the recipient ID a code has been assigned to           |
+| getByMailingAndRecipientId | Queries a coupon code by mailing and recipient ids             |
+| getCreated                 | Queries the creation date of a coupon code                     |
+| getModified                | Queries the modification date of a coupon code                 |
+| isAssigned                 | Queries whether a coupon code has been assigned to a recipient |
+| isUsed                     | Queries whether a recipient has redeemed a coupon code         |
+| markAsUsed                 | Invalidates a coupon code                                      |
+| remove                     | Deletes a single coupon code                                   |
+| removeAll                  | Deletes multiple coupon codes                                  |
+
+To use this web service, you must have the coupon system add-on installed. See [Coupon system](https://support.optimizely.com/hc/en-us/articles/4413192215949-Introduction-to-the-coupon-system) in the Optimizely User Guide.

@@ -1,0 +1,32 @@
+---
+title: "SOAP API Overview"
+description: "Optimizely Campaign provides the SOAP API that lets you execute virtually any function from a remote system."
+---
+
+The SOAP API is compatible with the most common platforms (e.g. PHP, .NET) and thus can be used with any kind of data processing system.
+
+> 📘
+> 
+> Tip
+> 
+> Optimizely Campaign supports Transport Layer Security (TLS) version 1.2 and higher to encrypt data transmission via API requests.
+
+To download the PHP client API and the WSDLs for the SOAP API, click here: [optimizely-campaign-soap-api.zip](https://world.optimizely.com/globalassets/downloads/episerver-campaign/optimizely-campaign-soap-api.zip)
+
+Find the WSDLs for the coupon code system under the following links:
+
+* [https://api.campaign.episerver.net/soap11/addons/CouponCode?wsdl](https://api.broadmail.de/soap11/addons/CouponCode?wsdl)
+* [https://api.campaign.episerver.net/soap11/addons/CouponBlock?wsdl](https://api.broadmail.de/soap11/addons/CouponBlock?wsdl "Follow link")
+
+You can execute virtually any function of Optimizely Campaign from a remote system without using the web browser and logging into your client manually. The interface is bi-directional, which means that you can send and receive data from/to Optimizely Campaign. The following processes can be executed with the SOAP API:
+
+* Create recipient lists and add new recipients
+* Edit recipient lists and recipients
+* Update and synchronize blacklists
+* Create temporary and permanent target groups
+* Create mailings, add content and dispatch mailings
+* Bounce management
+
+### Modifications since the previous version
+
+The [getOutBounces](/optimizely-campaign/docs/getoutbounces) operation was added.

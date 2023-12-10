@@ -1,0 +1,22 @@
+---
+title: "setAttributesInBatchFlat"
+description: "Defines new values for specific attributes of multiple recipients in Optimizely Campaign."
+---
+
+**Type**: void
+
+**Parameters**
+
+| Name                | Type        | Value                                                                                                                                                                                   |
+| ------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId           | String      | ID of the session                                                                                                                                                                       |
+| recipientListId     | long        | ID of the recipient list                                                                                                                                                                |
+| recipientIds        | String\[ \] | IDs of the recipients                                                                                                                                                                   |
+| attributeNames      | String\[ \] | Names of the fields (e.g., firstname, lastname etc.) to be updated                                                                                                                      |
+| flatAttributeValues | String\[ \] | New values for the attributes/fields defined with **attributeNames**Each entry must be formatted according to the [formatting rules](/optimizely-campaign/docs/soap-1-1-compatibility). |
+
+**Return values**
+
+* **Code structure**  
+`void setAttributesInBatchFlat(String sessionId, long recipientListId, String[] recipientIds, String[] attributeNames, String[] flatAttributeValues)  
+`

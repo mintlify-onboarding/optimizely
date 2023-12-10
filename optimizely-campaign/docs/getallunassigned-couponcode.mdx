@@ -1,0 +1,24 @@
+---
+title: "getAllUnAssigned"
+description: "Queries all available coupon codes of a coupon block in Optimizely Campaign. A maximum of 1,000 entries can be returned per query."
+---
+
+**Type**: string\[ \]
+
+**Parameters**
+
+| Name            | Type    | Value                                          |
+| --------------- | ------- | ---------------------------------------------- |
+| sessionId       | String  | ID of the current session                      |
+| blockId         | long    | ID of the coupon block                         |
+| startEntry      | integer | (optional) Number of the entry to start with   |
+| numberOfEntries | integer | (optional) Maximum number of entries to return |
+
+**Return values**
+
+All available (unassigned) coupon codes in this block
+
+**Code structure**
+
+`String[] getAllUnAssigned(String sessionId, long blockId, int startEntry, int numberOfEntries)
+`

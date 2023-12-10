@@ -1,0 +1,27 @@
+---
+title: "setFinalSplitSelectionCriterion"
+description: "Defines the selection criterion for sending a split mailing as master mailing in Optimizely Campaign."
+---
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value                         |
+| --------- | ------ | ----------------------------- |
+| sessionId | String | ID of the session             |
+| mailingId | long   | ID of the master mailing      |
+| criterion | String | Selection criteria:OPEN\_RATE |
+
+* CLICK\_RATE
+* EFFECTIVE\_CLICK\_RATE
+* UNSUBSCRIBE\_RATE
+* BOUNCE\_RATE
+* POSTCLICK\_VALUE
+ |
+
+**Return values**
+
+* **Code structure**  
+`void setFinalSplitSelectionCriterion(String sessionId, long mailingId, String criterion)  
+`

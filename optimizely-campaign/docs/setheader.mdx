@@ -1,0 +1,21 @@
+---
+title: "setHeader"
+description: "Defines an RFC822-compliant header value in Optimizely Campaign."
+---
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value                                                                                               |
+| --------- | ------ | --------------------------------------------------------------------------------------------------- |
+| sessionId | String | ID of the session                                                                                   |
+| mailingId | long   | ID of the mailing                                                                                   |
+| Name      | String | Field nameMust be compliant with RFC822 (only 7bit US-ASCII characters are allowed).                |
+| Value     | String | Value of the header fieldMust be compliant with RFC822 (only 7bit US-ASCII characters are allowed). |
+
+**Return values**
+
+* **Code structure**  
+`void setHeader(String sessionId, long mailingId, String name, String value)  
+`

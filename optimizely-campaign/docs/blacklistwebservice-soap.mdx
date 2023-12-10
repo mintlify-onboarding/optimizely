@@ -1,0 +1,43 @@
+---
+title: "BlacklistWebservice"
+description: "Query, update or remove blocklist entries in Optimizely Campaign, and determine if an email address is blocked."
+---
+
+| Method                | Description                                                      |
+| --------------------- | ---------------------------------------------------------------- |
+| add                   | Adds an entry to the blocklist.                                  |
+| addAll                | Adds multiple entries to the blocklist.                          |
+| areBlacklisted        | Queries whether mutiple email addresses are blocked.             |
+| contains              | Queries whether an entry is contained in the blocklist.          |
+| containsAll           | Queries whether multiple entries are contained in the blocklist. |
+| getAllAdvanced        | Queries all blocklist entries.                                   |
+| getAllAdvancedFlat    | Queries all blocklist entries.                                   |
+| getAllEntries         | Queries all blocklist entries.                                   |
+| getColumnNames        | Queries the column names of each blocklist entry.                |
+| getCount              | Counts all available blocklist entries.                          |
+| getCreated            | Queries the creation date of a blocklist entry.                  |
+| getDataSet            | Queries the data of each blocklist entry.                        |
+| getDataSetFlat        | Queries the values of each blocklist entry.                      |
+| getFirstMatchingEntry | Queries the first blocklist entry that matches an email address. |
+| getReason             | Queries the reason for a blocklist entry.                        |
+| isBlacklisted         | Queries whether an email address is blocked.                     |
+| remove                | Deletes an entry from the blocklist.                             |
+| removeAll             | Deletes multiple entries from the blocklist.                     |
+
+### Entries vs. email addresses
+
+Note that there is a difference between a blocklist entry and a blocked email address. Since blocklisting can be done using wildcards (see next section), a blocklist entry may block several email addresses. To query the first matching blocklist entry for an email address, use the [getFirstMatchingEntry](/optimizely-campaign/docs/getfirstmatchingentry) method.
+
+A single email address may be blocked by several blocklist entries. So, if you like to make sure that an email address is not blocked any more, the methods [getFirstMatchingEntry](/optimizely-campaign/docs/getfirstmatchingentry) and [remove](/optimizely-campaign/docs/remove-blacklist) have to be invoked until **getFirstMatchingEntry** returns NULL.
+
+### Wildcards
+
+An entry can contain the following wildcards:
+
+* An \* (asterisk) represents one or more characters.
+* A ? represents a single character.
+
+**Examples**
+
+* \*@example.com: all email addresses of the domain "example.com".
+* [\[email protected\]](/cdn-cgi/l/email-protection): "[\[email protected\]](/cdn-cgi/l/email-protection#e882878086c68c878da88d90898598848dc68b8785)" or "[\[email protected\]](/cdn-cgi/l/email-protection#117b7e797f3f757e62517469707c617d743f727e7c)" etc.

@@ -1,0 +1,31 @@
+---
+title: "About scheduled jobs"
+description: "Provides basic information about scheduled jobs and a list of the most relevant jobs."
+---
+
+With scheduled jobs, you can automate regular tasks in Optimizely Campaign. Scheduled jobs are additional features that are charged via the support services, according to the time and effort involved.
+
+Using scheduled jobs requires an **SCP account**. Optimizely customer support will set this up on request and provide you with the path for uploading and downloading files on Optimizely's servers. See also [Optimizely User Guide](https://support.optimizely.com/hc/en-us/articles/4413192168461-Introduction-to-transferring-files-through-SCP).
+
+The list contains e.g. import and export jobs for recipient lists, blocklists, unsubscribers or outbounced recipients that run automatically on a daily, weekly or monthly basis. Use the form on each job's page to send a direct request to Optimizely customer support for setting up the job for your client. To get information on which scheduled jobs are already configured or running in your client, you can use the [Optimizely Campaign REST API](https://api.campaign.episerver.net/apidoc/index.html#/Scheduled%20jobs).
+
+> 📘
+> 
+> Tip
+> 
+> If you are looking for a job or listener not listed below, contact [customer support](/cdn-cgi/l/email-protection#691a1c1919061b1d2906191d000400130c0510470a0604) to learn more about other available jobs and solutions.
+
+| Job name                                              | Description                                                                    |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Automatic tracking link extension job                 | Adds parameters to all tracking links of a mailing.                            |
+| Blocklist export job                                  | Exports all entries of a blocklist to a CSV file.                              |
+| Blocklist import job                                  | Imports all entries from a CSV file to a blocklist.                            |
+| Delete recipients that match a target group job       | Uses a target group to delete recipients from recipient lists.                 |
+| Dispatch of latest email after double opt-in listener | Ensures that new subscribers will automatically receive the last sent mailing. |
+| Monitor mails listener                                | Sends a monitor mail to specified recipients.                                  |
+| Multiple recipients export job                        | Exports multiple recipient lists to CSV files.                                 |
+| Outbounced recipient export job                       | Exports recipients that exceeded the bounce limit to a CSV file.               |
+| Recipient export job                                  | Exports a recipient list to a CSV file.                                        |
+| Recipient import job                                  | Imports recipient data from a CSV file into a recipient list.                  |
+| Unsubscriber export job                               | Exports unsubscribers to a CSV file.                                           |
+| Unsubscriber import job                               | Imports unsubscribers from a CSV file to the system-internal unsubscribe list. |

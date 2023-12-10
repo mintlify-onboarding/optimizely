@@ -1,0 +1,20 @@
+---
+title: "setCharset"
+description: "Defines the character set for the content (subject + body) of a mailing in Optimizely Campaign."
+---
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value                                                                                                                                     |
+| --------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId | String | ID of the session                                                                                                                         |
+| mailingId | long   | ID of the mailing                                                                                                                         |
+| charset   | String | Character set to be used for all contents (subject + body) in ISO namesIf set to null, the client's default (usually ISO-8859-1) is used. |
+
+**Return values**
+
+* **Code structure**  
+`void setCharset(String sessionId, long mailingId, String charset)  
+`

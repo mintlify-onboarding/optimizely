@@ -1,0 +1,23 @@
+---
+title: "isOpenTrackingEnabled"
+description: "Queries whether open tracking is activated for a mailing in Optimizely Campaign."
+---
+
+**Type**: boolean
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+* true: Open tracking is activated
+* false: Open tracking is deactivated
+
+**Code structure**
+
+`boolean isOpenTrackingEnabled(String sessionId, long mailingId)
+`

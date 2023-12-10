@@ -1,0 +1,22 @@
+---
+title: "getMaxMailsPerHour"
+description: "Queries the maximum sending rate (emails per hour) of a mailing in Optimizely Campaign."
+---
+
+**Type**: int
+
+**Parameters**
+
+| Name      | Type   | Value             |
+| --------- | ------ | ----------------- |
+| sessionId | String | ID of the session |
+| mailingId | long   | ID of the mailing |
+
+**Return values**
+
+Maximum sending rate (emails per hour) of the mailing
+
+**Code structure**
+
+`int getMaxMailsPerHour(String sessionId, long mailingId)
+`

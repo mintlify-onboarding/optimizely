@@ -1,0 +1,26 @@
+---
+title: "setName"
+description: "Defines the internal name of a target group."
+---
+
+> 📘
+> 
+> Note
+> 
+> You cannot set the name of a temporary target group. To check whether the target group is temporary, use the [isTemporary](/optimizely-campaign/docs/istemporary) operation.
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type   | Value                             |
+| --------- | ------ | --------------------------------- |
+| sessionId | String | ID of the session                 |
+| filterId  | long   | ID of the target group            |
+| Name      | String | Internal name of the target group |
+
+**Return values**
+
+* **Code structure**  
+`void setName(String sessionId, long filterId, String name)  
+`

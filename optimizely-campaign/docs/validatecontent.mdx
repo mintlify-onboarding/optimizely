@@ -1,0 +1,27 @@
+---
+title: "validateContent"
+description: "Validates the content of a mailing in Optimizely Campaign."
+---
+
+The content will be checked for syntax errors, missing field functions etc.
+
+**Type**: String
+
+**Parameters**
+
+| Name      | Type   | Value                                              |
+| --------- | ------ | -------------------------------------------------- |
+| sessionId | String | ID of the session                                  |
+| mailingId | long   | ID of the mailing                                  |
+| mimeType  | String | MIME type (text/plain or text/html) of the mailing |
+| content   | String | The content of the mailing (HTML or text)          |
+
+**Return values**
+
+* OK if the syntax is correct
+* WARNING: or ERROR: with a detailed error message
+
+**Code structure**
+
+`String validateContent(String sessionId, long mailingId, String mimeType, String content)
+`

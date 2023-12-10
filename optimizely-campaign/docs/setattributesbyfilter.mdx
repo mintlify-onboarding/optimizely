@@ -1,0 +1,28 @@
+---
+title: "setAttributesByFilter"
+description: "Defines new values for specific attributes of all recipients contained in a specific recipient list in Optimizely Campaign."
+---
+
+**Type**: void
+
+**Parameters**
+
+| Name              | Type        | Value                                                                                                                                                                                    |
+| ----------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sessionId         | String      | ID of the session                                                                                                                                                                        |
+| recipientListId   | long        | ID of the recipient list                                                                                                                                                                 |
+| recipientFilterId | long        | ID of the recipient                                                                                                                                                                      |
+| attributeNames    | String\[ \] | Names of the fields (e.g. firstname, lastname etc.) to be updated                                                                                                                        |
+| attributeValues   | String\[ \] | New values for the attributes/fields defined with **attributeNames**.Each entry must be formatted according to the [formatting rules](/optimizely-campaign/docs/soap-1-1-compatibility). |
+| mode              | String      | For fields of the type String this parameter can be set to:set (overwrite)                                                                                                               |
+
+* prepend
+* append
+* For all other types the value is set by default.
+ |
+
+**Return values**
+
+* **Code structure**  
+`void setAttributesByFilter(String sessionId, long recipientListId, long recipientFilterId, String[] attributeNames, String[] attributeValues, String mode)  
+`

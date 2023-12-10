@@ -1,0 +1,43 @@
+---
+title: "getsendstatus"
+description: "Queries sending details for emails that were sent using one of the two operations sendeventmail or sendtransactionmail in Optimizely Campaign."
+---
+
+This operation is available in the form service.
+
+**Parameters**
+
+| Name     | Mandatory | Default value | Description                                                 |
+| -------- | --------- | ------------- | ----------------------------------------------------------- |
+| bmMailId | yes       | –             | The ID of the email whose sending status you want to check. |
+
+**Return values**
+
+| Value                  | Description                                                                                                                       |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| enqueued               | The email is still in the queue.                                                                                                  |
+| sending                | The sending process has not been finished yet.                                                                                    |
+| sent                   | The email has been sent successfully.                                                                                             |
+| could\_not\_be\_sent   | An error occurred during the sending process.                                                                                     |
+| missing\_id            | No **bmMailId** was transmitted.                                                                                                  |
+| vetoed                 | The sending of the email was blocked. This may have several reasons, for example, the number of coupon codes left may be too low. |
+| wrong\_mailing\_status | The mailing with the given **bmMailingId** has been stopped or is finished.                                                       |
+| blacklisted            | The recipient is blacklisted and will not receive any more emails.                                                                |
+| too\_many\_bounces     | The recipient has exceeded the bounce limit and will not receive any more emails.                                                 |
+| filtered               | Due to target groups used by the mailing, the recipient did not receive an email.                                                 |
+| not\_found             | The recipient with the given **bmRecipientId** could not be found in the recipient list.                                          |
+| unsubscribed           | The recipient has unsubscribed from the service and will not receive any more emails.                                             |
+| system\_error          | A general error occurred.                                                                                                         |
+
+> 📘
+> 
+> Note
+> 
+> The return values of this operation are available for a maximum of 14 days after sending a mailing.
+
+**Example**
+
+`.../form/.../getsendstatus?bmMailId=4LE98TN-C01-H3SD90 
+`
+
+The transmitted **bmMailId** must be the return value of the respective [sendeventmail](/optimizely-campaign/docs/sendeventmail) or [sendtransactionmail](/optimizely-campaign/docs/sendtransactionmail) call.

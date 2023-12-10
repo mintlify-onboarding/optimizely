@@ -1,0 +1,22 @@
+---
+title: "addAll"
+description: "Adds multiple entries to the blocklist in Optimizely Campaign."
+---
+
+See also [add](/optimizely-campaign/docs/add-blacklist).
+
+**Type**: void
+
+**Parameters**
+
+| Name      | Type        | Value                                                                                     |
+| --------- | ----------- | ----------------------------------------------------------------------------------------- |
+| sessionId | String      | ID of the session                                                                         |
+| entry     | String\[ \] | Entries (for example, email addresses) to be blocked (can contain wildcards like ? or \*) |
+| reason    | String\[ \] | Reasons for each blocklist entry (optional)                                               |
+
+**Return values**
+
+* **Code structure**  
+`void addAll(String sessionId, String[] entries, String[] reasons)  
+`

@@ -1,0 +1,22 @@
+---
+title: "setConfirmationMailingId"
+description: "Defines the ID of the mailing that sends the confirmation email in Optimizely Campaign."
+---
+
+This method is only applicable to opt-in processes of the type double. The mailing must be of the type confirmation.
+
+**Type**: void
+
+**Parameters**
+
+| Name           | Type   | Value                                               |
+| -------------- | ------ | --------------------------------------------------- |
+| sessionId      | String | ID of the session                                   |
+| optinProcessId | long   | ID of the opt-in process                            |
+| mailingId      | long   | ID of the mailing that sends the confirmation email |
+
+**Return values**
+
+* **Code structure**  
+`void setConfirmationMailingId(String sessionId, long optinProcessId, long mailingId)  
+`
